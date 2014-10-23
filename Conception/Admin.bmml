@@ -1,0 +1,80 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1686" measuredH="646" mockupW="1672" mockupH="616">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="14" y="30" w="1204" h="616" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::IconLabel" x="1056" y="133" w="-1" h="-1" measuredW="68" measuredH="63" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>GearIcon%7Clarge</icon>
+        <text>Param%E8tres</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="941" y="154" w="-1" h="-1" measuredW="100" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Bienvenue%2C%20User1</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::IconLabel" x="1139" y="133" w="-1" h="-1" measuredW="48" measuredH="63" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>PopOutIcon%7Clarge</icon>
+        <labelPosition>bottom</labelPosition>
+        <text>Logout</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::IconLabel" x="48" y="127" w="-1" h="-1" measuredW="48" measuredH="63" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>BloggerIcon%7Clarge</icon>
+        <text>Logo</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::TabBar" x="70" y="234" w="1081" h="348" measuredW="257" measuredH="100" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Licence%2C%20Comptes%20utilisateur</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::DataGrid" x="96" y="325" w="1004" h="242" measuredW="702" measuredH="81" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Login%20%5Ev%2C%20Nom%20%5Ev%2C%20R%F4les%2C%20Activ%E9%2C%20Actions%20v%0Ajules%2C%20Jules%20Laville%2CLecture%20seul%2C%20%5BX%5D%2C%20Modifier%20les%20r%F4les%20%7C%20R%E9inisaliser%20mot%20de%20passe%20%7C%20Supprimer%0Achri%2C%20Chrisophe%20B%2C%20Admin%20-%20Lecture%20%E9criture%2C%5B%5D%2C%20Modifier%20les%20r%F4les%20%7C%20R%E9inisaliser%20mot%20de%20passe%20%7C%20Supprimer</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::ButtonBar" x="115" y="281" w="-1" h="-1" measuredW="108" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nouveau</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::ComboBox" x="840" y="146" w="-1" h="-1" measuredW="80" measuredH="24" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Fran%E7ais</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::FieldSet" x="1318" y="89" w="368" h="167" measuredW="200" measuredH="170" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>R%F4les</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::List" x="1348" y="115" w="-1" h="-1" measuredW="100" measuredH="126" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Admin%0ALecture%20seul</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::List" x="1571" y="115" w="-1" h="-1" measuredW="100" measuredH="126" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Lecture%20%E9criture</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::IconLabel" x="1485" y="118" w="-1" h="-1" measuredW="48" measuredH="63" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>RightTriangleIcon%7Clarge</icon>
+        <text>%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::IconLabel" x="1479" y="191" w="-1" h="-1" measuredW="48" measuredH="63" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>LeftTriangleIcon%7Clarge</icon>
+        <text>%20</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
