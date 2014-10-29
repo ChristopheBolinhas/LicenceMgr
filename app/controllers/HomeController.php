@@ -17,6 +17,36 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
+    ob_start();
+    
+    echo Company::all() ."\r\n";
+    echo Editor::all() ."\r\n";
+    //echo Program::all() ."\r\n";
+    //echo Role::all() ."\r\n";
+    
+    /*
+    $var = Company::find(1);
+    print_r($var);
+    if ($var == null) {
+        $var = new Company();
+    }
+    $var->Name = "ISIC";
+    print_r($var);
+    
+    $var->save();
+    print_r($var);
+    echo Company::all();
+    */
+    //$response = Response::make($var, 200);
+    $out = ob_get_contents();
+
+    ob_end_clean();
+    $response = Response::make($out,200);
+
+  $response->header('Content-Type',"text/plain");
+
+    return $response;
+    return var_export(Company::all(), true);
 		return View::make('hello');
 	}
 
