@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `LicMgr`.`licences` (
   `value` VARCHAR(255) NOT NULL,
   `created_at` DATETIME(0) NOT NULL,
   `creation_user_id` BIGINT(20) NOT NULL,
-  `update_at` DATETIME(0) NOT NULL,
+  `updated_at` DATETIME(0) NOT NULL,
   `last_update_user_id` BIGINT(20) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Licence_Company1_idx` (`company_id` ASC),
@@ -111,17 +111,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `LicMgr`.`File`
+-- Table `LicMgr`.`files`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `LicMgr`.`File` (
-  `ID` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `Licence_ID` BIGINT(20) NOT NULL,
-  `Name` VARCHAR(255) NOT NULL,
-  `Value` LONGBLOB NOT NULL,
-  PRIMARY KEY (`ID`),
-  INDEX `fk_File_Licence1_idx` (`Licence_ID` ASC),
+CREATE TABLE IF NOT EXISTS `LicMgr`.`files` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `licence_id` BIGINT(20) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `value` LONGBLOB NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_File_Licence1_idx` (`licence_id` ASC),
   CONSTRAINT `fk_File_Licence1`
-    FOREIGN KEY (`Licence_ID`)
+    FOREIGN KEY (`licence_id`)
     REFERENCES `LicMgr`.`licences` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
