@@ -1,8 +1,9 @@
 <?php
 
 class Editor extends Eloquent {
-
-	protected $table = 'Editor';
-  public $timestamps = false;
-
+    public $timestamps = false;
+    
+    public function Programs() {
+        return $this->hasMany('Program');
+    } 
 }
