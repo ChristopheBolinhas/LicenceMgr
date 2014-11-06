@@ -11,9 +11,9 @@
 |
 */
 
-
 	Route::get('/', 'HomeController@showWelcome');
-  Route::get('/login', 'UserController@showLogin');  
+    Route::get('/login', 'UserController@showLogin');  
+    Route::get('/ui','HomeController@showUI');
 
 /*
 Route::get('/', function()
