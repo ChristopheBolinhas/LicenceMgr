@@ -19,8 +19,31 @@ class HomeController extends BaseController {
 	{
     ob_start();
     
-    echo Company::all() ."\r\n";
-    echo Editor::all() ."\r\n";
+    echo "01 ". Company::all() ."\r\n";
+    echo "02 ". Editor::all() ."\r\n";
+    echo "03 ". Editor::find(3) ."\r\n";
+    echo "04 ". Editor::find(3)->company ."\r\n";
+    echo "\r\n";
+    echo "05 ". Program::find(3) ."\r\n";
+    echo "06 ". Program::find(3)->parent ."\r\n";
+    echo "07 ". Program::find(3)->company ."\r\n";
+    echo "08 ". Program::find(3)->Licences ."\r\n";
+    echo "09 ". Program::find(5)->company ."\r\n";
+    echo "\r\n";
+    echo "10 ". Licence::find(1) ."\r\n";
+    echo "11 ". Licence::find(1)->company ."\r\n";
+    echo "12 ". Licence::find(1)->program ."\r\n";
+    echo "13 ". Licence::find(1)->Sheets ."\r\n";
+    echo "\r\n";
+    echo "14 ". Sheet::all() ."\r\n";
+    echo "\r\n";
+    echo "15 ". Company::find(1) ."\r\n";
+    echo "16 ". Company::find(1)->programs ."\r\n";
+    echo "17 ". Company::find(1)->editors ."\r\n";
+    echo "18 ". Company::find(1)->licences ."\r\n";
+        
+    //echo "5 ". User::find(1) ."\r\n";
+    //echo User::find(1).roles ."\r\n";
     //echo Program::all() ."\r\n";
     //echo Role::all() ."\r\n";
     
@@ -43,7 +66,7 @@ class HomeController extends BaseController {
     ob_end_clean();
     $response = Response::make($out,200);
 
-  $response->header('Content-Type',"text/plain");
+    $response->header('Content-Type',"text/plain");
 
     return $response;
     return var_export(Company::all(), true);

@@ -13,6 +13,8 @@
 
 
 	Route::get('/', 'HomeController@showWelcome');
+
+    Route::controller("TreeView", "TreeViewController");
 /*
 Route::get('/', function()
 {
