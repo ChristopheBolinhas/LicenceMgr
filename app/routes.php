@@ -13,6 +13,7 @@
 
 
 	Route::get('/', 'HomeController@showWelcome');
+  Route::get('/ui','HomeController@showUI');
 /*
 Route::get('/', function()
 {
