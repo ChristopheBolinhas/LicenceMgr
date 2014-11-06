@@ -61,7 +61,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LicMgr`.`programs` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `editor_id` BIGINT(20) UNSIGNED NOT NULL,
+  `editor_id` BIGINT(20) UNSIGNED NULL,
   `parent_id` BIGINT(20) UNSIGNED NULL,
   `company_id` BIGINT(20) UNSIGNED NULL,
   `name` VARCHAR(255) NOT NULL,
