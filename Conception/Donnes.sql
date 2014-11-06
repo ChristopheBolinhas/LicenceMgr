@@ -9,8 +9,8 @@ INSERT INTO editors VALUES
 INSERT INTO programs VALUES
 	(1, 1, NULL, NULL, 'Office'),
 	(2, 1, NULL, NULL, 'Visual Studio'),
-	(3, 1, 1, NULL, 'Access'),
-	(4, 1, 1, NULL, 'Excel'),
+	(3, NULL, 1, NULL, 'Access'),
+	(4, NULL, 1, NULL, 'Excel'),
 	(5, 1, NULL, 1, 'ISIC program1'); 
 	
 INSERT INTO roles VALUES
