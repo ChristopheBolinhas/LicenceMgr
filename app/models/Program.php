@@ -7,6 +7,10 @@ class Program extends Eloquent {
         return $this->belongsTo('Program', 'parent_id');
     }
     
+    public function Childrens() {
+        return $this->hasMany('Program', 'parent_id');
+    }
+    
     public function Editor() {
         return $this->belongsTo('Editor');
     }
