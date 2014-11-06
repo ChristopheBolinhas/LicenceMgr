@@ -6,4 +6,9 @@ class Editor extends Eloquent {
     public function Programs() {
         return $this->hasMany('Program');
     } 
+    
+    public function Company() {
+        return $this->belongsTo("Company");
+    }
+
 }

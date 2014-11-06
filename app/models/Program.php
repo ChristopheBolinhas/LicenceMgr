@@ -13,4 +13,7 @@ class Program extends Eloquent {
     public function Licences() {
         return $this->hasMany('Licence');
     }
+    public function Company() {
+        return $this->belongsTo('Company');
+    }
 }
