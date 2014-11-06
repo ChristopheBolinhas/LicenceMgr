@@ -14,7 +14,15 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-
+  public function showUI()
+  {
+    
+    $companies = Company::all();
+    
+    return View::make('mainTemplate')->with('editorList_public',$companies);
+  }
+  
+  
 	public function showWelcome()
 	{
     ob_start();
