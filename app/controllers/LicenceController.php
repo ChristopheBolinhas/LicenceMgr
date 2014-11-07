@@ -4,7 +4,9 @@ class LicenceController extends BaseController {
     
     
     public function getList($idParent) {
-        return View::make("Licence/List");
+        // TODO
+        $licences = Licence::all();
+        return View::make("Licence/List")->with('licences',$licences);
     }
     
 }

@@ -7,43 +7,20 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Licence 1</td>
-            <td>XXXX-XXXX-XXXX-XXXX-XXXX</td>
+        @foreach ($licences as $licence)
+        <tr data-id="{{{ $licence->id }}}">
+            <td>{{{ $licence->name }}}</td>
+            <td>{{{ $licence->value }}}</td>
             <td>
-                <a href="#" class="button split tiny text-center">Afficher la clé <span data-dropdown="drop-1"></span></a>
+                <a href="#" class="button split tiny text-center showLicence">Afficher la clé <span data-dropdown="drop-1"></span></a>
                 <ul id="drop-1" class="f-dropdown" data-dropdown-content>								
-                    <li><a class="edit" href="#">Modifier</a></li>
-                    <li><a href="#">Supprimer</a></li>
-                    <li><a href="#">Télécharger</a></li> 
+                    <li><a class="editLicence" href="#">Modifier</a></li>
+                    <li><a class="deleteLicence" href="#">Supprimer</a></li>
+                    <li><a class="downloadLicence" href="#">Télécharger</a></li> 
                 </ul>	
             </td>
 
         </tr>
-        <tr>
-            <td>Licence 2</td>
-            <td>XXXX-XXXX-XXXX-XXXX-XXXX</td>
-            <td>
-                <a href="#" class="button split tiny">Afficher la clé <span data-dropdown="drop-2"></span></a>
-                <ul id="drop-2" class="f-dropdown" data-dropdown-content>											
-                    <li><a class="edit" href="#">Modifier</a></li>
-                    <li><a href="#">Supprimer</a></li>
-                    <li><a href="#">Télécharger</a></li> 
-                </ul>								
-            </td>
-
-        </tr>
-        <tr>
-            <td>Licence 3</td>
-            <td>XXXX-XXXX-XXXX-XXXX-XXXX</td>
-            <td>
-                <a href="#" class="button split tiny">Afficher la clé <span data-dropdown="drop-3"></span></a>
-                <ul id="drop-3" class="f-dropdown" data-dropdown-content>								
-                    <li><a class="edit" href="#">Modifier</a></li>
-                    <li><a href="#">Supprimer</a></li>
-                    <li><a href="#">Télécharger</a></li> 
-                </ul>
-            </td>	
-        </tr>
+        @endforeach
     </tbody>
 </table>
