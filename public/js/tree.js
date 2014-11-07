@@ -18,14 +18,7 @@ function treeChange(e, data) {
         $("#licences").html('<h4>Veuillez séléctionner un programme.</h4>');
     }
 }
-function loadLicence(id) {
-    $.ajax({
-        url : "/licence/list/" + id,
-            success: function(data) {
-                $("#licences").html(data);
-            }
-    });
-}
+
 function getTreeUrl() {
     return '/TreeView/tree/' + $('#cComplete').is(':checked') + "/";
 }

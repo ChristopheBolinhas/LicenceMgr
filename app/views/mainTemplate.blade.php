@@ -16,6 +16,7 @@
     {{ HTML::script('js/foundation.min.js') }}
     {{ HTML::script('js/jstree/jstree.min.js') }}
     {{ HTML::script('js/tree.js') }}
+    {{ HTML::script('js/licence.js') }}
 	</head>
 	<body>
 	<!-- Modals definitions -->
@@ -42,7 +43,6 @@
 	
 	<!-- Ajout programme -->
 	<div id="newProgramme" class="reveal-modal small" data-reveal>
-		
 		
 	</div>
 	
@@ -334,15 +334,7 @@
   
   </div>
   <!-- End main panel -->
-
-	
-	
 	<script>
-
-            $(function(){
-                $('#newProgramme').foundation('reveal', 'open', '/program/add');
-            });
-
         $(document).foundation(); 
     </script>
 	</body>
