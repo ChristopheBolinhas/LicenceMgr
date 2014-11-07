@@ -8,7 +8,10 @@ class TreeViewController extends BaseController {
     public function getTree2($id) {
         return Response::json(array($id));
     }
-    public function getTree() {
+    public function getTree($all) {
+        // TODO créer fonction isbool
+        $all = $all === "true";
+        // TODO filter sur entreprise
         $editors = Editor::all();
         $result = [];
         foreach ($editors as $editor) {
@@ -21,6 +24,13 @@ class TreeViewController extends BaseController {
                 'id' => "editor-".$editor->id,
                 'text' =>  $editor->name,
                 'children' => $childrens 
+            );
+        }
+        if ($all) {
+             $result[] = array(
+                'id' => "editor-0",
+                'text' =>  "All",
+                'children' => array()
             );
         }
         

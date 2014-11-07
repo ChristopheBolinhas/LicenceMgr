@@ -284,8 +284,8 @@
 			</div>
 			<div class="row">
 				<div class="large-12 columns">
-					<input type="radio" name="catalogue" value="cComplete" id="cComplete"><label for="cComplete">Catalogue complet</label>
-					<input type="radio" name="catalogue" value="cEnterprise" id="cEnterprise"><label for="cEnterprise">Catalogue d'entreprise</label>
+					<input type="radio" name="catalogueType" value="cComplete" id="cComplete"><label for="cComplete">Catalogue complet</label>
+					<input type="radio" name="catalogueType" value="cEnterprise" id="cEnterprise" checked="checked"><label for="cEnterprise">Catalogue d'entreprise</label>
 				
 				</div>
 			</div>
