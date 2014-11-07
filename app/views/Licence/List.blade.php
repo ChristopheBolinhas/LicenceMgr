@@ -10,7 +10,7 @@
         @foreach ($licences as $licence)
         <tr data-id="{{{ $licence->id }}}">
             <td>{{{ $licence->name }}}</td>
-            <td>{{{ $licence->value }}}</td>
+            <td class="licence">*****</td>
             <td>
                 <a href="#" class="button split tiny text-center showLicence">Afficher la clé <span data-dropdown="drop-1"></span></a>
                 <ul id="drop-1" class="f-dropdown" data-dropdown-content>								
