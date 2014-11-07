@@ -235,29 +235,30 @@
 		 
 		</ul>
 		<section class="top-bar-section">
-		<ul class="right">
-		
-		<li class="has-form">
-			<select>
-				<option value="fr">Français</option>
-				<option value="en">English</option>
-				<option value="de">Deutsch</option>
-				<option value="it">Italian</option>
-			 </select>
-		</li>
-		<li class="name"><a>Invité</a></li>
-		
-		<li>
-			<a href="#" data-reveal-id="loginModal">
-				<i class="step fi-power size-48"></i>
-			</a>
-		</li>
-		<li>
-			<a href="#" data-reveal-id="parameterModal">
-				<i class="step fi-widget size-48"></i>
-			</a>
-		</li>
-		<li class="divider"></li>
+            <ul class="right">
+
+                <li class="has-form">
+                    <select>
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italian</option>
+                     </select>
+                </li>
+                <li class="name"><a>Invité</a></li>
+
+                <li>
+                    <a href="#" data-reveal-id="loginModal">
+                        <i class="step fi-power size-48"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-reveal-id="parameterModal">
+                        <i class="step fi-widget size-48"></i>
+                    </a>
+                </li>
+                <li class="divider"></li>
+            </ul>
 		</section>
   </nav>
   <!-- Nav bar end -->
