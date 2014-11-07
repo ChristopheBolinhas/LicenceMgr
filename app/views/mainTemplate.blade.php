@@ -15,6 +15,7 @@
     {{ HTML::script('js/vendor/fastclick.js') }}
     {{ HTML::script('js/foundation.min.js') }}
     {{ HTML::script('js/jstree/jstree.min.js') }}
+    {{ HTML::script('js/tree.js') }}
 	</head>
 	<body>
 	<!-- Modals definitions -->
@@ -291,16 +292,7 @@
 				<div class="large-2 columns">
 					<h3>Programmes</h3>
 						<div id="jstree">
-							<ul>
-							<li><a href="#">Microsoft</a>
-								<ul>
-									<li><a href="#">Office</a></li>
-									<li><a href="#">Visual Studio</a></li>
-								 </ul>
-							</li>
-							<li><a href="#">Oracle</a></li>
-							<li><a href="#">Valve</a></li>
-							</ul>    
+							
 						</div>
 		
 				</div>
@@ -308,55 +300,8 @@
 				<div class="large-10 columns">
 					<h3>Licences</h3>
 					<a href="#" class="button tiny" data-reveal-id="newLicence">Ajouter licences</a>
-					<table>
-						<thead>
-							<tr>
-								<th width="200">Nom</th>
-								<th width="250">Licence</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Licence 1</td>
-								<td>XXXX-XXXX-XXXX-XXXX-XXXX</td>
-								<td>
-									<a href="#" class="button split tiny text-center">Afficher la clé <span data-dropdown="drop-1"></span></a>
-									<ul id="drop-1" class="f-dropdown" data-dropdown-content>								
-										<li><a href="#">Modifier</a></li>
-										<li><a href="#">Supprimer</a></li>
-										<li><a href="#">Télécharger</a></li> 
-									</ul>	
-								</td>
-							
-							</tr>
-							<tr>
-								<td>Licence 2</td>
-								<td>XXXX-XXXX-XXXX-XXXX-XXXX</td>
-								<td>
-									<a href="#" class="button split tiny">Afficher la clé <span data-dropdown="drop-2"></span></a>
-									<ul id="drop-2" class="f-dropdown" data-dropdown-content>								
-										<li><a href="#">Modifier</a></li>
-										<li><a href="#">Supprimer</a></li>
-										<li><a href="#">Télécharger</a></li> 
-									</ul>								
-								</td>
-							
-							</tr>
-							<tr>
-								<td>Licence 3</td>
-								<td>XXXX-XXXX-XXXX-XXXX-XXXX</td>
-								<td>
-									<a href="#" class="button split tiny">Afficher la clé <span data-dropdown="drop-3"></span></a>
-									<ul id="drop-3" class="f-dropdown" data-dropdown-content>								
-										<li><a href="#">Modifier</a></li>
-										<li><a href="#">Supprimer</a></li>
-										<li><a href="#">Télécharger</a></li> 
-									</ul>
-								</td>	
-							</tr>
-						</tbody>
-					</table>
+                    <div id="licences"></div>
+					
 				</div>
 			</div>			
 		</section>
@@ -424,9 +369,5 @@
   </div>
   <!-- End main panel -->
 	
-	
-	<script> $(document).foundation(); 
-			$(function () { $('#jstree').jstree(); });
-	</script>
 	</body>
 </html>

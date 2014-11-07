@@ -1,9 +1,12 @@
 <?php
 
 class TreeViewController extends BaseController {
-    
+    /*
     public function anyIndex() {
         return View::make('TreeView/index');
+    }*/
+    public function getTree2($id) {
+        return Response::json(array($id));
     }
     public function getTree() {
         $editors = Editor::all();
@@ -15,7 +18,7 @@ class TreeViewController extends BaseController {
             }
             
             $result[] = array(
-                'id' => $editor->id,
+                'id' => "editor-".$editor->id,
                 'text' =>  $editor->name,
                 'children' => $childrens 
             );
@@ -31,7 +34,7 @@ class TreeViewController extends BaseController {
         }
         
         return array(
-            'id' => $program->id,
+            'id' => "program-".$program->id,
             'text' =>  $program->name,
             'children' => $childrens 
         );
