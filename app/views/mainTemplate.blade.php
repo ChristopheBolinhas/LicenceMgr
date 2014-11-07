@@ -290,7 +290,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="large-2 columns">
+				<div class="large-4 columns">
 					<h3>Programmes</h3>
 						<div id="jstree">
 							
@@ -298,7 +298,7 @@
 		
 				</div>
 			
-				<div class="large-10 columns">
+				<div class="large-8 columns">
 					<h3>Licences</h3>
 					<a href="#" class="button tiny" data-reveal-id="newLicence">Ajouter licences</a>
                     <div id="licences"></div>
@@ -369,6 +369,8 @@
   
   </div>
   <!-- End main panel -->
-	
+	<script>
+        $(document).foundation(); 
+    </script>
 	</body>
 </html>
