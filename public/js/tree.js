@@ -34,10 +34,7 @@ $(function() {
             'core' : {
                 "multiple" : false,
                 'data' : {
-                    'url' : getTreeUrl,
-                    'data' : function (node) {
-                        return node;
-                    }
+                    'url' : getTreeUrl
                 }
             }
         });
