@@ -15,6 +15,8 @@
     {{ HTML::script('js/vendor/fastclick.js') }}
     {{ HTML::script('js/foundation.min.js') }}
     {{ HTML::script('js/jstree/jstree.min.js') }}
+        
+      
 	</head>
 	<body>
 	<!-- Modals definitions -->
@@ -41,43 +43,8 @@
 	
 	<!-- Ajout programme -->
 	<div id="newProgramme" class="reveal-modal small" data-reveal>
-		<h2>Ajout programme</h2>
-		<div class="panel">
-			<div class="row">	
-				<label>Editeur</label>
-				<select>
-          @if (count($editorList_public) > 0)
-            @foreach($editorList_public as $editor)
-          <option value="{{$editor->id}}">{{$editor->name}}</option>
-            @endforeach
-          
-          @endif
-				 </select>
-			</div>
-			<div class="row">	
-				<label>Parent</label>
-				<select>
-					<option value="fr">-- None --</option>
-					<option value="fr">Microsft</option>
-					<option value="en">HP</option>
-					<option value="de">Oracle</option>
-					<option value="it">JetBrain</option>
-				 </select>
-			</div>
-			<div class="row">	
-				<label>Nom</label>
-				<input type="text" placeholder="Nom de l'éditeur" />
-			</div>
-			<div class="row">
-				<input type="radio" name="catalogue" value="addPublicProg" id="addPublicProg"><label for="addPublicProg">Public</label>
-				<input type="radio" name="catalogue" value="addPrivateProg" id="addPrivateProg"><label for="addPrivateProg">Privé</label>
-			</div>
-		</div>
-		<div class="row">
-				<a href="#" class="button [tiny small large]">Ajouter</a>
-				<a href="#" class="button [tiny small large]">Annuler</a>
-		</div>
-		<a class="close-reveal-modal">&#215;</a>
+		
+		
 	</div>
 	
 	<!-- Ajout licence -->
@@ -427,6 +394,12 @@
 	
 	<script> $(document).foundation(); 
 			$(function () { $('#jstree').jstree(); });
+
+            $(function(){
+                $('#newProgramme').foundation('reveal', 'open', '/program/add');
+            });
+            
+       
 	</script>
 	</body>
 </html>

@@ -16,8 +16,8 @@ class HomeController extends BaseController {
 	*/
     public function showUI()                                                                                                                                                                                                     
     {   
-        $companies = Company::all(); 
-        return View::make('mainTemplate')->with('editorList_public',$companies);                                      
+        //$companies = Company::all(); 
+        return View::make('mainTemplate');//->with('editorList_public',$companies);                                      
      
 
     $userCompany = 
