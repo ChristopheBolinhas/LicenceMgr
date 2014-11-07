@@ -8,7 +8,7 @@ class Program extends Eloquent {
     }
     
     public function Childrens() {
-        return $this->hasMany('Program', 'parent_id');
+        return $this->hasMany('Program', 'parent_id')->orderBy('name', 'ASC');
     }
     
     public function Editor() {

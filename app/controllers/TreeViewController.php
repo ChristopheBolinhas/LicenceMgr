@@ -12,7 +12,7 @@ class TreeViewController extends BaseController {
         // TODO créer fonction isbool
         $all = $all === "true";
         // TODO filter sur entreprise
-        $editors = Editor::all();
+        $editors = Editor::orderBy('name', 'ASC')->get();
         $result = [];
         foreach ($editors as $editor) {
             $result[] = $this->editorToArray($editor);
