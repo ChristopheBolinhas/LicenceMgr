@@ -15,16 +15,7 @@ class TreeViewController extends BaseController {
         $editors = Editor::all();
         $result = [];
         foreach ($editors as $editor) {
-            $childrens = [];
-            foreach ($editor->programs as $program) {
-                $childrens[] = $this->programToArray($program);
-            }
-            
-            $result[] = array(
-                'id' => "editor-".$editor->id,
-                'text' =>  $editor->name,
-                'children' => $childrens 
-            );
+            $result[] = $this->editorToArray($editor);
         }
         if ($all) {
              $result[] = array(
@@ -35,6 +26,18 @@ class TreeViewController extends BaseController {
         }
         
         return Response::json($result);
+    }
+    private function editorToArray($editor) {
+        $childrens = [];
+        foreach ($editor->programs as $program) {
+            $childrens[] = $this->programToArray($program);
+        }
+
+        return array(
+            'id' => "editor-".$editor->id,
+            'text' =>  $editor->name,
+            'children' => $childrens 
+        );
     }
     private function programToArray($program) {
         $childrens = [];
