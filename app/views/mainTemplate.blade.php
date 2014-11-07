@@ -15,8 +15,7 @@
     {{ HTML::script('js/vendor/fastclick.js') }}
     {{ HTML::script('js/foundation.min.js') }}
     {{ HTML::script('js/jstree/jstree.min.js') }}
-        
-      
+    {{ HTML::script('js/tree.js') }}
 	</head>
 	<body>
 	<!-- Modals definitions -->
@@ -201,29 +200,30 @@
 		 
 		</ul>
 		<section class="top-bar-section">
-		<ul class="right">
-		
-		<li class="has-form">
-			<select>
-				<option value="fr">Français</option>
-				<option value="en">English</option>
-				<option value="de">Deutsch</option>
-				<option value="it">Italian</option>
-			 </select>
-		</li>
-		<li class="name"><a>Invité</a></li>
-		
-		<li>
-			<a href="#" data-reveal-id="loginModal">
-				<i class="step fi-power size-48"></i>
-			</a>
-		</li>
-		<li>
-			<a href="#" data-reveal-id="parameterModal">
-				<i class="step fi-widget size-48"></i>
-			</a>
-		</li>
-		<li class="divider"></li>
+            <ul class="right">
+
+                <li class="has-form">
+                    <select>
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italian</option>
+                     </select>
+                </li>
+                <li class="name"><a>Invité</a></li>
+
+                <li>
+                    <a href="#" data-reveal-id="loginModal">
+                        <i class="step fi-power size-48"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-reveal-id="parameterModal">
+                        <i class="step fi-widget size-48"></i>
+                    </a>
+                </li>
+                <li class="divider"></li>
+            </ul>
 		</section>
   </nav>
   <!-- Nav bar end -->
@@ -249,81 +249,25 @@
 			</div>
 			<div class="row">
 				<div class="large-12 columns">
-					<input type="radio" name="catalogue" value="cComplete" id="cComplete"><label for="cComplete">Catalogue complet</label>
-					<input type="radio" name="catalogue" value="cEnterprise" id="cEnterprise"><label for="cEnterprise">Catalogue d'entreprise</label>
+					<input type="radio" name="catalogueType" value="cComplete" id="cComplete"><label for="cComplete">Catalogue complet</label>
+					<input type="radio" name="catalogueType" value="cEnterprise" id="cEnterprise" checked="checked"><label for="cEnterprise">Catalogue d'entreprise</label>
 				
 				</div>
 			</div>
 			<div class="row">
-				<div class="large-2 columns">
+				<div class="large-4 columns">
 					<h3>Programmes</h3>
 						<div id="jstree">
-							<ul>
-							<li><a href="#">Microsoft</a>
-								<ul>
-									<li><a href="#">Office</a></li>
-									<li><a href="#">Visual Studio</a></li>
-								 </ul>
-							</li>
-							<li><a href="#">Oracle</a></li>
-							<li><a href="#">Valve</a></li>
-							</ul>    
+							
 						</div>
 		
 				</div>
 			
-				<div class="large-10 columns">
+				<div class="large-8 columns">
 					<h3>Licences</h3>
 					<a href="#" class="button tiny" data-reveal-id="newLicence">Ajouter licences</a>
-					<table>
-						<thead>
-							<tr>
-								<th width="200">Nom</th>
-								<th width="250">Licence</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Licence 1</td>
-								<td>XXXX-XXXX-XXXX-XXXX-XXXX</td>
-								<td>
-									<a href="#" class="button split tiny text-center">Afficher la clé <span data-dropdown="drop-1"></span></a>
-									<ul id="drop-1" class="f-dropdown" data-dropdown-content>								
-										<li><a href="#">Modifier</a></li>
-										<li><a href="#">Supprimer</a></li>
-										<li><a href="#">Télécharger</a></li> 
-									</ul>	
-								</td>
-							
-							</tr>
-							<tr>
-								<td>Licence 2</td>
-								<td>XXXX-XXXX-XXXX-XXXX-XXXX</td>
-								<td>
-									<a href="#" class="button split tiny">Afficher la clé <span data-dropdown="drop-2"></span></a>
-									<ul id="drop-2" class="f-dropdown" data-dropdown-content>								
-										<li><a href="#">Modifier</a></li>
-										<li><a href="#">Supprimer</a></li>
-										<li><a href="#">Télécharger</a></li> 
-									</ul>								
-								</td>
-							
-							</tr>
-							<tr>
-								<td>Licence 3</td>
-								<td>XXXX-XXXX-XXXX-XXXX-XXXX</td>
-								<td>
-									<a href="#" class="button split tiny">Afficher la clé <span data-dropdown="drop-3"></span></a>
-									<ul id="drop-3" class="f-dropdown" data-dropdown-content>								
-										<li><a href="#">Modifier</a></li>
-										<li><a href="#">Supprimer</a></li>
-										<li><a href="#">Télécharger</a></li> 
-									</ul>
-								</td>	
-							</tr>
-						</tbody>
-					</table>
+                    <div id="licences"></div>
+					
 				</div>
 			</div>			
 		</section>
@@ -390,16 +334,16 @@
   
   </div>
   <!-- End main panel -->
+
 	
 	
-	<script> $(document).foundation(); 
-			$(function () { $('#jstree').jstree(); });
+	<script>
 
             $(function(){
                 $('#newProgramme').foundation('reveal', 'open', '/program/add');
             });
-            
-       
-	</script>
+
+        $(document).foundation(); 
+    </script>
 	</body>
 </html>
