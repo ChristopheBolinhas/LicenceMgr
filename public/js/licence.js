@@ -1,9 +1,10 @@
 function loadLicence(id) {
     $.ajax({
         url : "/licence/list/" + id,
-            success: function(data) {
-                $("#licences").html(data);
-            }
+        success: function(data) {
+            $("#licences").html(data);
+        },
+        type: "POST"
     });
 }
 function getLicenceTr(elem) {
@@ -14,7 +15,6 @@ function getLicenceId(tr) {
 }
 $(function() {
      $("#licences").on("click", ".showLicence", function() {
-         console.log("showLicence")
          var tr = getLicenceTr(this);
          var id = getLicenceId(tr);
          var tdLic = tr.find("td.licence");
@@ -42,7 +42,7 @@ $(function() {
          var id = getLicenceId(getLicenceTr(this));
      });
     $("#licences").on("click", ".downloadLicence", function() {
-         console.log("downloadLicence")
-         var id = getLicenceId(getLicenceTr(this));
+        // TODO dowmload file
+        var fileId = $(this).attr("data-id");
      });
 });

@@ -3,7 +3,7 @@
 class LicenceController extends BaseController {
     
     
-    public function getList($idParent) {
+    public function anyList($idParent) {
         // TODO
         $licences = null;
         $values = explode("-", $idParent);        
