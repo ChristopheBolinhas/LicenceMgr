@@ -12,14 +12,14 @@
             <td>{{{ $licence->name }}}</td>
             <td class="licence">*****</td>
             <td>
-                <a href="#" class="button split tiny text-center"><div style="display:inline" class="showLicence">Afficher la clé</div> <span data-dropdown="drop-1"></span></a>
-                <ul class="f-dropdown" data-dropdown-content>								
+                <a href="#" class="button split tiny text-center"><div style="display:inline" class="showLicence">Afficher la clé</div> <span data-dropdown="drop-{{{ $licence->id }}}"></span></a>
+                <ul id="drop-{{{ $licence->id }}}" class="f-dropdown" data-dropdown-content>
                     <li><a class="editLicence" href="#">Modifier</a></li>
-                    <li><a class="deleteLicence" href="#">Supprimer</a></li>                    
+                    <li><a class="deleteLicence" href="#">Supprimer</a></li>
                     @foreach ($licence->sheets as $file)
-                    <li><a class="downloadLicence" data-id="{{{ $file->ID }}}" href="#">Télécharger '{{{ $file->Name }}}'</a></li> 
+                    <li><a class="downloadLicence" data-id="{{{ $file->ID }}}" href="#">Télécharger '{{{ $file->Name }}}'</a></li>
                     @endforeach
-                </ul>	
+                </ul>
             </td>            
         </tr>
         @endforeach
