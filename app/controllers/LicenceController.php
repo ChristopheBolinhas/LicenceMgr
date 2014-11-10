@@ -24,5 +24,7 @@ class LicenceController extends BaseController {
     public function deleteDelete($id) {
         Licence::destroy($id);
     }
-    
+    public function getAdd($idParent) {
+        return View::make("Licence/Add");
+    }
 }

@@ -1,4 +1,5 @@
 function loadLicence(id) {
+    $("#addLicence").attr("data-id", id);
     $.ajax({
         url : "/licence/list/" + id,
         success: function(data) {
@@ -12,6 +13,12 @@ function getLicenceTr(elem) {
 }
 function getLicenceId(tr) {
     return tr.attr("data-id");
+}
+function addFile() {
+    var count = parseInt($(this).attr("data-count"));
+    count ++;    
+    $(this).append('<input type="file" name="file-'+ count +'"/>');
+    $(this).attr("data-count", count)
 }
 $(function() {
      $("#licences").on("click", ".showLicence", function() {
@@ -28,10 +35,8 @@ $(function() {
                      tdLic.html(data[0]);
                      tdLic.attr("data-lic", true);
                  }
-
              });
-         }
-         
+         }         
      });
     $("#licences").on("click", ".editLicence", function() {
          console.log("editLicence")
@@ -55,4 +60,11 @@ $(function() {
         // TODO dowmload file
         var fileId = $(this).attr("data-id");
      });
+    $("#addLicence").click(function() {
+        console.log("Add Licence");
+        $("#newLicence").foundation('reveal', 'open', {
+            url: '/licence/add/' + $("#addLicence").attr("data-id")
+        });
+    });
+    $("#newLicence").on("click", "#addFile", addFile);
 });
