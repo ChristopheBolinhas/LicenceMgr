@@ -38,8 +38,18 @@ $(function() {
          var id = getLicenceId(getLicenceTr(this));
      });
     $("#licences").on("click", ".deleteLicence", function() {
-         console.log("deleteLicence")
-         var id = getLicenceId(getLicenceTr(this));
+        var tr = getLicenceTr(this);
+        var id = getLicenceId(tr);
+        
+        $.ajax({
+            url : '/licence/delete/' + id,
+            type : 'DELETE',
+            success : function(data, statut){
+                tr.hide("bind");
+                tr.remove();
+            }
+
+        });
      });
     $("#licences").on("click", ".downloadLicence", function() {
         // TODO dowmload file

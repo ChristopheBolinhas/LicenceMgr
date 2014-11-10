@@ -21,5 +21,8 @@ class LicenceController extends BaseController {
         // TODO security
         return Response::json(array($licence->value));
     }
+    public function deleteDelete($id) {
+        Licence::destroy($id);
+    }
     
 }

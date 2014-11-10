@@ -33,4 +33,8 @@ UPDATE editors SET name = "Microsoft" WHERE id = 1;
 UPDATE programs SET editor_id = 3, name = "ISIC program 1" WHERE id = 5;
 INSERT INTO programs VALUES
 	(6, 1, NULL, 1, 'Exchange'),
-	(7, 2, NULL, 1, 'Node32'); 
+	(7, 2, NULL, 1, 'Node32');
+
+INSERT INTO licences VALUES
+	(3, 3, 1, 'Access he-arc 2', 'AAAAA-XXXXX-XXXXX-XXXXX-XXXXX', 0, now(), 0, now()),
+	(4, 4, 1, 'Excel he-arc 2', 'BBBBB-XXXXX-XXXXX-XXXXX', 0, now(), 0, now());
