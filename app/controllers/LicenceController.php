@@ -27,4 +27,12 @@ class LicenceController extends BaseController {
     public function getAdd($idParent) {
         return View::make("Licence/Add");
     }
+    public function getEdit($id) {
+        $licence = Licence::find($id);
+        if ($licence == null) {
+            App::abort(404);
+            return;
+        }
+        return View::make("Licence/Edit")->with("licence", $licence);
+    }
 }

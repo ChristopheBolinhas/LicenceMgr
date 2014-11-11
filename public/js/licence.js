@@ -39,8 +39,11 @@ $(function() {
          }         
      });
     $("#licences").on("click", ".editLicence", function() {
-         console.log("editLicence")
-         var id = getLicenceId(getLicenceTr(this));
+        console.log("editLicence")
+        var id = getLicenceId(getLicenceTr(this));
+        $("#newLicence").foundation('reveal', 'open', {
+            url: '/licence/edit/' + id
+        });
      });
     $("#licences").on("click", ".deleteLicence", function() {
         var tr = getLicenceTr(this);
