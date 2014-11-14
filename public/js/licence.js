@@ -20,14 +20,6 @@ function addFile() {
     $(this).append('<input type="file" name="file-'+ count +'"/>');
     $(this).attr("data-count", count)
 }
-function createOrGet(id) {
-    var val = $('#' + id);
-    if (val.count() === 0) {
-        $("body").append('<div id="' + id +  '"class="reveal-modal small" data-reveal></div>');
-        val = $('#' + id);
-    }
-    return val;
-}
 $(function() {
      $("#licences").on("click", ".showLicence", function() {
          var tr = getLicenceTr(this);
@@ -78,4 +70,5 @@ $(function() {
         });
     });
     $("#newLicence").on("click", "#addFile", addFile);
+    
 });
