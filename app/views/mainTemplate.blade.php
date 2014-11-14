@@ -216,7 +216,7 @@
 				<div class="button-bar">
 					<ul class="button-group">
 						<li><a href="#" class="button small" data-reveal-id="newEditeur">Nouveau editeur</a></li>
-						<li><a href="#" class="button small" data-reveal-id="newProgramme">Nouveau programme</a></li>
+						<li><a href="#" class="button small" data-reveal-id="newProgramme" >Nouveau programme</a></li>
 						
 						<li><a href="#" class="button small">Exporter</a></li>
 					</ul>
@@ -310,6 +310,8 @@
   </div>
   <!-- End main panel -->
 	<script>
+                $('#newProgramme').foundation('reveal', 'open', '/program/add');
+
         $(document).foundation(); 
     </script>
 	</body>
