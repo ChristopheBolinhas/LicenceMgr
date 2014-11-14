@@ -241,7 +241,7 @@
 				<div class="button-bar">
 					<ul class="button-group">
 						<li><a href="#" class="button small" data-reveal-id="newEditeur">Nouveau editeur</a></li>
-						<li><a href="#" class="button small" data-reveal-id="newProgramme">Nouveau programme</a></li>
+						<li><a href="#" class="button small" data-reveal-id="newProgramme" >Nouveau programme</a></li>
 						
 						<li><a href="#" class="button small">Exporter</a></li>
 					</ul>
@@ -339,9 +339,10 @@
 	
 	<script>
 
-            $(function(){
+            //function openNewProgramme(){
                 $('#newProgramme').foundation('reveal', 'open', '/program/add');
-            });
+             //   $('#newProgramme').foundation('reveal', 'open', '/program/add');
+           // }
 
         $(document).foundation(); 
     </script>
