@@ -17,6 +17,13 @@
     {{ HTML::script('js/jstree/jstree.min.js') }}
     {{ HTML::script('js/tree.js') }}
     {{ HTML::script('js/licence.js') }}
+        <script>
+            $(function() {
+                $(document).on("click", ".cmdCloseModal", function() {
+                    $(this).closest(".reveal-modal").foundation('reveal', 'close');
+                });
+            });
+        </script>
 	</head>
 	<body>
 	<!-- Modals definitions -->
@@ -27,6 +34,7 @@
 	<div id="newProgramme" class="reveal-modal small" data-reveal></div>
 	<!-- Ajout licence -->
 	<div id="newLicence" class="reveal-modal small" data-reveal></div>
+
 	
 	<!-- Login modal -->
 	<div id="loginModal" class="reveal-modal small" data-reveal>
@@ -43,7 +51,7 @@
 		</div>
 		<div class="row">
 				<a href="#" class="button [tiny small large]">Ajouter</a>
-				<a href="#" class="button [tiny small large]">Annuler</a>
+				<a href="#" class="button [tiny small large] cmdCloseModal">Annuler</a>
 		</div>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
@@ -78,7 +86,7 @@
 		
 		<div class="row">
 				<a href="#" class="button [tiny small large]">Créer utilisateur</a>
-				<a href="#" class="button [tiny small large]">Annuler</a>
+				<a href="#" class="button [tiny small large] cmdCloseModal">Annuler</a>
 		</div>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
@@ -106,7 +114,7 @@
 		</div>
 		<div class="row">
 				<a href="#" class="button [tiny small large]">Créer l'entreprise</a>
-				<a href="#" class="button [tiny small large]">Annuler</a>
+				<a href="#" class="button [tiny small large] cmdCloseModal">Annuler</a>
 		</div>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
@@ -139,7 +147,7 @@
 		</div>
 		<div class="row">
 			<a href="#" class="button [tiny small large]">Enregistrer</a>
-			<a href="#" class="button [tiny small large]">Annuler</a>
+			<a href="#" class="button [tiny small large] cmdCloseModal">Annuler</a>
 		</div>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>

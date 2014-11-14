@@ -70,4 +70,5 @@ $(function() {
         });
     });
     $("#newLicence").on("click", "#addFile", addFile);
+    
 });
