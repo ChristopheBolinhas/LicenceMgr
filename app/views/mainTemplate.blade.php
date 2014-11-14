@@ -22,12 +22,16 @@
                 $(document).on("click", ".cmdCloseModal", function() {
                     $(this).closest(".reveal-modal").foundation('reveal', 'close');
                 });
+                $(document).on("click", ".autoSubmit", function() {
+                    $(this).closest("form").submit();
+                });
             });
         </script>
 	</head>
 	<body>
 	<!-- Modals definitions -->
-	
+    <div id="newLicence" class="reveal-modal small" data-reveal></div>
+        
 	<!-- Ajout éditeur -->
 	<div id="newEditeur" class="reveal-modal small" data-reveal>
 		<h2>Ajout éditeur</h2>
