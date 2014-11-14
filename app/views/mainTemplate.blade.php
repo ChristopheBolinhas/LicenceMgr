@@ -16,6 +16,7 @@
     {{ HTML::script('js/foundation.min.js') }}
     {{ HTML::script('js/jstree/jstree.min.js') }}
     {{ HTML::script('js/tree.js') }}
+    {{ HTML::script('js/licence.js') }}
 	</head>
 	<body>
 	<!-- Modals definitions -->
@@ -43,35 +44,9 @@
 	<!-- Ajout programme -->
 	<div id="newProgramme" class="reveal-modal small" data-reveal>
 		
-		
 	</div>
-	
 	<!-- Ajout licence -->
-	<div id="newLicence" class="reveal-modal small" data-reveal>
-		<h2>Ajout licence</h2>
-		<div class="panel">	
-			<div class="row">	
-				<label>Description</label>
-				<input type="text" placeholder="Description" />
-			</div>
-			<div class="row">	
-				<label>Clé</label>
-				<input type="text" placeholder="Clé (ex. XXX-XXX...)" />
-			</div>
-			<div class="row">
-				<center><b>OU</b></center>
-			</div>
-			<div class="row">	
-				<label>Fichier</label>
-				<input type="file" placeholder="Chemin de la clé" />
-			</div>
-		</div>
-		<div class="row">
-				<a href="#" class="button [tiny small large]">Ajouter</a>
-				<a href="#" class="button [tiny small large]">Annuler</a>
-		</div>
-		<a class="close-reveal-modal">&#215;</a>
-	</div>
+	<div id="newLicence" class="reveal-modal small" data-reveal></div>
 	
 	<!-- Login modal -->
 	<div id="loginModal" class="reveal-modal small" data-reveal>
@@ -265,7 +240,7 @@
 			
 				<div class="large-8 columns">
 					<h3>Licences</h3>
-					<a href="#" class="button tiny" data-reveal-id="newLicence">Ajouter licences</a>
+					<a href="#" class="button tiny" id="addLicence">Ajouter licences</a>
                     <div id="licences"></div>
 					
 				</div>
@@ -334,15 +309,8 @@
   
   </div>
   <!-- End main panel -->
-
-	
-	
 	<script>
-
-            //function openNewProgramme(){
                 $('#newProgramme').foundation('reveal', 'open', '/program/add');
-             //   $('#newProgramme').foundation('reveal', 'open', '/program/add');
-           // }
 
         $(document).foundation(); 
     </script>
