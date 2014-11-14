@@ -20,31 +20,11 @@
 	</head>
 	<body>
 	<!-- Modals definitions -->
+	<div id="newEditeur" class="reveal-modal small" data-reveal></div>
 	
-	<!-- Ajout éditeur -->
-	<div id="newEditeur" class="reveal-modal small" data-reveal>
-		<h2>Ajout éditeur</h2>
-		<div class="panel">
-			<div class="row">	
-				<label>Nom</label>
-				<input type="text" placeholder="Nom de l'éditeur" />
-			</div>
-			<div class="row">
-				<input type="radio" name="catalogue" value="addPublicEdit" id="addPublicEdit"><label for="addPublicEdit">Public</label>
-				<input type="radio" name="catalogue" value="addPrivateEdit" id="addPrivateEdit"><label for="addPrivateEdit">Privé</label>
-			</div>
-		</div>
-		<div class="row">
-				<a href="#" class="button [tiny small large]">Ajouter</a>
-				<a href="#" class="button [tiny small large]">Annuler</a>
-		</div>
-		<a class="close-reveal-modal">&#215;</a>
-	</div>
 	
 	<!-- Ajout programme -->
-	<div id="newProgramme" class="reveal-modal small" data-reveal>
-		
-	</div>
+	<div id="newProgramme" class="reveal-modal small" data-reveal></div>
 	<!-- Ajout licence -->
 	<div id="newLicence" class="reveal-modal small" data-reveal></div>
 	
@@ -215,8 +195,8 @@
 			<div class="row">
 				<div class="button-bar">
 					<ul class="button-group">
-						<li><a href="#" class="button small" data-reveal-id="newEditeur">Nouveau editeur</a></li>
-						<li><a href="#" class="button small" data-reveal-id="newProgramme" >Nouveau programme</a></li>
+						<li><a href="#" class="button small" data-reveal-id="newEditeur" data-reveal-ajax="/editor/add">Nouveau editeur</a></li>
+						<li><a href="#" class="button small" data-reveal-id="newProgramme" data-reveal-ajax="/program/add" >Nouveau programme</a></li>
 						
 						<li><a href="#" class="button small">Exporter</a></li>
 					</ul>
@@ -310,7 +290,8 @@
   </div>
   <!-- End main panel -->
 	<script>
-                $('#newProgramme').foundation('reveal', 'open', '/program/add');
+        
+               // $('#newProgramme').foundation('reveal', 'open', );
 
         $(document).foundation(); 
     </script>

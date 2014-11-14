@@ -17,6 +17,7 @@
     Route::controller("TreeView", "TreeViewController");
 
     Route::controller("program", "ProgramController");
+    Route::controller("editor", "EditorController");
 
     Route::controller("licence", "LicenceController");
 
