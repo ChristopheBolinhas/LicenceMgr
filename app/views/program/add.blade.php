@@ -22,7 +22,7 @@
         <input type="text" placeholder="Nom de l'éditeur" />
     </div>
     <div class="row">
-        <input type="radio" name="catalogue" value="addPublicProg" id="addPublicProg"><label for="addPublicProg">Public</label>
+        <input type="radio" name="catalogue" value="addPublicProg" id="addPublicProg" selected><label for="addPublicProg">Public</label>
         <input type="radio" name="catalogue" value="addPrivateProg" id="addPrivateProg"><label for="addPrivateProg">Privé</label>
     </div>
 </div>
@@ -39,13 +39,12 @@
                                   success: function(data)
                                   {
                                       var dest = $("#program_parent_id");
-                                      console.log("dest", dest);
+                                      
                                       dest.html("");
+                                       dest.append('<option value="'+this.id+'">Valeur VIDE</option>');
                                       $(data).each(function()
                                                   {
-                                      console.log("dest1", dest);
-                                      console.log("each", this);
-                                                      dest.append('<option value="testId">'+this.name+'</option>');
+                                                      dest.append('<option value="'+this.id+'">'+this.name+'</option>');
                                                   });
                                       
                                       
