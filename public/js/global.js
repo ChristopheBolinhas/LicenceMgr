@@ -3,11 +3,9 @@ function dataFromForm(form) {
     form.find("input").each(function() {
         data[this.name] = $(this).val();
     });
-    console.log("dataFromForm", data);
     return data;
 }
 function saveForm(reveal, url, callbackSuccess, callbackError) {
-    console.log("reveal", reveal);
     $.ajax({
         url : url,
         type : 'POST',
