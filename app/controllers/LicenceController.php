@@ -9,8 +9,13 @@ class LicenceController extends BaseController {
         if ($values[0] !== "program") {
             App::abort(404);
         }
-        $licences = Program::find($values[1])->licences;
-        
+        //$licences = Program::find($values[1])->licences;
+        $licences = Licence::
+              where("program_id", "=", $values[1])
+            //->where("commpany_id", "=", 1)
+            ->orderBy("name")
+            ->get()
+        ;   
         return View::make("licence/list")->with('licences',$licences);
     }
     public function getKey($id) {
@@ -28,11 +33,12 @@ class LicenceController extends BaseController {
             ->with("title", "Ajouter une licence")
             ->with("action", "Ajouter")
             ->with("idParent", $idParent)
+            ->with("cmd", "cmdAddLicence")
            ;
     }
     public function postAdd() {
         $ob = new Licence();
-        $ob->program_id = Program::findOrFail(explode("-", Input::get('idParent'))[0]) ->id;
+        $ob->program_id = Program::findOrFail(explode("-", Input::get('idParent'))[1])->id;
         // TODO chang ecompany id
         $ob->company_id = 1;
         // TODO user id
@@ -47,6 +53,7 @@ class LicenceController extends BaseController {
             ->with("title", "Modifier une licence")
             ->with("action", "Modifier")
             ->with("idParent", "")
+            ->with("cmd", "cmdEditLicence")
            ;
     }
     public function postEdit() {

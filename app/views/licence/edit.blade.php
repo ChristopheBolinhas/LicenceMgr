@@ -12,15 +12,7 @@
     </div>
 </div>
 <div class="row">
-    <a href="#" class="button tiny cmdEditLicence">{{{ $action }}}</a>
+    <a href="#" class="button tiny {{{ $cmd }}}">{{{ $action }}}</a>
     <a href="#" class="button tiny cmdCloseModal">Annuler</a>
 </div>
 <a class="close-reveal-modal">&#215;</a>
-<script>
-    
-    setTimeout(function() {
-        $("#listSheet").foundation(); 
-    console.log("test2", $('#listSheet'));
-    }, 10);
-    console.log("test");
-</script>
