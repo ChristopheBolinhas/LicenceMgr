@@ -17,21 +17,20 @@
     {{ HTML::script('js/jstree/jstree.min.js') }}
     {{ HTML::script('js/tree.js') }}
     {{ HTML::script('js/licence.js') }}
+    {{ HTML::script('js/editor.js') }}
         <script>
             $(function() {
                 $(document).on("click", ".cmdCloseModal", function() {
                     $(this).closest(".reveal-modal").foundation('reveal', 'close');
-                });
-                $(document).on("click", ".autoSubmit", function() {
-                    $(this).closest("form").submit();
                 });
             });
         </script>
 	</head>
 	<body>
 	<!-- Modals definitions -->
-
-	<div id="newEditeur" class="reveal-modal small" data-reveal></div>	
+	<div id="newEditeur" class="reveal-modal small" data-reveal></div>
+	
+	
 	<!-- Ajout programme -->
 	<div id="newProgramme" class="reveal-modal small" data-reveal></div>
 	<!-- Ajout licence -->

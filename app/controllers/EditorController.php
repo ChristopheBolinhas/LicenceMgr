@@ -10,8 +10,9 @@ class EditorController extends BaseController {
     
     public function postAdd()
     {
+        
         $editor = new Editor;
-        $editor->name = "Test new editor";
+        $editor->name = Input::get('name');
         $editor->save();
         
     }
