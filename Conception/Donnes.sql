@@ -1,3 +1,5 @@
+USE LicMgr;
+
 INSERT INTO companies values (1, 'HE-ARC');
 
 
