@@ -19,7 +19,7 @@
     </div>
 </div>
 <div class="row">
-    <a href="#" class="button tiny cmdEdit">Modifier</a>
+    <a href="#" class="button tiny cmdEditLicence">Modifier</a>
     <a href="#" class="button tiny cmdCloseModal">Annuler</a>
 </div>
 <a class="close-reveal-modal">&#215;</a>

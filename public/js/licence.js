@@ -95,7 +95,7 @@ $(function() {
              }
         });
     });
-    $("#newLicence").on("click", ".cmdEdit", function() {
+    $("#newLicence").on("click", ".cmdEditLicence", function() {
         saveForm($(this).closest('.reveal-modal'), '/licence/edit', reloadLicence);
     });
     $("#newLicence").on("click", ".cmdAddLicence", function() {

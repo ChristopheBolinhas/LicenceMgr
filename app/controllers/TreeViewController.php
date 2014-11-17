@@ -36,7 +36,8 @@ class TreeViewController extends BaseController {
         return array(
             'id' => "editor-".$editor->id,
             'text' =>  $editor->name,
-            'children' => $childrens 
+            'children' => $childrens ,
+            'icon' => '/img/editor.png'
         );
     }
     private function programToArray($program) {
@@ -49,7 +50,8 @@ class TreeViewController extends BaseController {
         return array(
             'id' => "program-".$program->id,
             'text' =>  $program->name,
-            'children' => $childrens 
+            'children' => $childrens ,
+            'icon' => '/img/program.png'
         );
     }
 }
