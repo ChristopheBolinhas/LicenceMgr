@@ -14,7 +14,7 @@ class ProgramController extends BaseController {
             $program = Program::findOrFail($id);
             
             
-            return View::make('program/add');//->with('editorList_public',$editor); 
+            return View::make('program/add')->with('editorTitle',$program->name); 
         }
         
        

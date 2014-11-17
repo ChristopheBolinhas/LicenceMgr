@@ -149,7 +149,7 @@
   <!-- Main panel -->
   
   <div class="panel">
-      <div data-alert class="alert-box alert" id="error-alert"><a href="#" class="close">&times;</a> </div>
+      <div data-alert class="alert-box alert" id="error-alert"></div>
 	<div class="row">
 		<ul class="tabs" data-tab role="tablist">
 			<li class="tab-title active" role="presentational" ><a href="#panel-user" role="tab" tabindex="0" aria-selected="true" controls="panel-user">Gestion des licences</a></li>
