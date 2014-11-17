@@ -6,7 +6,7 @@ function dataFromForm(form) {
     console.log("dataFromForm", data);
     return data;
 }
-function saveForm(reveal, url) {
+function saveForm(reveal, url, callbackSuccess, callbackError) {
     console.log("reveal", reveal);
     $.ajax({
         url : url,
@@ -14,9 +14,16 @@ function saveForm(reveal, url) {
         data : dataFromForm(reveal),
         success : function(data, statut){
             reveal.foundation('reveal', 'close');
+            if (callbackSuccess) { callbackSuccess(); }
         },
         error: function() {
             alert("Erreur lors de la modification, veuillez controler vos champs !");
+            if (callbackError) {callbackError ();}
         }
     });    
 }
+$(function() {
+    $(document).on("click", ".cmdCloseModal", function() {
+        $(this).closest(".reveal-modal").foundation('reveal', 'close');
+    });
+});

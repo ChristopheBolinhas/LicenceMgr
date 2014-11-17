@@ -19,13 +19,7 @@
     {{ HTML::script('js/tree.js') }}
     {{ HTML::script('js/licence.js') }}
     {{ HTML::script('js/editor.js') }}
-        <script>
-            $(function() {
-                $(document).on("click", ".cmdCloseModal", function() {
-                    $(this).closest(".reveal-modal").foundation('reveal', 'close');
-                });
-            });
-        </script>
+
 	</head>
 	<body>
 	<!-- Modals definitions -->
