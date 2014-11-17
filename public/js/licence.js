@@ -20,27 +20,11 @@ function addFile() {
     $(this).append('<input type="file" name="file-'+ count +'"/>');
     $(this).attr("data-count", count)
 }
-function dataFromForm(form) {
-    var data = {};
-    form.find("input").each(function() {
-        data[this.name] = $(this).val();
-    });
-    console.log("dataFromForm", data);
-    return data;
+function getParentId() {
+     return $("#addLicence").attr("data-id");
 }
-function saveForm(reveal, url) {
-    console.log("reveal", reveal);
-    $.ajax({
-        url : url,
-        type : 'POST',
-        data : dataFromForm(reveal),
-        success : function(data, statut){
-            reveal.foundation('reveal', 'close');
-        },
-        error: function() {
-            alert("Erreur lors de la modification, veuillez controler vos champs !");
-        }
-    });    
+function reloadLicence() {
+    loadLicence(getParentId());
 }
 $(function() {
      $("#licences").on("click", ".showLicence", function() {
@@ -86,10 +70,15 @@ $(function() {
         var fileId = $(this).attr("data-id");
      });
     $("#addLicence").click(function() {
-        console.log("Add Licence");
-        $("#newLicence").foundation('reveal', 'open', {
-            url: '/licence/add/' + $("#addLicence").attr("data-id")
-        });
+        var parentId = getParentId();
+        if (parentId) {
+            console.log("Add Licence");
+            $("#newLicence").foundation('reveal', 'open', {
+                url: '/licence/add/' + parentId
+            });
+        } else {
+            alert("Veuillez séléctionner un programme !");
+        }
     });
     $("#newLicence").on("click", "#addFile", addFile);
     $("#newLicence").on("click", ".cmdEdit", function() {
@@ -107,9 +96,9 @@ $(function() {
         });
     });
     $("#newLicence").on("click", ".cmdEdit", function() {
-        saveForm($(this).closest('.reveal-modal'), '/licence/edit');
+        saveForm($(this).closest('.reveal-modal'), '/licence/edit', reloadLicence);
     });
     $("#newLicence").on("click", ".cmdAddLicence", function() {
-        saveForm($(this).closest('.reveal-modal'), '/licence/add');
+        saveForm($(this).closest('.reveal-modal'), '/licence/add', reloadLicence);
     });
 });
