@@ -20,6 +20,12 @@ function addFile() {
     $(this).append('<input type="file" name="file-'+ count +'"/>');
     $(this).attr("data-count", count)
 }
+function getParentId() {
+     return $("#addLicence").attr("data-id");
+}
+function reloadLicence() {
+    loadLicence(getParentId());
+}
 $(function() {
      $("#licences").on("click", ".showLicence", function() {
          var tr = getLicenceTr(this);
@@ -64,10 +70,35 @@ $(function() {
         var fileId = $(this).attr("data-id");
      });
     $("#addLicence").click(function() {
-        console.log("Add Licence");
-        $("#newLicence").foundation('reveal', 'open', {
-            url: '/licence/add/' + $("#addLicence").attr("data-id")
-        });
+        var parentId = getParentId();
+        if (parentId) {
+            console.log("Add Licence");
+            $("#newLicence").foundation('reveal', 'open', {
+                url: '/licence/add/' + parentId
+            });
+        } else {
+            alert("Veuillez séléctionner un programme !");
+        }
     });
     $("#newLicence").on("click", "#addFile", addFile);
+    $("#newLicence").on("click", ".cmdEdit", function() {
+        var reveal = $(this).closest(".reveal-modal");
+         $.ajax({
+             url : '/licence/edit',
+             type : 'POST',
+             data : dataFromForm(reveal),
+             success : function(data, statut){
+                 reveal.foundation('reveal', 'close');
+             },
+             error: function() {
+                alert("Erreur lors de la modification, veuillez controler vos champs !");
+             }
+        });
+    });
+    $("#newLicence").on("click", ".cmdEdit", function() {
+        saveForm($(this).closest('.reveal-modal'), '/licence/edit', reloadLicence);
+    });
+    $("#newLicence").on("click", ".cmdAddLicence", function() {
+        saveForm($(this).closest('.reveal-modal'), '/licence/add', reloadLicence);
+    });
 });

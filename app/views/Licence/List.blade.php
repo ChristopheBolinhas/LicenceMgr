@@ -17,7 +17,7 @@
                     <li><a class="editLicence" href="#">Modifier</a></li>
                     <li><a class="deleteLicence" href="#">Supprimer</a></li>
                     @foreach ($licence->sheets as $file)
-                    <li><a class="downloadLicence" data-id="{{{ $file->ID }}}" href="#">Télécharger '{{{ $file->Name }}}'</a></li>
+                    <li><a class="downloadLicence" data-id="{{{ $file->id }}}" href="#">Télécharger '{{{ $file->name }}}'</a></li>
                     @endforeach
                 </ul>
             </td>            

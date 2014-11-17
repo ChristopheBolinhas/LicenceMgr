@@ -1,4 +1,4 @@
-<h2>Ajout licence</h2>
+<h2>Modifier licence</h2>
 <input type="hidden" name="id" value="{{{$licence->id}}}" />
 <div class="panel">
     <div class="row">
@@ -19,7 +19,7 @@
     </div>
 </div>
 <div class="row">
-    <a href="#" class="button tiny">Ajouter</a>
-    <a href="#" class="button tiny">Annuler</a>
+    <a href="#" class="button tiny cmdEdit">Modifier</a>
+    <a href="#" class="button tiny cmdCloseModal">Annuler</a>
 </div>
 <a class="close-reveal-modal">&#215;</a>

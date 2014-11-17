@@ -11,7 +11,7 @@ class ProgramController extends BaseController {
     public function getPrograms($editorId)
     {
         $programs = Program::where('editor_id','=',$editorId);
-        $programs = Program::all();
+        //$programs = Program::all();
         
         return Response::json($programs);
     }
