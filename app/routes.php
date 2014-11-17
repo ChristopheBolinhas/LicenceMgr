@@ -18,7 +18,7 @@
 
     Route::controller("program", "ProgramController");
     Route::controller("editor", "EditorController");
-
+    Route::controller("user", "UserController");
     Route::controller("licence", "LicenceController");
 
 
