@@ -19,18 +19,28 @@
     {{ HTML::script('js/tree.js') }}
     {{ HTML::script('js/licence.js') }}
     {{ HTML::script('js/editor.js') }}
+<<<<<<< HEAD
     {{ HTML::script('js/user.js') }}
+=======
+    {{ HTML::script('js/program.js') }}
+>>>>>>> c089a1e824194b115d7cbfafc8972bd5c7dcfc81
 
 	</head>
 	<body>
+        
 	<!-- Modals definitions -->
 	<div id="newEditeur" class="reveal-modal small" data-reveal></div>
 	
-	
+	<div id="mainModal" class="reveal-modal small" data-reveal></div>
+        
 	<!-- Ajout programme -->
-	<div id="newProgramme" class="reveal-modal small" data-reveal></div>
+
+	<div id="newProgram" class="reveal-modal small" data-reveal></div>
 	<!-- Ajout licence -->
 	<div id="newLicence" class="reveal-modal small" data-reveal></div>
+
+	<div id="newProgramme" class="reveal-modal small" data-reveal></div>
+
 
 	
 	<!-- Login modal -->
@@ -102,7 +112,9 @@
 	
 	
 	<!-- navBar start -->
+        
 	<nav class="top-bar" data-topbar role="navigation">
+        
 		<ul class="title-area">
 		<li class="name">
 		  <h1><a href="#"><i class="fi-key"></i> LicenceMgr</a></h1>
@@ -139,7 +151,9 @@
   </nav>
   <!-- Nav bar end -->
   <!-- Main panel -->
+  
   <div class="panel">
+      <div data-alert class="alert-box alert" id="error-alert"></div>
 	<div class="row">
 		<ul class="tabs" data-tab role="tablist">
 			<li class="tab-title active" role="presentational" ><a href="#panel-user" role="tab" tabindex="0" aria-selected="true" controls="panel-user">Gestion des licences</a></li>
@@ -152,7 +166,7 @@
 				<div class="button-bar">
 					<ul class="button-group">
 						<li><a href="#" class="button small" data-reveal-id="newEditeur" data-reveal-ajax="/editor/add">Nouveau editeur</a></li>
-						<li><a href="#" class="button small" data-reveal-id="newProgramme" data-reveal-ajax="/program/add" >Nouveau programme</a></li>
+						<li><a href="#" class="button small error" id="cmdOpenNewProgram" >Nouveau programme</a></li>
 						
 						<li><a href="#" class="button small">Exporter</a></li>
 					</ul>

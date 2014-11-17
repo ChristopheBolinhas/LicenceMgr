@@ -1,6 +1,6 @@
-<h2>Ajout programme</h2>
+<h2>Ajout programme à {{isset($editorTitle) ? $editorTitle : ''}}</h2>
 <div class="panel">
-    <div class="row">	
+   {{--<!-- <div class="row">	
         <label>Editeur</label>
         <select id="editor_id">
             @if (count($editorList_public) > 0)
@@ -10,13 +10,13 @@
 
             @endif
         </select>
-    </div>
-    <div class="row">	
+    </div>-->
+    <!--<div class="row">	
         <label>Parent</label>
         <select id="program_parent_id">
             
         </select>
-    </div>
+    </div>-->--}}
     <div class="row">	
         <label>Nom</label>
         <input type="text" placeholder="Nom de l'éditeur" />
@@ -27,29 +27,7 @@
     </div>
 </div>
 <div class="row">
-    <a href="#" class="button [tiny small large]">Ajouter</a>
-    <a href="#" class="button [tiny small large]">Annuler</a>
+    <a href="#" class="button tiny cmdNew">Ajouter</a>
+    <a href="#" class="button tiny cmdCloseModal">Annuler</a>
 </div>
 <a class="close-reveal-modal">&#215;</a>
-<script>
-    $("#editor_id").change(function()
-                          {
-                              $.ajax({
-                                  url: "/program/programs/"+ $(this).val(),
-                                  success: function(data)
-                                  {
-                                      var dest = $("#program_parent_id");
-                                      
-                                      dest.html("");
-                                       dest.append('<option value="'+this.id+'">Valeur VIDE</option>');
-                                      $(data).each(function()
-                                                  {
-                                                      dest.append('<option value="'+this.id+'">'+this.name+'</option>');
-                                                  });
-                                      
-                                      
-                                  },
-                                  dataType: "json"
-                              });
-                          });
-</script>

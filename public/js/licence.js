@@ -17,7 +17,7 @@ function getLicenceId(tr) {
 function addFile() {
     var count = parseInt($(this).attr("data-count"));
     count ++;    
-    $(this).append('<input type="file" name="file-'+ count +'"/>');
+    $(this).parent().append('<input type="file" name="file-'+ count +'"/>');
     $(this).attr("data-count", count)
 }
 function getParentId() {
@@ -27,6 +27,7 @@ function reloadLicence() {
     loadLicence(getParentId());
 }
 $(function() {
+    var modal = $("#mainModal");
      $("#licences").on("click", ".showLicence", function() {
          var tr = getLicenceTr(this);
          var id = getLicenceId(tr);
@@ -47,7 +48,7 @@ $(function() {
     $("#licences").on("click", ".editLicence", function() {
         console.log("editLicence")
         var id = getLicenceId(getLicenceTr(this));
-        $("#newLicence").foundation('reveal', 'open', {
+        modal.foundation('reveal', 'open', {
             url: '/licence/edit/' + id
         });
      });
@@ -73,32 +74,28 @@ $(function() {
         var parentId = getParentId();
         if (parentId && parentId.indexOf("program") >= 0) {
             console.log("Add Licence");
-            $("#newLicence").foundation('reveal', 'open', {
+            modal.foundation('reveal', 'open', {
                 url: '/licence/add/' + parentId
             });
         } else {
-            alert("Veuillez séléctionner un programme !");
+            setErrorMsg("Veuillez séléctionner un programme !");
         }
     });
-    $("#newLicence").on("click", "#addFile", addFile);
-    $("#newLicence").on("click", ".cmdEdit", function() {
-        var reveal = $(this).closest(".reveal-modal");
-         $.ajax({
-             url : '/licence/edit',
-             type : 'POST',
-             data : dataFromForm(reveal),
-             success : function(data, statut){
-                 reveal.foundation('reveal', 'close');
-             },
-             error: function() {
-                alert("Erreur lors de la modification, veuillez controler vos champs !");
-             }
-        });
-    });
-    $("#newLicence").on("click", ".cmdEditLicence", function() {
+    modal.on("click", ".cmdAddFile", addFile);
+    modal.on("click", ".cmdEditLicence", function() {
         saveForm($(this).closest('.reveal-modal'), '/licence/edit', reloadLicence);
     });
-    $("#newLicence").on("click", ".cmdAddLicence", function() {
+    modal.on("click", ".cmdAddLicence", function() {
         saveForm($(this).closest('.reveal-modal'), '/licence/add', reloadLicence);
+    });
+    modal.on("click", ".cmdDeleteFile", function() {
+         $.ajax({
+            url : '/licence/delete/' + id,
+            type : 'DELETE',
+            success : function(data, statut){
+                tr.hide("bind");
+                tr.remove();
+            }
+        });
     });
 });
