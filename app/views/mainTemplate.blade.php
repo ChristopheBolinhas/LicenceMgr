@@ -18,12 +18,14 @@
     {{ HTML::script('js/global.js') }}
     {{ HTML::script('js/tree.js') }}
     {{ HTML::script('js/licence.js') }}
+    {{ HTML::script('js/editor.js') }}
 
 	</head>
 	<body>
 	<!-- Modals definitions -->
-
-	<div id="newEditeur" class="reveal-modal small" data-reveal></div>	
+	<div id="newEditeur" class="reveal-modal small" data-reveal></div>
+	
+	
 	<!-- Ajout programme -->
 	<div id="newProgramme" class="reveal-modal small" data-reveal></div>
 	<!-- Ajout licence -->
