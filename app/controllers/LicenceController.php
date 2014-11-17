@@ -27,6 +27,12 @@ class LicenceController extends BaseController {
     public function getAdd($idParent) {
         return View::make("Licence/Add");
     }
+    public function postAdd() {
+        return Response::json(array(
+            'name' => Input::get('name'),
+            'value' => Input::get('value'),            
+        ));
+    }
     public function getEdit($id) {
         $licence = Licence::find($id);
         if ($licence == null) {
@@ -34,5 +40,15 @@ class LicenceController extends BaseController {
             return;
         }
         return View::make("Licence/Edit")->with("licence", $licence);
+    }
+    public function postEdit() {
+        $licence = Licence::find(Input::get('id'));
+        if ($licence == null) {
+            App::abort(404);
+            return;
+        }
+        $licence->name = Input::get('name');
+        $licence->value = Input::get('value');
+        $licence->save();
     }
 }

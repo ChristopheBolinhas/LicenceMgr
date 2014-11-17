@@ -38,3 +38,5 @@ INSERT INTO programs VALUES
 INSERT INTO licences VALUES
 	(3, 3, 1, 'Access he-arc 2', 'AAAAA-XXXXX-XXXXX-XXXXX-XXXXX', 0, now(), 0, now()),
 	(4, 4, 1, 'Excel he-arc 2', 'BBBBB-XXXXX-XXXXX-XXXXX', 0, now(), 0, now());
+
+ALTER TABLE licences CHANGE update_at updated_at datetime;

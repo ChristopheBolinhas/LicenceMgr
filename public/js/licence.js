@@ -20,6 +20,13 @@ function addFile() {
     $(this).append('<input type="file" name="file-'+ count +'"/>');
     $(this).attr("data-count", count)
 }
+function dataFromForm(form) {
+    var data = {};
+    form.find("input").each(function() {
+        data[this.name] = $(this).val();
+    });
+    return data;
+}
 $(function() {
      $("#licences").on("click", ".showLicence", function() {
          var tr = getLicenceTr(this);
@@ -70,5 +77,16 @@ $(function() {
         });
     });
     $("#newLicence").on("click", "#addFile", addFile);
+    $("#newLicence").on("click", ".cmdEdit", function() {
+        var reveal = $(this).closest(".reveal-modal");
+         $.ajax({
+            url : '/licence/edit',
+            type : 'POST',
+            data : dataFromForm(reveal),
+            success : function(data, statut){
+               reveal.foundation('reveal', 'close');
+            }
+        });
+    });
     
 });
