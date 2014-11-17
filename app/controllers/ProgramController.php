@@ -7,7 +7,7 @@ class ProgramController extends BaseController {
         if($type === Editor::NAME) {
              $editor = Editor::findOrFail($id); 
              return View::make('program/add')->with('editorTitle',$editor->name); 
-        } elseif($type === Program::name) {
+        } elseif($type === Program::NAME) {
             $program = Program::findOrFail($id);
             return View::make('program/add')->with('editorTitle',$program->name); 
         }
