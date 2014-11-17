@@ -15,6 +15,7 @@
     {{ HTML::script('js/vendor/fastclick.js') }}
     {{ HTML::script('js/foundation.min.js') }}
     {{ HTML::script('js/jstree/jstree.min.js') }}
+    {{ HTML::script('js/global.js') }}
     {{ HTML::script('js/tree.js') }}
     {{ HTML::script('js/licence.js') }}
     {{ HTML::script('js/editor.js') }}

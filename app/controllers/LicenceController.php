@@ -25,30 +25,25 @@ class LicenceController extends BaseController {
         Licence::destroy($id);
     }
     public function getAdd($idParent) {
-        return View::make("Licence/Add");
+        return View::make("Licence/Add")->with('idParent', $idParent);
     }
     public function postAdd() {
-        return Response::json(array(
-            'name' => Input::get('name'),
-            'value' => Input::get('value'),            
-        ));
+        $ob = new Licence();
+        $ob->Program = Program::findOrFail(Input::get('idParent'));
+        $this->fill($ob);
     }
     public function getEdit($id) {
-        $licence = Licence::find($id);
-        if ($licence == null) {
-            App::abort(404);
-            return;
-        }
+        $licence = Licence::findOrFail($id);
         return View::make("Licence/Edit")->with("licence", $licence);
     }
     public function postEdit() {
-        $licence = Licence::find(Input::get('id'));
-        if ($licence == null) {
-            App::abort(404);
-            return;
-        }
-        $licence->name = Input::get('name');
-        $licence->value = Input::get('value');
-        $licence->save();
+        $ob = Licence::findOrFail(Input::get('id'));
+        $this->fill($ob);
+        
+    }
+    private function fill($ob) {
+        $ob->name = Input::get('name');
+        $ob->value = Input::get('value');
+        $ob->save();
     }
 }

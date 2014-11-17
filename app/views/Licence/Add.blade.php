@@ -1,4 +1,5 @@
 <form method="POST" action="/licence/add">
+    <input type="hidden" name="idParent" value="{{{ $idParent }}}" />
     <h2>Ajout licence</h2>
     <div class="panel">
         <div class="row">
@@ -19,7 +20,7 @@
         </div>
     </div>
     <div class="row">
-        <a href="#" class="button tiny autoSubmit">Ajouter</a>
+        <a href="#" class="button tiny cmdAddLicence">Ajouter</a>
         <a href="#" class="button tiny cmdCloseModal">Annuler</a>
     </div>
 </form>

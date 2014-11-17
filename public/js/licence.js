@@ -25,7 +25,22 @@ function dataFromForm(form) {
     form.find("input").each(function() {
         data[this.name] = $(this).val();
     });
+    console.log("dataFromForm", data);
     return data;
+}
+function saveForm(reveal, url) {
+    console.log("reveal", reveal);
+    $.ajax({
+        url : url,
+        type : 'POST',
+        data : dataFromForm(reveal),
+        success : function(data, statut){
+            reveal.foundation('reveal', 'close');
+        },
+        error: function() {
+            alert("Erreur lors de la modification, veuillez controler vos champs !");
+        }
+    });    
 }
 $(function() {
      $("#licences").on("click", ".showLicence", function() {
@@ -80,13 +95,21 @@ $(function() {
     $("#newLicence").on("click", ".cmdEdit", function() {
         var reveal = $(this).closest(".reveal-modal");
          $.ajax({
-            url : '/licence/edit',
-            type : 'POST',
-            data : dataFromForm(reveal),
-            success : function(data, statut){
-               reveal.foundation('reveal', 'close');
-            }
+             url : '/licence/edit',
+             type : 'POST',
+             data : dataFromForm(reveal),
+             success : function(data, statut){
+                 reveal.foundation('reveal', 'close');
+             },
+             error: function() {
+                alert("Erreur lors de la modification, veuillez controler vos champs !");
+             }
         });
     });
-    
+    $("#newLicence").on("click", ".cmdEdit", function() {
+        saveForm($(this).closest('.reveal-modal'), '/licence/edit');
+    });
+    $("#newLicence").on("click", ".cmdAddLicence", function() {
+        saveForm($(this).closest('.reveal-modal'), '/licence/add');
+    });
 });
