@@ -14,7 +14,7 @@ function treeChange(e, data) {
 }
 
 function getTreeUrl() {
-    return '/TreeView/tree/' + $('#cComplete').is(':checked') + "/";
+    return '/TreeView/tree/' + $('#cComplete').is(':checked');
 }
 $(function() {
     $('#jstree')
