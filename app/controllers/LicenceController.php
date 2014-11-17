@@ -25,11 +25,11 @@ class LicenceController extends BaseController {
         Licence::destroy($id);
     }
     public function getAdd($idParent) {
-        return View::make("Licence/Add")->with('idParent', explode("-", $idParent)[1]);
+        return View::make("Licence/Add")->with('idParent', $idParent);
     }
     public function postAdd() {
         $ob = new Licence();
-        $ob->program_id = Program::findOrFail(Input::get('idParent'))->id;
+        $ob->program_id = Program::findOrFail(explode("-", Input::get('idParent'))[0]) ->id;
         // TODO chang ecompany id
         $ob->company_id = 1;
         // TODO user id

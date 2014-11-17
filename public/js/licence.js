@@ -71,7 +71,7 @@ $(function() {
      });
     $("#addLicence").click(function() {
         var parentId = getParentId();
-        if (parentId) {
+        if (parentId && parentId.indexOf("program") >= 0) {
             console.log("Add Licence");
             $("#newLicence").foundation('reveal', 'open', {
                 url: '/licence/add/' + parentId

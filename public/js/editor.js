@@ -8,7 +8,7 @@ function dataFromForm(form) {
 
 
 $(function() {
-    
+    /*
     //Add function
 	$("#addLicence").click(function() {
 			console.log("Add Licence");
@@ -16,7 +16,7 @@ $(function() {
 				url: '/editor/add/' + $("#addLicence").attr("data-id")
 			});
 		});
-    
+    */
     
     $("#newEditeur").on("click", ".cmdNew", function() {
         var reveal = $(this).closest(".reveal-modal");
