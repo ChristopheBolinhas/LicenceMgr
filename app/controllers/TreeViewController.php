@@ -1,34 +1,33 @@
 <?php
 
 class TreeViewController extends BaseController {
-    /*
-    public function anyIndex() {
-        return View::make('TreeView/index');
-    }*/
-    public function getTree2($id) {
-        return Response::json(array($id));
-    }
+
     public function getTree($all) {
         // TODO créer fonction isbool
         $all = $all === "true";
         // TODO filter sur entreprise
-        $editors = Editor::orderBy('name', 'ASC')->get();
+        $companyId = 1;
+        if ($all) {
+            $editors = Editor::
+                whereNull("company_id")
+                ->orWhere("company_id", "=", $companyId)
+            ;
+        } else {
+            $editors = Editor::where("company_id", "=", $companyId);
+        }
+
+        $editors = $editors->orderBy('name', 'ASC')->get();
+
         $result = [];
         foreach ($editors as $editor) {
             $result[] = $this->editorToArray($editor);
-        }
-        if ($all) {
-             $result[] = array(
-                'id' => "editor-0",
-                'text' =>  "All",
-                'children' => array()
-            );
         }
         
         return Response::json($result);
     }
     private function editorToArray($editor) {
         $childrens = [];
+
         foreach ($editor->programs as $program) {
             $childrens[] = $this->programToArray($program);
         }
