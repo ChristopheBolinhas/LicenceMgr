@@ -10,15 +10,15 @@
 $(function() {
     
     //Add function
-	$("#addLicence").click(function() {
+	/*$("#addLicence").click(function() {
 			console.log("Add Licence");
 			$("#newLicence").foundation('reveal', 'open', {
 				url: '/editor/add/' + $("#addLicence").attr("data-id")
 			});
-		});
+		});*/
     
     
     $("#newEditeur").on("click", ".cmdNew", function() {
-        saveForm($(this).closest('.reveal-modal'), '/editor/add');
+        saveForm($(this).closest('.reveal-modal'), '/editor/add', loadTree);
     });
 });
