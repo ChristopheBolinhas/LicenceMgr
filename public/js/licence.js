@@ -78,7 +78,7 @@ $(function() {
                 url: '/licence/add/' + parentId
             });
         } else {
-            alert("Veuillez séléctionner un programme !");
+            setErrorMsg("Veuillez séléctionner un programme !");
         }
     });
     modal.on("click", ".cmdAddFile", addFile);
@@ -96,7 +96,6 @@ $(function() {
                 tr.hide("bind");
                 tr.remove();
             }
-
         });
     });
 });
