@@ -6,8 +6,8 @@
         <input name="name" type="text" placeholder="Nom de l'éditeur" />
     </div>
     <div class="row">
-        <input type="radio" name="cataloguePu" value="addPublicEdit" id="addPublicEdit" checked><label for="addPublicEdit">Public</label>
-        <input type="radio" name="cataloguePr" value="addPrivateEdit" id="addPrivateEdit"><label for="addPrivateEdit">Privé</label>
+        <input type="radio" name="catalogue" value="0" id="addPublicEdit" checked><label for="addPublicEdit">Public</label>
+        <input type="radio" name="catalogue" value="1" id="addPrivateEdit"><label for="addPrivateEdit">Privé</label>
     </div>
 </div>
 <div class="row">

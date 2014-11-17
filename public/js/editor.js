@@ -1,10 +1,10 @@
-function dataFromForm(form) {
+/*function dataFromForm(form) {
     var data = {};
     form.find("input").each(function() {
         data[this.name] = $(this).val();
     });
     return data;
-}
+}*/
 
 
 $(function() {
@@ -19,14 +19,6 @@ $(function() {
     
     
     $("#newEditeur").on("click", ".cmdNew", function() {
-        var reveal = $(this).closest(".reveal-modal");
-         $.ajax({
-            url : '/editor/add',
-            type : 'POST',
-            data : dataFromForm(reveal),
-            success : function(data, statut){
-               reveal.foundation('reveal', 'close');
-            }
-        });
+        saveForm($(this).closest('.reveal-modal'), '/editor/add');
     });
 });
