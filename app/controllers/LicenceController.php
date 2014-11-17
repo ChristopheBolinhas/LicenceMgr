@@ -11,7 +11,7 @@ class LicenceController extends BaseController {
         }
         $licences = Program::find($values[1])->licences;
         
-        return View::make("Licence/List")->with('licences',$licences);
+        return View::make("licence/list")->with('licences',$licences);
     }
     public function getKey($id) {
         $licence = Licence::find($id);
@@ -23,7 +23,7 @@ class LicenceController extends BaseController {
         Licence::destroy($id);
     }
     public function getAdd($idParent) {
-        return View::make("Licence/Edit")
+        return View::make("licence/edit")
             ->with("licence", new Licence)
             ->with("title", "Ajouter une licence")
             ->with("action", "Ajouter")
@@ -42,7 +42,7 @@ class LicenceController extends BaseController {
     public function getEdit($id) {
         $licence = Licence::findOrFail($id);
 
-        return View::make("Licence/Edit")
+        return View::make("licence/edit")
             ->with("licence", $licence)
             ->with("title", "Modifier une licence")
             ->with("action", "Modifier")
