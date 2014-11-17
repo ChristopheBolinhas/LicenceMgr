@@ -4,15 +4,13 @@ class LicenceController extends BaseController {
     
     
     public function anyList($idParent) {
-        // TODO
-        $licences = null;
+        // TODO security
         $values = explode("-", $idParent);        
-        if ($values[0] === "program") {
-            $licences = Program::find($values[1])->licences;
+        if ($values[0] !== "program") {
+            App::abort(404);
         }
-        if ($licences === null) {
-            $licences = array();
-        }
+        $licences = Program::find($values[1])->licences;
+        
         return View::make("Licence/List")->with('licences',$licences);
     }
     public function getKey($id) {
