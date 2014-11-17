@@ -11,7 +11,7 @@
 |
 */
 
-	Route::get('/', 'HomeController@showWelcome');
+	Route::get('/', 'HomeController@showUI');
     Route::get('/login', 'UserController@showLogin');  
 
     Route::controller("TreeView", "TreeViewController");
