@@ -34,7 +34,7 @@ class TreeViewController extends BaseController {
         }
 
         return array(
-            'id' => "editor-".$editor->id,
+            'id' => Editor::NAME."-".$editor->id,
             'text' =>  $editor->name,
             'children' => $childrens ,
             'icon' => '/img/editor.png'
@@ -48,7 +48,7 @@ class TreeViewController extends BaseController {
         }
         
         return array(
-            'id' => "program-".$program->id,
+            'id' => Program::NAME."-".$program->id,
             'text' =>  $program->name,
             'children' => $childrens ,
             'icon' => '/img/program.png'

@@ -6,7 +6,7 @@ class LicenceController extends BaseController {
     public function anyList($idParent) {
         // TODO security
         $values = explode("-", $idParent);        
-        if ($values[0] !== "program") {
+        if ($values[0] !== Program::NAME) {
             App::abort(404);
         }
         //$licences = Program::find($values[1])->licences;
@@ -38,7 +38,11 @@ class LicenceController extends BaseController {
     }
     public function postAdd() {
         $ob = new Licence();
-        $ob->program_id = Program::findOrFail(explode("-", Input::get('idParent'))[1])->id;
+        $values = explode("-", Input::get('idParent'));
+        if ($values[0] !== Program::NAME) {
+            App::abort(404);
+        }
+        $ob->program_id = Program::findOrFail($values[1])->id;
         // TODO chang ecompany id
         $ob->company_id = 1;
         // TODO user id
