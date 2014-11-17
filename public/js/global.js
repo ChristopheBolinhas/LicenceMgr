@@ -23,12 +23,9 @@ function saveForm(reveal, url, callbackSuccess, callbackError) {
             reveal.foundation('reveal', 'close');
             if (callbackSuccess) { callbackSuccess(); }
         },
-        error: function() {            
-            if (callbackError) {
-                callbackError ();
-            } else {
-                alert("Erreur lors de la modification, veuillez controler vos champs !");
-            }
+        error: function() {
+            alert("Erreur lors de la modification, veuillez controler vos champs !");
+            if (callbackError) {callbackError ();}
         }
     });    
 }
