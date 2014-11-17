@@ -23,7 +23,12 @@ class LicenceController extends BaseController {
         Licence::destroy($id);
     }
     public function getAdd($idParent) {
-        return View::make("Licence/Add")->with('idParent', $idParent);
+        return View::make("Licence/Edit")
+            ->with("licence", new Licence)
+            ->with("title", "Ajouter une licence")
+            ->with("action", "Ajouter")
+            ->with("idParent", $idParent)
+           ;
     }
     public function postAdd() {
         $ob = new Licence();
@@ -36,7 +41,13 @@ class LicenceController extends BaseController {
     }
     public function getEdit($id) {
         $licence = Licence::findOrFail($id);
-        return View::make("Licence/Edit")->with("licence", $licence);
+
+        return View::make("Licence/Edit")
+            ->with("licence", $licence)
+            ->with("title", "Modifier une licence")
+            ->with("action", "Modifier")
+            ->with("idParent", "")
+           ;
     }
     public function postEdit() {
         $ob = Licence::findOrFail(Input::get('id'));

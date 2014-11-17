@@ -1,5 +1,6 @@
-<h2>Modifier licence</h2>
+<h2>{{{ $title }}}</h2>
 <input type="hidden" name="id" value="{{{$licence->id}}}" />
+<input type="hidden" name="idParent" value="{{{ $idParent }}}" />
 <div class="panel">
     <div class="row">
         <label>Nom</label>
@@ -19,7 +20,7 @@
     </div>
 </div>
 <div class="row">
-    <a href="#" class="button tiny cmdEditLicence">Modifier</a>
+    <a href="#" class="button tiny cmdEditLicence">{{{ $action }}}</a>
     <a href="#" class="button tiny cmdCloseModal">Annuler</a>
 </div>
 <a class="close-reveal-modal">&#215;</a>
