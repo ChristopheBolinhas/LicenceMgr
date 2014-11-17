@@ -7,4 +7,13 @@ class EditorController extends BaseController {
            
         return View::make('editor/add');//->with('editorList_public',$editor); 
     }
+    
+    public function postAdd()
+    {
+        $editor = new Editor;
+        $editor->name = "Test new editor";
+        $editor->save();
+        
+    }
+    
 }
