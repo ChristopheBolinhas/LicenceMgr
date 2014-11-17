@@ -12,7 +12,8 @@
 */
 
 	Route::get('/', 'HomeController@showWelcome');
-    Route::get('/login', 'UserController@showLogin');  
+
+    Route::resource("user","UserController");
 
     Route::controller("TreeView", "TreeViewController");
 
@@ -20,6 +21,7 @@
 
     Route::controller("licence", "LicenceController");
 
+    Route::controller('auth', 'AuthController');
 
     Route::get('/ui','HomeController@showUI');
 
