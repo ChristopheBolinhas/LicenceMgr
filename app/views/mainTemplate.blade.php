@@ -18,16 +18,7 @@
     {{ HTML::script('js/global.js') }}
     {{ HTML::script('js/tree.js') }}
     {{ HTML::script('js/licence.js') }}
-        <script>
-            $(function() {
-                $(document).on("click", ".cmdCloseModal", function() {
-                    $(this).closest(".reveal-modal").foundation('reveal', 'close');
-                });
-                $(document).on("click", ".autoSubmit", function() {
-                    $(this).closest("form").submit();
-                });
-            });
-        </script>
+
 	</head>
 	<body>
 	<!-- Modals definitions -->
