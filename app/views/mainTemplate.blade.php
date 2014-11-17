@@ -123,7 +123,7 @@
                 <li class="name"><a>Invité</a></li>
 
                 <li>
-                    <a href="#" data-reveal-id="loginModal" data-reveal-ajax="/user/login">
+                    <a href="#" data-reveal-id="loginModal" data-reveal-ajax="/auth/login">
                         <i class="step fi-power size-48"></i>
                     </a>
                 </li>
