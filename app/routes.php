@@ -13,15 +13,12 @@
 
 	Route::get('/', 'HomeController@showWelcome');
 
-    Route::resource("user","UserController");
-
 	Route::get('/', 'HomeController@showUI');
 
     Route::controller("TreeView", "TreeViewController");
 
     Route::controller("program", "ProgramController");
     Route::controller("editor", "EditorController");
-    Route::controller("user", "UserController");
     Route::controller("licence", "LicenceController");
 
     Route::controller('auth', 'AuthController');

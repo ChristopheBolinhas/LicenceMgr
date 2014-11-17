@@ -16,6 +16,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
 
+    //Indique les champs à remplir 
+    protected $guarded = array('id');
+    
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *

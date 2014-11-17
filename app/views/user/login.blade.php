@@ -1,5 +1,5 @@
 <h2>Authentification</h2>
-		<div class="panel">
+		<div class="panel loginDiv">
 			<div class="row">	
 				<label>Login</label>
 				<input type="text" name="name" placeholder="Login" />
@@ -7,6 +7,7 @@
 			<div class="row">	
 				<label>Mot de passe</label>
 				<input type="password" name="password" placeholder="******" />
+                <input id="checkboxRemember" type="checkbox"><label for="checkboxRemember">Se souvenir de moi ?</label>
 			</div>
 		</div>
 		<div class="row">

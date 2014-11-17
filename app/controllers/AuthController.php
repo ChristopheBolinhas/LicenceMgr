@@ -1,16 +1,6 @@
 <?php
 
-use Validation\UserLoginValidator as UserLoginValidator;
-
 class AuthController extends BaseController {
-    
-    protected $login_validation;
-    
-    public function __construct(UserLoginValidator $login_validation)
-    {
-        parent::__construct();
-        $this->login_validation = $login_validation;
-    }
     
     public function getLogin()
     {
@@ -18,27 +8,33 @@ class AuthController extends BaseController {
     }
     
     public function postLogin()
-    {
-        if($this->login_validation->fails())
+    {    
+        $user = array(
+            'username' => Input::get('name'),
+            'password' => Input::get('password')
+        );
+        
+        if(Auth::attempt($user,Input::get('souvenir')))
         {
-            return Redirect::to('auth/login')->withErrors($this->login_validation->errors())->withInput();    
+            return Redirect::to("/");   
         }
         else
         {
-            $user = array(
-                'name' => Input::get('name'),
-                'password' => Input::get('password')
-            );
-            
-            if(Auth::attempt($user,Input::get('souvenir')))
-            {
-                Return Redirect::intended('user');    
-            }
-            return Redirect::to('auth/login')
-                ->with('pass','Le mot de passe n\'est pas correct !')->withInput();
+            App::abort();
         }
     }
-    
+    public function getOnetimeuser()
+        {
+        $password = Hash::make('1234');
+            $user = new User;
+            $user->company_id = 1;
+            $user->fullname = "lala";
+            $user->username = "peter";
+            $user->password = $password;
+            $user->email = "lala@dsa.com";
+        $user->remember_token = false;
+            $user->save();
+    }
     public function getLogout()
     {
         Auth::logout();

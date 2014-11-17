@@ -19,6 +19,7 @@
     {{ HTML::script('js/tree.js') }}
     {{ HTML::script('js/licence.js') }}
     {{ HTML::script('js/editor.js') }}
+    {{ HTML::script('js/user.js') }}
 
 	</head>
 	<body>
