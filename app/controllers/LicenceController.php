@@ -30,8 +30,8 @@ class LicenceController extends BaseController {
     public function getAdd($idParent) {
         return View::make("licence/edit")
             ->with("licence", new Licence)
-            ->with("title", "Ajouter une licence")
-            ->with("action", "Ajouter")
+            ->with("title", Lang::get('messages.addLicenceModalTitle'))
+            ->with("action", Lang::get('messages.addButton'))
             ->with("idParent", $idParent)
             ->with("cmd", "cmdAddLicence")
            ;
@@ -54,8 +54,8 @@ class LicenceController extends BaseController {
 
         return View::make("licence/edit")
             ->with("licence", $licence)
-            ->with("title", "Modifier une licence")
-            ->with("action", "Modifier")
+            ->with("title", Lang::get('messages.modifyLicenceModalTitle'))
+            ->with("action", Lang::get('messages.editButton'))
             ->with("idParent", "")
             ->with("cmd", "cmdEditLicence")
            ;

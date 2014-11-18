@@ -1,9 +1,9 @@
 <table width="100%">
     <thead>
         <tr>
-            <th width="200">Nom</th>
-            <th>Licence</th>
-            <th width="170">Actions</th>
+            <th width="200">@lang('messages.nameTabTitle')</th>
+            <th>@lang('messages.licenceTabTitle')</th>
+            <th width="170">@lang('messages.actionTabTitle')</th>
         </tr>
     </thead>
     <tbody>
@@ -12,12 +12,14 @@
             <td>{{{ $licence->name }}}</td>
             <td class="licence">*****</td>
             <td>
-                <a href="#" class="button split tiny text-center"><div style="display:inline" class="showLicence">Afficher la clé</div> <span data-dropdown="drop-{{{ $licence->id }}}"></span></a>
-                <ul id="drop-{{{ $licence->id }}}" class="f-dropdown" data-dropdown-content>
-                    <li><a class="editLicence" href="#">Modifier</a></li>
-                    <li><a class="deleteLicence" href="#">Supprimer</a></li>
+
+                <a href="#" class="button split tiny text-center"><div style="display:inline" class="showLicence">@lang('messages.showKeyButton')</div> <span data-dropdown="drop-lic-{{{ $licence->id }}}"></span></a>
+                <ul id="drop-lic-{{{ $licence->id }}}" class="f-dropdown" data-dropdown-content>
+                    <li><a class="editLicence" href="#">@lang('messages.editSubButton')</a></li>
+                    <li><a class="deleteLicence" href="#">@lang('messages.removeSubButton')</a></li>
+
                     @foreach ($licence->sheets as $file)
-                    <li><a class="downloadLicence" data-id="{{{ $file->id }}}" href="#">Télécharger '{{{ $file->name }}}'</a></li>
+                    <li><a class="downloadLicence" data-id="{{{ $file->id }}}" href="#">@lang('messages.downloadSubButton',array("name" => $file->name))</a></li>
                     @endforeach
                 </ul>
             </td>            

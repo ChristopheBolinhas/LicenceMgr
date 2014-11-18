@@ -3,8 +3,7 @@
 
     <div class="button-bar">
         <ul class="button-group">
-            <li><a href="#" class="button small" data-reveal-id="mainModal" data-reveal-ajax="/auth/add">Nouveau compte</a></li>
-
+            <li><a href="#" class="button small" data-reveal-id="mainModal" data-reveal-ajax="/auth/add">@lang('messages.newAccountButton')</a></li>
         </ul>
     </div> 
 </div>
@@ -13,12 +12,12 @@
         <table>
             <thead>
                 <tr>
-                    <th>Login</th>
-                    <th>Nom</th>
-                    <th>Rôle</th>
-                    <th>Activé</th>
-                    <th>Entreprise</th>
-                    <th>Action</th>
+                    <th>@lang('messages.loginTabTitle')</th>
+                    <th>@lang('messages.nameTabTitle')</th>
+                    <th>@lang('messages.roleTabTitle')</th>
+                    <th>@lang('messages.activeTabTitle')</th>
+                    <th>@lang('messages.companyTabTitle')</th>
+                    <th>@lang('messages.actionTabTitle')</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,10 +28,10 @@
                     <td><input id="activated" type="checkbox" disabled checked></td>
                     <td>HE-ARC</td>
                     <td>
-                        <a href="#" class="button split tiny">Modifier <span data-dropdown="drop-admin-1"></span></a>
+                        <a href="#" class="button split tiny">@lang('messages.editButton') <span data-dropdown="drop-admin-1"></span></a>
                         <ul id="drop-admin-1" class="f-dropdown" data-dropdown-content>								
-                            <li><a href="#">Supprimer</a></li>
-                            <li><a href="#">Réinitialiser mot de passe</a></li> 
+                            <li><a href="#">@lang('messages.removeSubButton')</a></li>
+                            <li><a href="#">@lang('messages.resetPasswordSubButton')</a></li> 
                         </ul>
                     </td>	
                 </tr>
