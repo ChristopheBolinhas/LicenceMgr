@@ -12,6 +12,12 @@ function dataFromForm(form) {
     console.log("data = ", data);
     return data;
 }
+function getTr(elem) {
+    return $(elem).closest("tr");
+}
+function getId(tr) {
+    return tr.attr("data-id");
+}
 function saveForm(reveal, url, callbackSuccess, callbackError) {
     $.ajax({
         url : url,

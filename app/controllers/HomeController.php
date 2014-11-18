@@ -24,7 +24,7 @@ class HomeController extends BaseController {
 	}
     
     public function uiSuperAdmin() {
-        return View::make("tabs/superAdmin")->with("companies", Company::all());
+        return View::make("tabs/superAdmin");
     }
     
     public function uiAdmin() {

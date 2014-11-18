@@ -12,10 +12,12 @@
             <td>{{{ $licence->name }}}</td>
             <td class="licence">*****</td>
             <td>
-                <a href="#" class="button split tiny text-center"><div style="display:inline" class="showLicence">@lang('messages.showKeyButton')</div> <span data-dropdown="drop-{{{ $licence->id }}}"></span></a>
-                <ul id="drop-{{{ $licence->id }}}" class="f-dropdown" data-dropdown-content>
+
+                <a href="#" class="button split tiny text-center"><div style="display:inline" class="showLicence">@lang('messages.showKeyButton')</div> <span data-dropdown="drop-lic-{{{ $licence->id }}}"></span></a>
+                <ul id="drop-lic-{{{ $licence->id }}}" class="f-dropdown" data-dropdown-content>
                     <li><a class="editLicence" href="#">@lang('messages.editSubButton')</a></li>
                     <li><a class="deleteLicence" href="#">@lang('messages.removeSubButton')</a></li>
+
                     @foreach ($licence->sheets as $file)
                     <li><a class="downloadLicence" data-id="{{{ $file->id }}}" href="#">@lang('messages.downloadSubButton',array("name" => $file->name))</a></li>
                     @endforeach

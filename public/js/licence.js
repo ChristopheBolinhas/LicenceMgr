@@ -5,6 +5,7 @@ function loadLicence(id) {
             url : "/licence/list/" + id,
             success: function(data) {
                 $("#licences").html(data);
+                $("#licences").foundation();
             },
             type: "POST"
         });
@@ -12,12 +13,7 @@ function loadLicence(id) {
         $("#licences").html('<h4>Veuillez séléctionner un programme.</h4>');
     }
 }
-function getLicenceTr(elem) {
-    return $(elem).closest("tr");
-}
-function getLicenceId(tr) {
-    return tr.attr("data-id");
-}
+
 function addFile() {
     var count = parseInt($(this).attr("data-count"));
     count ++;    
@@ -33,8 +29,8 @@ function reloadLicence() {
 $(function() {
     var modal = $("#mainModal");
      $("#licences").on("click", ".showLicence", function() {
-         var tr = getLicenceTr(this);
-         var id = getLicenceId(tr);
+         var tr = getTr(this);
+         var id = getId(tr);
          var tdLic = tr.find("td.licence");
          if (!tdLic.is("[data-lic]")) {
              tdLic.html("Loading...");
@@ -42,7 +38,6 @@ $(function() {
                  url : '/licence/key/' + id,
                  dataType : 'json',
                  success : function(data, statut){
-                     console.log("lic post", data);
                      tdLic.html(data[0]);
                      tdLic.attr("data-lic", true);
                  }
@@ -50,16 +45,14 @@ $(function() {
          }         
      });
     $("#licences").on("click", ".editLicence", function() {
-        console.log("editLicence")
-        var id = getLicenceId(getLicenceTr(this));
+        var id = getId(getTr(this));
         modal.foundation('reveal', 'open', {
             url: '/licence/edit/' + id
         });
      });
     $("#licences").on("click", ".deleteLicence", function() {
-        var tr = getLicenceTr(this);
-        var id = getLicenceId(tr);
-        
+        var tr = getTr(this);
+        var id = getId(tr);        
         $.ajax({
             url : '/licence/delete/' + id,
             type : 'DELETE',
@@ -67,7 +60,6 @@ $(function() {
                 tr.hide("bind");
                 tr.remove();
             }
-
         });
      });
     $("#licences").on("click", ".downloadLicence", function() {
@@ -77,7 +69,6 @@ $(function() {
     $("#addLicence").click(function() {
         var parentId = getParentId();
         if (parentId && parentId.indexOf("program") >= 0) {
-            console.log("Add Licence");
             modal.foundation('reveal', 'open', {
                 url: '/licence/add/' + parentId
             });
