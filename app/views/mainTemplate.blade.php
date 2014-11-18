@@ -19,12 +19,9 @@
     {{ HTML::script('js/tree.js') }}
     {{ HTML::script('js/licence.js') }}
     {{ HTML::script('js/editor.js') }}
-<<<<<<< HEAD
     {{ HTML::script('js/user.js') }}
-=======
     {{ HTML::script('js/program.js') }}
->>>>>>> c089a1e824194b115d7cbfafc8972bd5c7dcfc81
-
+        
 	</head>
 	<body>
         
