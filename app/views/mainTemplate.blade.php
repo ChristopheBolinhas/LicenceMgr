@@ -47,15 +47,15 @@
 	
 	<!-- Entreprise modal -->
 	<div id="newCompanyModal" class="reveal-modal small" data-reveal>
-		<h2>Ajout d'une entreprise</h2>
+		<h2>@lang('messages.companyModalTitle')</h2>
 		<div class="panel">
 			<div class="row">	
-				<label>Nom</label>
-				<input type="text" placeholder="Nom" />
+				<label>@lang('messages.nameLabel')</label>
+				<input type="text" placeholder="@lang('messages.companyNamePlaceholder')" />
 			</div>
 			<div class="row">	
-				<label>Abbrévation</label>
-				<input type="text" placeholder="Ex. : HE-ARC" />
+				<label>@lang('messages.abbreviationLabel')</label>
+				<input type="text" placeholder="@lang('messages.abbreviationPlaceholder')" />
 			</div>
 			<div class="row">	
 				<label>Site internet</label>

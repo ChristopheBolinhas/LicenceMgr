@@ -23,6 +23,7 @@ class ProgramController extends BaseController {
         if(Input::has('program_id'))
         {
             $program->parent_id = Input::get('program_id');
+            
             $program->save();
         }
         elseif(Input::has('editor_id'))
