@@ -31,7 +31,7 @@ class AuthController extends BaseController {
             $user = new User;
             $user->company_id = 1;
             $user->fullname = "lala";
-            $user->username = "peter";
+            $user->username = "juust";
             $user->password = $password;
             $user->email = "lala@dsa.com";
         $user->remember_token = false;

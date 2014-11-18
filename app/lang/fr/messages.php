@@ -39,6 +39,7 @@ return array(
     "generalModalSubTitle" => "Général",
     "passwordModalSubTitle" => "Mot de passe ****",
     "modifyLicenceModalTitle" => "Modifier une licence",
+    "addLicenceModalTitle" => "Ajouter une licence",
     
     //Textes label de formulaires
 	"fullListLabel" => "Catalogue complet",
@@ -48,6 +49,7 @@ return array(
     "emailLabel" => "Email",
     "publicLabel" => "Publique",
     "privateLabel" => "Privé",
+    "keyLabel" => "Clé",
     "newPasswordLabel" => "Nouveau mot de passe :",
     "confirmNewPasswordLabel" => "Confirmer le mot de passe :",
     "rememberMeLabel" => "Se souvenir de moi ?",
