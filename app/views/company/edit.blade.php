@@ -3,7 +3,7 @@
 <div class="panel">
     <div class="row">	
         <label>@lang('messages.nameLabel')</label>
-        <input type="text" placeholder="@lang('messages.companyNamePlaceholder')" value="{{{$company->name}}}" />
+        <input type="text" placeholder="@lang('messages.companyNamePlaceholder')" value="{{{$company->name}}}" name="name" />
     </div>
 </div>
 <div class="row">

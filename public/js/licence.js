@@ -5,6 +5,7 @@ function loadLicence(id) {
             url : "/licence/list/" + id,
             success: function(data) {
                 $("#licences").html(data);
+                $("#licences").foundation();
             },
             type: "POST"
         });
@@ -42,7 +43,6 @@ $(function() {
                  url : '/licence/key/' + id,
                  dataType : 'json',
                  success : function(data, statut){
-                     console.log("lic post", data);
                      tdLic.html(data[0]);
                      tdLic.attr("data-lic", true);
                  }
@@ -50,7 +50,6 @@ $(function() {
          }         
      });
     $("#licences").on("click", ".editLicence", function() {
-        console.log("editLicence")
         var id = getLicenceId(getLicenceTr(this));
         modal.foundation('reveal', 'open', {
             url: '/licence/edit/' + id
@@ -58,8 +57,7 @@ $(function() {
      });
     $("#licences").on("click", ".deleteLicence", function() {
         var tr = getLicenceTr(this);
-        var id = getLicenceId(tr);
-        
+        var id = getLicenceId(tr);        
         $.ajax({
             url : '/licence/delete/' + id,
             type : 'DELETE',
@@ -67,7 +65,6 @@ $(function() {
                 tr.hide("bind");
                 tr.remove();
             }
-
         });
      });
     $("#licences").on("click", ".downloadLicence", function() {
@@ -77,7 +74,6 @@ $(function() {
     $("#addLicence").click(function() {
         var parentId = getParentId();
         if (parentId && parentId.indexOf("program") >= 0) {
-            console.log("Add Licence");
             modal.foundation('reveal', 'open', {
                 url: '/licence/add/' + parentId
             });
