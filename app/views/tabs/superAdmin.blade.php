@@ -9,5 +9,5 @@
     <div class="large-12 columns" id="listCompanies">Loading...</div>
 </div>
 <script>
-    loadCompanies();
+    initCompany();
 </script>

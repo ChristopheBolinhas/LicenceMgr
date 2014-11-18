@@ -4,7 +4,9 @@ class CompanyController extends BaseController {
     public function anyList() {        
         return View::make("company/list")->with("companies", Company::all());
     }
-    
+    public function deleteDelete($id) {
+        Company::destroy($id);
+    }
     public function getAdd() {
         return View::make("company/edit")
             ->with("company", new Company)
