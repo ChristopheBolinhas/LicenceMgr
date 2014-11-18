@@ -1,12 +1,16 @@
 function loadLicence(id) {
     $("#addLicence").attr("data-id", id);
-    $.ajax({
-        url : "/licence/list/" + id,
-        success: function(data) {
-            $("#licences").html(data);
-        },
-        type: "POST"
-    });
+    if (id && id.indexOf("program") >= 0) {
+        $.ajax({
+            url : "/licence/list/" + id,
+            success: function(data) {
+                $("#licences").html(data);
+            },
+            type: "POST"
+        });
+    } else {
+        $("#licences").html('<h4>Veuillez séléctionner un programme.</h4>');
+    }
 }
 function getLicenceTr(elem) {
     return $(elem).closest("tr");

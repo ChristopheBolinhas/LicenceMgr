@@ -16,12 +16,21 @@ class TreeViewController extends BaseController {
                 ->get();
             ;
             foreach ($editors as $editor) {
-                $result[] = $this->editorToArray($editor);
+                $result[] = $this->editorToArray($editor, $companyId, false);
             }
         } else {
             // génération du tree en plusieurs étapes
-            // 1 : récupération des programmes ayant une licence dans l'entreprise
+            /*
+              1 : 
+                1.1 : récupération des programmes ayant une licence dans l'entreprise
+                1.2 : récupération de tous les programme de l'entreprise qui ne sont pas dans la liste
+            */
             $programsId = Licence::where("company_id", "=", $companyId)->select(array("program_id"))->distinct()->lists("program_id");
+            // liste des programes manquants
+            $programsIdCompany = Program::where("company_id", "=", $companyId)->select(array("id"))->whereNotIn("id", $programsId)->lists("id");
+            // concaténation de tableaux
+            $programsId = array_merge($programsId, $programsIdCompany);
+            // recherde de ces programmes
             $programs = Program::whereIn("id", $programsId)->orderBy("parent_id")->get();
 
             /*
@@ -62,19 +71,25 @@ class TreeViewController extends BaseController {
                         $treeEditors[$program->editor_id]["children"][] = $program->id;
                     } else {
                         // sinon on le récupère dans la db, on le cré, et on ajoute un enfant
-                        $treeEditors[$program->editor_id] =array("model" => $program->editor, "children" => array($program->id));
+                        $treeEditors[$program->editor_id] = array("model" => $program->editor, "children" => array($program->id));
                     }
                 }
             }
-            // 4 : Tri des éditeurs selon leurs nom
+            // 4 : ajout des éditeurs manquants
+            $editorsId = array_keys($treeEditors);
+            $editorsMissing = Editor::where("company_id", "=", $companyId)->whereNotIn("id", $editorsId)->get();
+            foreach ($editorsMissing as $editor) {
+                $treeEditors[$editor->id] = array("model" => $editor, "children" => array());
+            }
+            // 5 : Tri des éditeurs selon leurs nom
             usort($treeEditors, function($a, $b) {
                 return strnatcmp($a['model']->name, $b['model']->name);
             });
-            // 5 : convertion arbre -> json
+            // 6 : convertion arbre -> json
             foreach ($treeEditors as $editor) {
-                $arrayEditor = $this->editorToArray($editor["model"], true);
+                $arrayEditor = $this->editorToArray($editor["model"], $companyId, true);
                 foreach($editor["children"] as $idProgram) {
-                    $arrayEditor["children"][] = $this->programToArray($treeProgram[$idProgram]["model"], $treeProgram);
+                    $arrayEditor["children"][] = $this->programToArray($treeProgram[$idProgram]["model"], $companyId, $treeProgram);
                     usort($arrayEditor["children"], function($a, $b) {
                         return strnatcmp($a['text'], $b['text']);
                     });
@@ -84,12 +99,19 @@ class TreeViewController extends BaseController {
         }
         return Response::json($result);
     }
-    private function editorToArray($editor, $skipChildrens = false) {
+    private function editorToArray($editor, $companyId, $skipChildrens) {
         $childrens = [];
 
         if (!$skipChildrens) {
-            foreach ($editor->programs as $program) {
-                $childrens[] = $this->programToArray($program);
+            $programs = Program::
+                where("editor_id", "=", $editor->id)
+                ->where(function ($query) use ($companyId) {
+                    $query->
+                     whereNull("company_id")
+                ->orWhere("company_id", "=", $companyId);
+            }) ->orderBy('name')->get();
+            foreach ($programs as $program) {
+                $childrens[] = $this->programToArray($program, $companyId, false);
             }
         }
 
@@ -100,18 +122,25 @@ class TreeViewController extends BaseController {
             'icon' => '/img/editor.png'
         );
     }
-    private function programToArray($program, $tree = false) {
+    private function programToArray($program, $companyId, $tree) {
         $childrens = [];
         if ($tree) {
             foreach ($tree[$program->id]["children"] as $children) {
-                $childrens[] = $this->programToArray($tree[$children]["model"], $tree);
+                $childrens[] = $this->programToArray($tree[$children]["model"], $companyId, $tree);
             }
             usort($childrens, function($a, $b) {
                 return strnatcmp($a['text'], $b['text']);
             });
         } else {
-            foreach ($program->childrens as $children) {
-                $childrens[] = $this->programToArray($children);
+            $programs = Program::
+                where("parent_id", "=", $program->id)
+                ->where(function ($query) use ($companyId) {
+                    $query->
+                     whereNull("company_id")
+                ->orWhere("company_id", "=", $companyId);
+            }) ->orderBy('name')->get();
+            foreach ($programs as $children) {
+                $childrens[] = $this->programToArray($children, $companyId, false);
             }
         }
 

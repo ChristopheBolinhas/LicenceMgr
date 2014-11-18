@@ -22,7 +22,7 @@ function saveForm(reveal, url, callbackSuccess, callbackError) {
             if (callbackSuccess) { callbackSuccess(); }
         },
         error: function() {
-            alert("Erreur lors de la modification, veuillez controler vos champs !");
+            
             if (callbackError) {callbackError ();}
         }
     });    
@@ -37,6 +37,17 @@ function setErrorMsg(msg) {
     } else {
         $('#error-alert').hide();
     }    
+}
+function tabCallback(tab) {
+    var a = $(tab).find("a").first();
+    if (!a.attr("data-loaded")) {
+        a.attr("data-loaded", true);
+        console.log("attr", a.attr("href"));
+        var div = $(a.attr("href"));
+        div.html("Loading ...");
+        div.load(a.attr("data-url"));
+        console.log("load uri", a.attr("data-url"));
+    }
 }
 $(function() {
     $(document).on("click", ".cmdCloseModal", function() {
