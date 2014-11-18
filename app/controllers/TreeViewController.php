@@ -20,8 +20,17 @@ class TreeViewController extends BaseController {
             }
         } else {
             // génération du tree en plusieurs étapes
-            // 1 : récupération des programmes ayant une licence dans l'entreprise
+            /*
+              1 : 
+                1.1 : récupération des programmes ayant une licence dans l'entreprise
+                1.2 : récupération de tous les programme de l'entreprise qui ne sont pas dans la liste
+            */
             $programsId = Licence::where("company_id", "=", $companyId)->select(array("program_id"))->distinct()->lists("program_id");
+            // liste des programes manquants
+            $programsIdCompany = Program::where("company_id", "=", $companyId)->select(array("id"))->whereNotIn("id", $programsId)->lists("id");
+            // concaténation de tableaux
+            $programsId = array_merge($programsId, $programsIdCompany);
+            // recherde de ces programmes
             $programs = Program::whereIn("id", $programsId)->orderBy("parent_id")->get();
 
             /*
@@ -62,15 +71,21 @@ class TreeViewController extends BaseController {
                         $treeEditors[$program->editor_id]["children"][] = $program->id;
                     } else {
                         // sinon on le récupère dans la db, on le cré, et on ajoute un enfant
-                        $treeEditors[$program->editor_id] =array("model" => $program->editor, "children" => array($program->id));
+                        $treeEditors[$program->editor_id] = array("model" => $program->editor, "children" => array($program->id));
                     }
                 }
             }
-            // 4 : Tri des éditeurs selon leurs nom
+            // 4 : ajout des éditeurs manquants
+            $editorsId = array_keys($treeEditors);
+            $editorsMissing = Editor::where("company_id", "=", $companyId)->whereNotIn("id", $editorsId)->get();
+            foreach ($editorsMissing as $editor) {
+                $treeEditors[$editor->id] = array("model" => $editor, "children" => array());
+            }
+            // 5 : Tri des éditeurs selon leurs nom
             usort($treeEditors, function($a, $b) {
                 return strnatcmp($a['model']->name, $b['model']->name);
             });
-            // 5 : convertion arbre -> json
+            // 6 : convertion arbre -> json
             foreach ($treeEditors as $editor) {
                 $arrayEditor = $this->editorToArray($editor["model"], $companyId, true);
                 foreach($editor["children"] as $idProgram) {
