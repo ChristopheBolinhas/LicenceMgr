@@ -20,6 +20,7 @@
     {{ HTML::script('js/editor.js') }}
     {{ HTML::script('js/user.js') }}
     {{ HTML::script('js/program.js') }}
+    {{ HTML::script('js/superadmin.js') }}
 
 	</head>
 	<body>
