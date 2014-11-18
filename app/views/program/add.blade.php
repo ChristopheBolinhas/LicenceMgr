@@ -1,22 +1,11 @@
-<h2>Ajout programme à {{isset($editorTitle) ? $editorTitle : ''}}</h2>
+<h2>Ajout programme à {{isset($title) ? $title : ''}}</h2>
 <div class="panel">
-   {{--<!-- <div class="row">	
-        <label>Editeur</label>
-        <select id="editor_id">
-            @if (count($editorList_public) > 0)
-                @foreach($editorList_public as $editor)
-                    <option value="{{$editor->id}}">{{$editor->name}}</option>
-                @endforeach
-
-            @endif
-        </select>
-    </div>-->
-    <!--<div class="row">	
-        <label>Parent</label>
-        <select id="program_parent_id">
-            
-        </select>
-    </div>-->--}}
+    @if(isset($editorId))
+        <input type="hidden" name="editor_id" value="{{$editorId}}" />
+    @endif
+    @if(isset($programId))
+        <input type="hidden" name="program_id" value="{{$programId}}" />
+    @endif
     <div class="row">	
         <label>Nom</label>
         <input type="text" placeholder="Nom de l'éditeur" />
