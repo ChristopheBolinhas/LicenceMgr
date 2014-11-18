@@ -55,8 +55,8 @@
 			</div>
 		</div>
 		<div class="row">
-				<a href="#" class="button [tiny small large]">Créer l'entreprise</a>
-				<a href="#" class="button [tiny small large] cmdCloseModal">Annuler</a>
+				<a href="#" class="button tiny">Créer l'entreprise</a>
+				<a href="#" class="button tiny cmdCloseModal">Annuler</a>
 		</div>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
@@ -88,8 +88,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<a href="#" class="button [tiny small large]">Enregistrer</a>
-			<a href="#" class="button [tiny small large] cmdCloseModal">Annuler</a>
+			<a href="#" class="button tiny">Enregistrer</a>
+			<a href="#" class="button tiny cmdCloseModal">Annuler</a>
 		</div>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
