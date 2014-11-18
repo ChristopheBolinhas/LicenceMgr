@@ -22,7 +22,7 @@ function saveForm(reveal, url, callbackSuccess, callbackError) {
             if (callbackSuccess) { callbackSuccess(); }
         },
         error: function() {
-            alert("Erreur lors de la modification, veuillez controler vos champs !");
+            
             if (callbackError) {callbackError ();}
         }
     });    

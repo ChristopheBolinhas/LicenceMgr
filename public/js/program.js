@@ -27,10 +27,18 @@ $(function() {
     
     
     $("#newProgram").on("click", ".cmdNew", function() {
-        saveForm($(this).closest('.reveal-modal'), '/program/add', loadTree);
+        saveForm($(this).closest('.reveal-modal'), '/program/add', loadTree,programAddError);
     });
 
-
+    function programAddError()
+    {
+        //setErrorMsg("Erreur lors de l'ajout du programme");
+        var dest = $(".programAddDiv");
+        if(dest.html().indexOf("Erreur lors de l\'ajout du programme") <= -1)
+        {
+            dest.append('<small class="error">Erreur lors de l\'ajout du programme</small>');    
+        }
+    }
 
     $("#editor_id").change(function()
     {

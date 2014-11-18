@@ -22,12 +22,16 @@ class ProgramController extends BaseController {
         $program->name = Input::get('name');
         if(Input::has('program_id'))
         {
-            
+            $program->parent_id = Input::get('program_id');
+            $program->save();
         }
         elseif(Input::has('editor_id'))
-            {
-            
+        {
+            $program->editor_id = Input::get('editor_id');
+            $program->save();
         }
+        
+        
     }
     
 }
