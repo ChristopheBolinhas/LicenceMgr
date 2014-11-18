@@ -20,60 +20,20 @@
     {{ HTML::script('js/editor.js') }}
     {{ HTML::script('js/user.js') }}
     {{ HTML::script('js/program.js') }}
+    {{ HTML::script('js/superadmin.js') }}
 
 	</head>
 	<body>
-        
+
 	<!-- Modals definitions -->
-	<div id="newEditeur" class="reveal-modal small" data-reveal></div>
-	
 	<div id="mainModal" class="reveal-modal small" data-reveal></div>
-        
-	<!-- Ajout programme -->
-
-	<div id="newProgram" class="reveal-modal small" data-reveal></div>
-	<!-- Ajout licence -->
-	<div id="newLicence" class="reveal-modal small" data-reveal></div>
-
-	<div id="newProgramme" class="reveal-modal small" data-reveal></div>
-
-
 	
 	<!-- Login modal -->
 	<div id="loginModal" class="reveal-modal small" data-reveal></div>
 	
 	<!-- Login modal -->
 	<div id="newAccountModal" class="reveal-modal small" data-reveal></div>
-	
-	<!-- Entreprise modal -->
-	<div id="newCompanyModal" class="reveal-modal small" data-reveal>
-		<h2>@lang('messages.companyModalTitle')</h2>
-		<div class="panel">
-			<div class="row">	
-				<label>@lang('messages.nameLabel')</label>
-				<input type="text" placeholder="@lang('messages.companyNamePlaceholder')" />
-			</div>
-			<div class="row">	
-				<label>@lang('messages.abbreviationLabel')</label>
-				<input type="text" placeholder="@lang('messages.abbreviationPlaceholder')" />
-			</div>
-			<div class="row">	
-				<label>Site internet</label>
-				<input type="text" placeholder="www.monsite.ch" />
-			</div>
-			<div class="row">	
-				<label>Email référent</label>
-				<input type="email" placeholder="user@mysite.com" />
-			</div>
-		</div>
-		<div class="row">
-				<a href="#" class="button [tiny small large]">Créer l'entreprise</a>
-				<a href="#" class="button [tiny small large] cmdCloseModal">Annuler</a>
-		</div>
-		<a class="close-reveal-modal">&#215;</a>
-	</div>
-	
-	
+
 	<!-- Paramètre modal -->
 	<div id="parameterModal" class="reveal-modal small" data-reveal>
 		<h2>Paramètres</h2>
@@ -100,8 +60,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<a href="#" class="button [tiny small large]">Enregistrer</a>
-			<a href="#" class="button [tiny small large] cmdCloseModal">Annuler</a>
+			<a href="#" class="button tiny">Enregistrer</a>
+			<a href="#" class="button tiny cmdCloseModal">Annuler</a>
 		</div>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
@@ -152,114 +112,27 @@
       <div data-alert class="alert-box alert" id="error-alert"></div>
 	<div class="row">
 		<ul class="tabs" data-tab role="tablist">
-			<li class="tab-title active" role="presentational" ><a href="#panel-user" role="tab" tabindex="0" aria-selected="true" controls="panel-user">Gestion des licences</a></li>
-			<li class="tab-title" role="presentational" ><a href="#panel-admin" role="tab" tabindex="0"aria-selected="false" controls="panel-admin">Gestion des utilisateurs</a></li>
+			<li class="tab-title active" role="presentational" ><a href="#panel-user" role="tab" tabindex="0" aria-selected="true" controls="panel-user" data-loaded="true">Gestion des licences</a></li>
+			<li class="tab-title" role="presentational" ><a href="#panel-admin" role="tab" tabindex="1" aria-selected="false" controls="panel-admin" data-url="/tabs/admin">Gestion des utilisateurs</a></li>
+			<li class="tab-title" role="presentational" ><a href="#panel-superadmin" role="tab" tabindex="2" aria-selected="false" controls="panel-superadmin" data-url="/tabs/superadmin">Gestion des entreprises</a></li>
 		</ul>
 	</div>
 	<div class="tabs-content">
-		<section role="tabpanel" aria-hidden="false" class="content active" id="panel-user">
-			<div class="row">
-				<div class="button-bar">
-					<ul class="button-group">
-						<li><a href="#" class="button small" data-reveal-id="newEditeur" data-reveal-ajax="/editor/add">Nouveau editeur</a></li>
-						<li><a href="#" class="button small error" id="cmdOpenNewProgram" >Nouveau programme</a></li>
-						
-						<li><a href="#" class="button small">Exporter</a></li>
-					</ul>
-				</div> 
-			</div>
-			<div class="row">
-				<div class="large-12 columns">
-					<input type="radio" name="catalogueType" value="cComplete" id="cComplete"><label for="cComplete">Catalogue complet</label>
-					<input type="radio" name="catalogueType" value="cEnterprise" id="cEnterprise" checked="checked"><label for="cEnterprise">Catalogue d'entreprise</label>
-				
-				</div>
-			</div>
-			<div class="row">
-				<div class="large-4 columns">
-					<h3>Programmes</h3>
-						<div id="jstree">
-							
-						</div>
-		
-				</div>
-			
-				<div class="large-8 columns">
-					<h3>Licences</h3>
-					<a href="#" class="button tiny" id="addLicence">Ajouter licences</a>
-                    <div id="licences"></div>
-					
-				</div>
-			</div>			
-		</section>
-		<section role="tabpanel" aria-hidden="true" class="content" id="panel-admin">
-			<div class="row">
-				
-				<div class="button-bar">
-					<ul class="button-group">
-						<li><a href="#" class="button small" data-reveal-id="newCompanyModal">Nouvelle entreprise</a></li>
-						<li><a href="#" class="button small" data-reveal-id="newAccountModal">Nouveau compte</a></li>
-						
-					</ul>
-				</div> 
-			</div>
-			<div class="row">
-				<div class="large-12 columns">
-					<table>
-						<thead>
-							<tr>
-								<th>Login</th>
-								<th>Nom</th>
-								<th>Rôle</th>
-								<th>Activé</th>
-								<th>Entreprise</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>jules</td>
-								<td>Jules Laville</td>
-								<td>Grand admin GODLIKE</td>
-								<td><input id="activated" type="checkbox" disabled checked></td>
-								<td>HE-ARC</td>
-								<td>
-									<a href="#" class="button split tiny">Modifier <span data-dropdown="drop-admin-1"></span></a>
-									<ul id="drop-admin-1" class="f-dropdown" data-dropdown-content>								
-										<li><a href="#">Supprimer</a></li>
-										<li><a href="#">Réinitialiser mot de passe</a></li> 
-									</ul>
-								</td>	
-							</tr>
-							<tr>
-								<td>caillou</td>
-								<td>Stéphane Chatelat</td>
-								<td>Lecture seul</td>
-								<td><input id="activated" type="checkbox" disabled></td>
-								<td>Le squat</td>
-								<td>
-									<a href="#" class="button split tiny">Modifier <span data-dropdown="drop-admin-2"></span></a>
-									<ul id="drop-admin-2" class="f-dropdown" data-dropdown-content>								
-										<li><a href="#">Supprimer</a></li>
-										<li><a href="#">Réinitialiser mot de passe</a></li> 
-									</ul>
-								</td>		
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</section>
+        <section role="tabpanel" aria-hidden="false" class="content active" id="panel-user">
+        @include('tabs.user')
+        </section>
+        <section role="tabpanel" aria-hidden="true" class="content" id="panel-superadmin"></section>
+		<section role="tabpanel" aria-hidden="true" class="content" id="panel-admin"></section>
 	</div>
-  
-  
+
   </div>
   <!-- End main panel -->
-	<script>
-        
-               // $('#newProgramme').foundation('reveal', 'open', );
-
-        $(document).foundation(); 
+  <script>
+      $(document).foundation({
+          tab: {
+              callback : tabCallback
+          }
+      });
     </script>
 	</body>
 </html>

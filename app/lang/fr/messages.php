@@ -31,7 +31,8 @@ return array(
     
     
     //Titres modales
-    "companyModalTitle" => "Ajouter une entreprise",
+    "addCompanyModalTitle" => "Ajouter une entreprise",
+    "modifyCompanyModalTitle" => "Modifier l'entreprise",
     "editorModalTitle" => "Ajout éditeur",
     "programModalTitle" => "Ajout d'un programme à :name",
     "parametersModalTitle" => "Paramètres",
@@ -74,6 +75,7 @@ return array(
     "connectButton" => "Connection",
     "newEditorButton" => "Nouvel editeur",
     "newProgramButton" => "Nouveau programme",
+    
     "exportButton" => "Exporter",
     "addLicenceButton" => "Ajouter licence",
     "newCompanyButton" => "Nouvelle entreprise",

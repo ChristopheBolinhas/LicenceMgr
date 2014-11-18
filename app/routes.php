@@ -12,15 +12,16 @@
 */
     //Event::listen('illuminate.query', function($query) { var_dump($query); });
 
-    Route::get('/', 'HomeController@showWelcome');
-
 	Route::get('/', 'HomeController@showUI');
+	Route::get('/tabs/admin', 'HomeController@uiAdmin');
+	Route::get('/tabs/superadmin', 'HomeController@uiSuperAdmin');
 
     Route::controller("TreeView", "TreeViewController");
 
     Route::controller("program", "ProgramController");
     Route::controller("editor", "EditorController");
     Route::controller("licence", "LicenceController");
+    Route::controller("company", "CompanyController");
 
     Route::controller('auth', 'AuthController');
 
