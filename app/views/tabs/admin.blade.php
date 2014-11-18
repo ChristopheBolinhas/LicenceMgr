@@ -1,9 +1,9 @@
+
 <div class="row">
 
     <div class="button-bar">
         <ul class="button-group">
-            <li><a href="#" class="button small" id="cmdNewAccountModal">@lang('messages.newAccountButton')</a></li>
-
+            <li><a href="#" class="button small" data-reveal-id="mainModal" data-reveal-ajax="/auth/add">@lang('messages.newAccountButton')</a></li>
         </ul>
     </div> 
 </div>
