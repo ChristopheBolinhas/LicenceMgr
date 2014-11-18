@@ -1,65 +1,34 @@
 $(function() {
-    
-    function getSelectedProgramArgs()
-    {
+    var modal = $("#mainModal");
+    function getSelectedProgramArgs() {
         var src = getParentId();
-        if(typeof src != 'undefined')
+        if(typeof src != 'undefined') {
             return src.replace("-","/");
-        else
+        } else {
             return null;
+        }
     }
     
     $("#cmdOpenNewProgram").click(function(){
         var selectedProgram = getSelectedProgramArgs()
-        if(selectedProgram != null)
-        {
-            $("#newProgram").foundation('reveal', 'open', {
-                url: '/program/add/' + getSelectedProgramArgs()
+        if(selectedProgram !== null) {
+            modal.foundation('reveal', 'open', {
+                url: '/program/add/' + selectedProgram
             });
-        }
-        else
-        {
+        } else {
             setErrorMsg("Sélectionnez un programme dans la liste");
         }
-        
-        
-    });
-    
-    
-    $("#newProgram").on("click", ".cmdNew", function() {
-        saveForm($(this).closest('.reveal-modal'), '/program/add', loadTree,programAddError);
     });
 
-    function programAddError()
-    {
-        //setErrorMsg("Erreur lors de l'ajout du programme");
+    modal.on("click", ".cmdNewProgram", function() {
+        saveForm(modal, '/program/add', loadTree,programAddError);
+    });
+
+    function programAddError() {
         var dest = $(".programAddDiv");
         if(dest.html().indexOf("Erreur lors de l\'ajout du programme") <= -1)
         {
             dest.append('<small class="error">Erreur lors de l\'ajout du programme</small>');    
         }
     }
-
-    $("#editor_id").change(function()
-    {
-       
-        $.ajax({
-            url: "/program/programs/"+ $(this).val(),
-            success: function(data)
-            {
-                var dest = $("#program_parent_id");
-                
-                
-                dest.html("");
-                dest.append('<option value="'+this.id+'">Valeur VIDE</option>');
-                $(data).each(function()
-                             {
-                                 dest.append('<option value="'+this.id+'">'+this.name+'</option>');
-                             });
-
-
-            },
-            dataType: "json"
-        });
-    });
 });

@@ -23,21 +23,9 @@
 
 	</head>
 	<body>
-        
+
 	<!-- Modals definitions -->
-	<div id="newEditeur" class="reveal-modal small" data-reveal></div>
-	
 	<div id="mainModal" class="reveal-modal small" data-reveal></div>
-        
-	<!-- Ajout programme -->
-
-	<div id="newProgram" class="reveal-modal small" data-reveal></div>
-	<!-- Ajout licence -->
-	<div id="newLicence" class="reveal-modal small" data-reveal></div>
-
-	<div id="newProgramme" class="reveal-modal small" data-reveal></div>
-
-
 	
 	<!-- Login modal -->
 	<div id="loginModal" class="reveal-modal small" data-reveal></div>
@@ -161,7 +149,7 @@
 			<div class="row">
 				<div class="button-bar">
 					<ul class="button-group">
-						<li><a href="#" class="button small" data-reveal-id="newEditeur" data-reveal-ajax="/editor/add">Nouveau editeur</a></li>
+						<li><a href="#" class="button small" data-reveal-id="mainModal" data-reveal-ajax="/editor/add">Nouveau editeur</a></li>
 						<li><a href="#" class="button small error" id="cmdOpenNewProgram" >Nouveau programme</a></li>
 						
 						<li><a href="#" class="button small">Exporter</a></li>

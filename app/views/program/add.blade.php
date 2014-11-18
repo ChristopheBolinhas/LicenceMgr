@@ -16,7 +16,7 @@
     </div>
 </div>
 <div class="row">
-    <a href="#" class="button tiny cmdNew">Ajouter</a>
+    <a href="#" class="button tiny cmdNewProgram">Ajouter</a>
     <a href="#" class="button tiny cmdCloseModal">Annuler</a>
 </div>
 <a class="close-reveal-modal">&#215;</a>

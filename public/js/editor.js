@@ -1,16 +1,7 @@
-/*function dataFromForm(form) {
-    var data = {};
-    form.find("input").each(function() {
-        data[this.name] = $(this).val();
-    });
-    return data;
-}*/
-
-
 $(function() {
+    var modal = $("#mainModal");
     
-    
-    $("#newEditeur").on("click", ".cmdNew", function() {
+    modal.on("click", ".cmdNewEditor", function() {
         saveForm($(this).closest('.reveal-modal'), '/editor/add', loadTree);
     });
 });
