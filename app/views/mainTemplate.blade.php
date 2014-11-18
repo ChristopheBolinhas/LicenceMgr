@@ -32,36 +32,7 @@
 	
 	<!-- Login modal -->
 	<div id="newAccountModal" class="reveal-modal small" data-reveal></div>
-	
-	<!-- Entreprise modal -->
-	<div id="newCompanyModal" class="reveal-modal small" data-reveal>
-		<h2>Ajout d'une entreprise</h2>
-		<div class="panel">
-			<div class="row">	
-				<label>Nom</label>
-				<input type="text" placeholder="Nom" />
-			</div>
-			<div class="row">	
-				<label>Abbrévation</label>
-				<input type="text" placeholder="Ex. : HE-ARC" />
-			</div>
-			<div class="row">	
-				<label>Site internet</label>
-				<input type="text" placeholder="www.monsite.ch" />
-			</div>
-			<div class="row">	
-				<label>Email référent</label>
-				<input type="email" placeholder="user@mysite.com" />
-			</div>
-		</div>
-		<div class="row">
-				<a href="#" class="button tiny">Créer l'entreprise</a>
-				<a href="#" class="button tiny cmdCloseModal">Annuler</a>
-		</div>
-		<a class="close-reveal-modal">&#215;</a>
-	</div>
-	
-	
+
 	<!-- Paramètre modal -->
 	<div id="parameterModal" class="reveal-modal small" data-reveal>
 		<h2>Paramètres</h2>
