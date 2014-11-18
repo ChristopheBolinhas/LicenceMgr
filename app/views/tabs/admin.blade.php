@@ -1,8 +1,9 @@
+
 <div class="row">
 
     <div class="button-bar">
         <ul class="button-group">
-            <li><a href="#" class="button small" id="cmdNewAccountModal">Nouveau compte</a></li>
+            <li><a href="#" class="button small" data-reveal-id="mainModal" data-reveal-ajax="/auth/add">Nouveau compte</a></li>
 
         </ul>
     </div> 
