@@ -2,10 +2,12 @@
 
 class AuthController extends BaseController {
     
+    /*
     public function getLogin()
     {
-        return View::make('user/login');    
+        return View::make('login');    
     }
+    */
     
     public function postLogin()
     {    
@@ -16,11 +18,11 @@ class AuthController extends BaseController {
         
         if(Auth::attempt($user,Input::get('souvenir')))
         {
-            return Redirect::to("/");   
+            return Redirect::to('/');
         }
         else
         {
-            App::abort();
+            return Redirect::to('/')->with('error', 'Les informations d\'identification ne sont pas corrects !')->withInput();    
         }
     }
     public function getOnetimeuser()
@@ -38,6 +40,13 @@ class AuthController extends BaseController {
     public function getLogout()
     {
         Auth::logout();
-        return Redirect::route('user.index');
+        return Redirect::to('/');
+    }
+    
+    public function getAdd()
+    {
+        //$editor = Editor::all(); 
+           
+        return View::make('user/register');//->with('editorList_public',$editor); 
     }
 }

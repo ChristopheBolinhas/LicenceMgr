@@ -23,11 +23,11 @@
 
 	</head>
 	<body>
-        
+	<div id="mainModal" class="reveal-modal small" data-reveal></div>
+    @if(Auth::check())    
 	<!-- Modals definitions -->
 	<div id="newEditeur" class="reveal-modal small" data-reveal></div>
 	
-	<div id="mainModal" class="reveal-modal small" data-reveal></div>
         
 	<!-- Ajout programme -->
 
@@ -132,8 +132,8 @@
                 <li class="name"><a>Invité</a></li>
 
                 <li>
-                    <a href="#" data-reveal-id="loginModal" data-reveal-ajax="/auth/login">
-                        <i class="step fi-power size-48"></i>
+                    <a href="/auth/logout" id="logout">
+                        <i class="step fi-power size-48 cmdLogout"></i>
                     </a>
                 </li>
                 <li>
@@ -198,7 +198,7 @@
 				<div class="button-bar">
 					<ul class="button-group">
 						<li><a href="#" class="button small" data-reveal-id="newCompanyModal">Nouvelle entreprise</a></li>
-						<li><a href="#" class="button small" data-reveal-id="newAccountModal">Nouveau compte</a></li>
+						<li><a href="#" class="button small" id="cmdNewAccountModal">Nouveau compte</a></li>
 						
 					</ul>
 				</div> 
@@ -254,6 +254,9 @@
   
   
   </div>
+        @else
+        @include("user.login")
+        @endif
   <!-- End main panel -->
 	<script>
         
@@ -261,5 +264,6 @@
 
         $(document).foundation(); 
     </script>
+   
 	</body>
 </html>
