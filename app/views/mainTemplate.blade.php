@@ -21,6 +21,8 @@
         {{ HTML::script('js/user.js') }}
         {{ HTML::script('js/program.js') }}
         {{ HTML::script('js/superadmin.js') }}
+        {{ HTML::script('js/lang.js') }}
+        
 
     </head>
     <body>
@@ -74,10 +76,10 @@
             <section class="top-bar-section">
                 <ul class="right">
                     <li class="has-dropdown">
-                        <a href="#"><img src="img/flags/fr.png"/> Français</a>
+                        <a href="#" id="frenchSelector" selected><img src="img/flags/fr.png"/> Français</a>
                         <ul class="dropdown">
-                            <li><a href="#"><img src="img/flags/en.png"/> English</a></li>
-                            <li><a href="#"><img src="img/flags/de.png"/> Deutsch</a></li>
+                            <li><a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a></li>
+                            <li><a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a></li>
                         </ul>
                     </li>
                     <li class="nameUser"><a>@lang('messages.guestNavLabel')</a></li>

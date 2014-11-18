@@ -46,7 +46,7 @@ class LicenceController extends BaseController {
         // TODO chang ecompany id
         $ob->company_id = 1;
         // TODO user id
-        $ob->creation_user_id = 0;
+        $ob->created_user_id = 0;
         $this->fill($ob);
     }
     public function getEdit($id) {
@@ -68,7 +68,7 @@ class LicenceController extends BaseController {
         $ob->name = Input::get('name');
         $ob->value = Input::get('value');
         // TODO user id
-        $ob->last_update_user_id = 0;
+        $ob->updated_user_id = 0;
         $ob->save();
     }
 }
