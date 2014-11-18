@@ -22,7 +22,7 @@
         <input type="text" placeholder="Nom de l'éditeur" />
     </div>
     <div class="row">
-        <input type="radio" name="catalogue" value="addPublicProg" id="addPublicProg" selected><label for="addPublicProg">Public</label>
+        <input type="radio" name="catalogue" value="addPublicProg" id="addPublicProg" checked><label for="addPublicProg">Public</label>
         <input type="radio" name="catalogue" value="addPrivateProg" id="addPrivateProg"><label for="addPrivateProg">Privé</label>
     </div>
 </div>

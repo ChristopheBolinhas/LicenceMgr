@@ -7,8 +7,7 @@
     
     {{ HTML::style('css/foundation.css') }}
     {{ HTML::style('js/jstree/themes/default/style.min.css') }}
-    {{ HTML::style('foundation-icons/foundation-icons.css') }}
-    
+    {{ HTML::style('foundation-icons/foundation-icons.css') }}    
     
     {{ HTML::script('js/vendor/modernizr.js') }}
     {{ HTML::script('js/vendor/jquery.js') }}
@@ -21,7 +20,7 @@
     {{ HTML::script('js/editor.js') }}
     {{ HTML::script('js/user.js') }}
     {{ HTML::script('js/program.js') }}
-        
+
 	</head>
 	<body>
         

@@ -2,6 +2,7 @@
 
 class Program extends Eloquent {
     public $timestamps = false;
+    const NAME = "program";
 
     public function Parent() {
         return $this->belongsTo('Program', 'parent_id');

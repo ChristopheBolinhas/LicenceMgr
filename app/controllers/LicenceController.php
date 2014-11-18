@@ -6,11 +6,16 @@ class LicenceController extends BaseController {
     public function anyList($idParent) {
         // TODO security
         $values = explode("-", $idParent);        
-        if ($values[0] !== "program") {
+        if ($values[0] !== Program::NAME) {
             App::abort(404);
         }
-        $licences = Program::find($values[1])->licences;
-        
+        //$licences = Program::find($values[1])->licences;
+        $licences = Licence::
+              where("program_id", "=", $values[1])
+            //->where("commpany_id", "=", 1)
+            ->orderBy("name")
+            ->get()
+        ;   
         return View::make("licence/list")->with('licences',$licences);
     }
     public function getKey($id) {
@@ -28,11 +33,16 @@ class LicenceController extends BaseController {
             ->with("title", "Ajouter une licence")
             ->with("action", "Ajouter")
             ->with("idParent", $idParent)
+            ->with("cmd", "cmdAddLicence")
            ;
     }
     public function postAdd() {
         $ob = new Licence();
-        $ob->program_id = Program::findOrFail(explode("-", Input::get('idParent'))[0]) ->id;
+        $values = explode("-", Input::get('idParent'));
+        if ($values[0] !== Program::NAME) {
+            App::abort(404);
+        }
+        $ob->program_id = Program::findOrFail($values[1])->id;
         // TODO chang ecompany id
         $ob->company_id = 1;
         // TODO user id
@@ -47,6 +57,7 @@ class LicenceController extends BaseController {
             ->with("title", "Modifier une licence")
             ->with("action", "Modifier")
             ->with("idParent", "")
+            ->with("cmd", "cmdEditLicence")
            ;
     }
     public function postEdit() {
