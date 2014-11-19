@@ -13,6 +13,7 @@
     {{ HTML::script('js/vendor/jquery.js') }}
     {{ HTML::script('js/vendor/fastclick.js') }}
     {{ HTML::script('js/foundation.min.js') }}
+    {{ HTML::script('js/lang.js') }}
       
     @if(Auth::check())
         {{ HTML::script('js/jstree/jstree.min.js') }}

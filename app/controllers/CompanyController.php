@@ -35,4 +35,5 @@ class CompanyController extends BaseController {
         $ob->name = Input::get('name');
         $ob->save();
     }
+
 }

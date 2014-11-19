@@ -30,11 +30,32 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->belongsToMany('Role');
     }
 
+    public function company() {
+        return $this->belongsTo('Company');
+    }
+    
+    public function companyName(){
+        return Company::find($this->company_id)->name;
+    }
+    
     /**
      * Check if user is in role
      * @param $roleCode Constant in Role model
      * @return bool
-     */
+     */    
+    public function hasRole($roleCode)
+    {
+        return in_array($check, array_fetch($this->roles->toArray(), 'name'));
+    }
+    
+    
+    
+    
+    public function makeRole($role){
+        $role_id = Role::where('code', '=', $role)->firstOrFail();
+        $this->roles()->attach($role_id);
+    }
+
     public function IsInRole($roleCode) {
         return $this->belongsToMany('Role')->where("code", "=", $roleCode)->count() > 0;
     }
@@ -52,5 +73,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     }
     public function IsReadOrWrite() {
         return $this->IsRead() || $this->IsWrite();
+
     }
 }
