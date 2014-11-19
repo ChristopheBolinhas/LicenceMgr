@@ -18,10 +18,14 @@
         {{ HTML::script('js/jstree/jstree.min.js') }}
         {{ HTML::script('js/global.js') }}
         {{ HTML::script('js/tree.js') }}
-        {{ HTML::script('js/licence.js') }}
-        {{ HTML::script('js/editor.js') }}
-        {{ HTML::script('js/program.js') }}
-        {{ HTML::script('js/superadmin.js') }}
+        @if (Auth::user()->isReadOrWrite())
+            {{ HTML::script('js/licence.js') }}
+            {{ HTML::script('js/editor.js') }}
+            {{ HTML::script('js/program.js') }}
+        @endif
+        @if (Auth::user()->isSuperAdmin())
+            {{ HTML::script('js/superadmin.js') }}
+        @endif
     @endif
             
     {{ HTML::script('js/user.js') }}
@@ -124,6 +128,9 @@
 
   </div>
         @else
+        <script>
+            function tabCallback() {}
+        </script>
         @include("user.login")
         @endif
   <!-- End main panel -->
