@@ -36,6 +36,21 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * @return bool
      */
     public function IsInRole($roleCode) {
-        // TODO
+        return $this->belongsToMany('Role')->where("code", "=", $roleCode)->count() > 0;
+    }
+    public function IsSuperAdmin() {
+        return $this->IsInRole(Role::ROLE_SUPERADMIN);
+    }
+    public function IsAdmin() {
+        return $this->IsInRole(Role::ROLE_ADMIN);
+    }
+    public function IsWrite() {
+        return $this->IsInRole(Role::ROLE_WRITE);
+    }
+    public function IsRead() {
+        return $this->IsInRole(Role::ROLE_READ);
+    }
+    public function IsReadOrWrite() {
+        return $this->IsRead() || $this->IsWrite();
     }
 }
