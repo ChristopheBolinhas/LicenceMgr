@@ -20,6 +20,7 @@
 
     Route::controller("program", "ProgramController");
     Route::controller("editor", "EditorController");
+    Route::controller("sheet", "SheetController");
     Route::controller("licence", "LicenceController");
     Route::controller("company", "CompanyController");
     Route::controller("lang", "LangController");

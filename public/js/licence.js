@@ -65,6 +65,7 @@ $(function() {
     $("#licences").on("click", ".downloadLicence", function() {
         // TODO dowmload file
         var fileId = $(this).attr("data-id");
+        getFile(fileId);
      });
     $("#addLicence").click(function() {
         var parentId = getParentId();
