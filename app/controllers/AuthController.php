@@ -31,11 +31,17 @@ class AuthController extends BaseController {
             $user = new User;
             $user->company_id = 1;
             $user->fullname = "lala";
-            $user->username = "juust";
+            $user->username = "roleuser";
             $user->password = $password;
             $user->email = "lala@dsa.com";
-        $user->remember_token = false;
+            $user->remember_token = false;
+            
             $user->save();
+            $user->makeRole(Role::ROLE_SUPERADMIN);
+            $user->makeRole(Role::ROLE_ADMIN);
+            $user->makeRole(Role::ROLE_WRITE);
+            $user->makeRole(Role::ROLE_READ);
+        
     }
     public function getLogout()
     {

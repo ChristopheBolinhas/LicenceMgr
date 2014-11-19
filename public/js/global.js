@@ -2,7 +2,7 @@ function dataFromForm(form) {
     var data = {};    
     form.find("input").each(function() {
         console.log("this = ", this);
-        if(!(this.type == 'radio' && !this.checked)) {
+        if(!(this.type == 'radio' && !this.checked) && !(this.type=='checkbox' && !this.checked)) {
             console.log("added this = ", this);
             data[this.name] = $(this).val();
         }

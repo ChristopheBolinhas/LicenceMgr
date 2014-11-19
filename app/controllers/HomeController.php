@@ -46,11 +46,6 @@ class HomeController extends BaseController {
     
     public function showUI() {   
         $this->setLang();
-        if (Session::has('lang'))
-        {
-            App::setLocale(Session::get('lang'));
-        }
-        //App::setLocale('en');
         return View::make('mainTemplate');
     }
 
@@ -60,22 +55,12 @@ class HomeController extends BaseController {
 	}
     
     public function uiSuperAdmin() {
-        //setLang();
-        if (Session::has('lang'))
-        {
-            App::setLocale(Session::get('lang'));
-        }
-        //App::setLocale('en');
+        $this->setLang();
         return View::make("tabs/superAdmin")->with("companies", Company::all());
     }
     
     public function uiAdmin() {
-        //setLang();
-        if (Session::has('lang'))
-        {
-            App::setLocale(Session::get('lang'));
-        }
-         //App::setLocale('en');
+        $this->setLang();
         return View::make("tabs/admin")->with("users",User::all());
     }
 
