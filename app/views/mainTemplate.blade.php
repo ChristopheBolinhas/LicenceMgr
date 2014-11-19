@@ -1,29 +1,34 @@
 <!doctype html>
 <html class="js" lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>User interface</title>
-
-        {{ HTML::style('css/foundation.css') }}
-        {{ HTML::style('js/jstree/themes/default/style.min.css') }}
-        {{ HTML::style('foundation-icons/foundation-icons.css') }}    
-
-        {{ HTML::script('js/vendor/modernizr.js') }}
-        {{ HTML::script('js/vendor/jquery.js') }}
-        {{ HTML::script('js/vendor/fastclick.js') }}
-        {{ HTML::script('js/foundation.min.js') }}
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>User interface</title>
+    
+    {{ HTML::style('css/foundation.css') }}
+    {{ HTML::style('js/jstree/themes/default/style.min.css') }}
+    {{ HTML::style('foundation-icons/foundation-icons.css') }}    
+    
+    {{ HTML::script('js/vendor/modernizr.js') }}
+    {{ HTML::script('js/vendor/jquery.js') }}
+    {{ HTML::script('js/vendor/fastclick.js') }}
+    {{ HTML::script('js/foundation.min.js') }}
+      
+    @if(Auth::check())
         {{ HTML::script('js/jstree/jstree.min.js') }}
         {{ HTML::script('js/global.js') }}
         {{ HTML::script('js/tree.js') }}
-        {{ HTML::script('js/licence.js') }}
-        {{ HTML::script('js/editor.js') }}
-        {{ HTML::script('js/user.js') }}
-        {{ HTML::script('js/program.js') }}
-        {{ HTML::script('js/superadmin.js') }}
-        {{ HTML::script('js/lang.js') }}
-        
-
+        @if (Auth::user()->isReadOrWrite())
+            {{ HTML::script('js/licence.js') }}
+            {{ HTML::script('js/editor.js') }}
+            {{ HTML::script('js/program.js') }}
+        @endif
+        @if (Auth::user()->isSuperAdmin())
+            {{ HTML::script('js/superadmin.js') }}
+        @endif
+    @endif
+            
+    {{ HTML::script('js/user.js') }}
     </head>
     <body>
         <div id="mainModal" class="reveal-modal small" data-reveal></div>
@@ -120,6 +125,9 @@
 
         </div>
         @else
+        <script>
+            function tabCallback() {}
+        </script>
         @include("user.login")
         @endif
         <!-- End main panel -->

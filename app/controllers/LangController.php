@@ -18,17 +18,21 @@ class LangController extends BaseController {
                      case 'fr':
                          Session::put('lang', 'fr');
                          //App::setLocale('fr');
+                          App::setLocale('fr');
                          break;
                      case 'de':
                          Session::put('lang', 'de');
+                          App::setLocale('de');
                          //App::setLocale('de');
                          break;
                      case 'en':
                          Session::put('lang', 'en');
+                          App::setLocale('en');
                          //App::setLocale('en');
                          break;
                      default:
                          Session::put('lang', 'fr');
+                          App::setLocale('fr');
                          //App::setLocale('fr');
                  }    
              }

@@ -40,32 +40,31 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return in_array($check, array_fetch($this->roles->toArray(), 'name'));
     }
     
-     /**
-     * Get key in array with corresponding value
-     *
-     * @return int
-     */
-    private function getIdInArray($array, $term)
-    {
-        foreach ($array as $key => $value) {
-            if ($value == $term) {
-                return $key;
-            }
-        }
- 
-        throw new UnexpectedValueException;
-    }
- 
     
-     public function addRole($role) {
-        $rolesList = array_fetch(Role::all()->toArray(), 'name');
-        $assigned_role = $this->getIdInArray($rolesList, $role);
-        $this->roles()->attach($assigned_role);
+    
+    
+    public function makeRole($role){
+        $role_id = Role::where('code', '=', $role)->firstOrFail();
+        $this->roles()->attach($role_id);
     }
-    public function removeRole($role){
-        $rolesList = array_fetch(Role::all()->toArray(),'name');
-        $removed_role = $this->getIdInArray($rolesList, $role);
-        
-        
+
+    public function IsInRole($roleCode) {
+        return $this->belongsToMany('Role')->where("code", "=", $roleCode)->count() > 0;
+    }
+    public function IsSuperAdmin() {
+        return $this->IsInRole(Role::ROLE_SUPERADMIN);
+    }
+    public function IsAdmin() {
+        return $this->IsInRole(Role::ROLE_ADMIN);
+    }
+    public function IsWrite() {
+        return $this->IsInRole(Role::ROLE_WRITE);
+    }
+    public function IsRead() {
+        return $this->IsInRole(Role::ROLE_READ);
+    }
+    public function IsReadOrWrite() {
+        return $this->IsRead() || $this->IsWrite();
+
     }
 }
