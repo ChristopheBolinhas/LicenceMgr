@@ -149,7 +149,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `LicMgr`.`user_roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `LicMgr`.`user_roles` (
+CREATE TABLE IF NOT EXISTS `LicMgr`.`role_user` (
   `user_id` BIGINT(20) UNSIGNED NOT NULL,
   `role_id` BIGINT(20) UNSIGNED NOT NULL,
   PRIMARY KEY (`user_id`, `role_id`),

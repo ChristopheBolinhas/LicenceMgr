@@ -45,7 +45,7 @@ ALTER TABLE licences CHANGE update_at updated_at datetime;
 
 RENAME TABLE user_roles TO user_role;
 
-INSERT INTO role_user VALUES
+INSERT INTO user_role VALUES
     (1, 1),
     (1, 2),
     (1, 3),

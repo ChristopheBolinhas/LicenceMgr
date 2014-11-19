@@ -76,7 +76,7 @@ class HomeController extends BaseController {
             App::setLocale(Session::get('lang'));
         }
          //App::setLocale('en');
-        return View::make("tabs/admin");
+        return View::make("tabs/admin")->with("users",User::all());
     }
 
 }

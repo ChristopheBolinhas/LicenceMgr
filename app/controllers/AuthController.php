@@ -56,15 +56,13 @@ class AuthController extends BaseController {
         
         if(!empty($fullname) && !empty($username) && !empty($email))
         {
-            //Recup company id
-            $companyId = Input::get('selectCompanies');
-
+            $companyId = Input::get('companies');
             $user = new User;
             $user->fullname = $fullname;
             $user->username = $username;
             $user->email = $email;
             $user->password = Hash::make(Input::get('password'));
-            $user->company_id = 1;
+            $user->company_id = $companyId;
             $user->remember_token = false;
             $user->save();                             
             $checkbox = array(Input::get('readOnly'),Input::get('keyMaster'),Input::get('other'));
@@ -73,5 +71,10 @@ class AuthController extends BaseController {
         {
             App::abort(400);    
         }
+    }
+    
+    public function getEdit($id)
+    {
+         return View::make('user/register')->with('user',User::findOrFail($id))->with("companies", Company::all())->with("roles", Role::all());
     }
 }

@@ -41,7 +41,7 @@ $(function() {
                 var dest = $("#error");
                 if(dest.html().indexOf("Oublie d'informations de création") <= -1)
                 {
-                    dest.append('<small class="error">Oublie d\'informations de création</small>');    
+                    dest.append("<small class='error'>@lang('messages.errorEmptyForm')</small>");    
                 }
             });
         }
@@ -54,5 +54,8 @@ $(function() {
             }
         }
     });
-
+/*
+     $("#mainModal").on("click", ".cmdAddUser", function() {
+     });
+  */  
 });
