@@ -4,10 +4,12 @@
     <div id="error" />
     <div class="row">	
         <label>@lang('messages.enterpriseLabel')</label>
-        <select>
-            <option value="fr">HE-ARC</option>
-            <option value="fr">Jules corp.</option>
-            <option value="en">Le squatt à caillou</option>
+        <select name="selectCompanies">
+        @if(isset($companies))
+            @foreach ($companies as $company)
+            <option value="{{$company->id}}">{{$company->name}}</option>
+            @endforeach
+        @endif
         </select>
     </div>
     <div class="row">	
@@ -24,15 +26,19 @@
     </div>
     <div class="row">
         <label>@lang('messages.passwordLabel')</label>
-        <input type="password" name="password" id="pass1" placeholder="@lang('messages.passwordPlaceholder')"/>
+        <input type="password" name="password" id="passwordBase" placeholder="@lang('messages.passwordPlaceholder')"/>
         <label>@lang('messages.passwordConfirmLabel')</label>
-        <input type="password" name="passwordConfirm" id="pass2" placeholder="@lang('messages.passwordPlaceholder')"/>
+        <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="@lang('messages.passwordPlaceholder')"/>
     </div>
     <div class="row">
-        <label>@lang('messages.droitsLabel')</label>
-        <input id="checkbox1" type="checkbox"><label for="checkbox1">@lang('messages.droitsLabel1')</label><br/>
-        <input id="checkbox2" type="checkbox"><label for="checkbox2">@lang('messages.droitsLabel2')</label><br/>
-        <input id="checkbox3" type="checkbox"><label for="checkbox3">@lang('messages.droitsLabel3')</label>
+        <label>@lang('messages.rightsLabel')</label>
+        @foreach ($roles as $role)
+            <input id="{{$role->id}}" type="checkbox"><label for="{{$role->id}}"><?php echo Lang::get("role.$role->id") ?></label><br/>
+        @endforeach
+    </div>
+    <div class="row">
+        <label>@lang('messages.activeLabel')</label>
+        <input id="checkbox1" type="checkbox"><label for="checkbox1">@lang('messages.activeBoxLabel')</label><br/>
     </div>
 </div>
 
