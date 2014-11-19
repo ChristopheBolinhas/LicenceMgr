@@ -60,21 +60,23 @@ class HomeController extends BaseController {
 	}
     
     public function uiSuperAdmin() {
+         $this->setLang();
         //setLang();
-        if (Session::has('lang'))
+        /*if (Session::has('lang'))
         {
             App::setLocale(Session::get('lang'));
-        }
+        }*/
         //App::setLocale('en');
         return View::make("tabs/superAdmin")->with("companies", Company::all());
     }
     
     public function uiAdmin() {
+         $this->setLang();
         //setLang();
-        if (Session::has('lang'))
+        /*if (Session::has('lang'))
         {
             App::setLocale(Session::get('lang'));
-        }
+        }*/
          //App::setLocale('en');
         return View::make("tabs/admin");
     }

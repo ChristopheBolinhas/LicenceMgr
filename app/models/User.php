@@ -34,8 +34,38 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * Check if user is in role
      * @param $roleCode Constant in Role model
      * @return bool
+     */    
+    public function hasRole($roleCode)
+    {
+        return in_array($check, array_fetch($this->roles->toArray(), 'name'));
+    }
+    
+     /**
+     * Get key in array with corresponding value
+     *
+     * @return int
      */
-    public function IsInRole($roleCode) {
-        // TODO
+    private function getIdInArray($array, $term)
+    {
+        foreach ($array as $key => $value) {
+            if ($value == $term) {
+                return $key;
+            }
+        }
+ 
+        throw new UnexpectedValueException;
+    }
+ 
+    
+     public function addRole($role) {
+        $rolesList = array_fetch(Role::all()->toArray(), 'name');
+        $assigned_role = $this->getIdInArray($rolesList, $role);
+        $this->roles()->attach($assigned_role);
+    }
+    public function removeRole($role){
+        $rolesList = array_fetch(Role::all()->toArray(),'name');
+        $removed_role = $this->getIdInArray($rolesList, $role);
+        
+        
     }
 }
