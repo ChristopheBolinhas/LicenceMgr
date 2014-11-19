@@ -2,7 +2,7 @@
    
     {{ Form::open(array('url' => 'auth/login', 'method' => 'post', 'class' => 'form-horizontal panel')) }}  
     <h2>Authentification</h2>
-     @if(Session::has('error'))
+ @if(Session::has('error'))
     <div data-alert class="alert-box alert" id="error-alert">
         {{ Session::get('error') }}
     </div>

@@ -31,7 +31,7 @@ class AuthController extends BaseController {
             $user = new User;
             $user->company_id = 1;
             $user->fullname = "lala";
-            $user->username = "peter";
+            $user->username = "juust";
             $user->password = $password;
             $user->email = "lala@dsa.com";
         $user->remember_token = false;
@@ -44,9 +44,20 @@ class AuthController extends BaseController {
     }
     
     public function getAdd()
+    {       
+        return View::make('user/register');
+    }
+    
+    public function postAdd()
     {
-        //$editor = Editor::all(); 
-           
-        return View::make('user/register');//->with('editorList_public',$editor); 
+        $user = new User;
+        $user->fullname = Input::get('fullname');
+        $user->username = Input::get('login');
+        $user->email = Input::get('email');
+        $user->password = Hash::make(Input::get('password'));
+        $user->company_id = 1;
+        $user->remember_token = false;
+        $user->save();                             
+        $checkbox = array(Input::get('readOnly'),Input::get('keyMaster'),Input::get('other'));
     }
 }

@@ -30,8 +30,8 @@ class LicenceController extends BaseController {
     public function getAdd($idParent) {
         return View::make("licence/edit")
             ->with("licence", new Licence)
-            ->with("title", "Ajouter une licence")
-            ->with("action", "Ajouter")
+            ->with("title", Lang::get('messages.addLicenceModalTitle'))
+            ->with("action", Lang::get('messages.addButton'))
             ->with("idParent", $idParent)
             ->with("cmd", "cmdAddLicence")
            ;
@@ -46,7 +46,7 @@ class LicenceController extends BaseController {
         // TODO chang ecompany id
         $ob->company_id = 1;
         // TODO user id
-        $ob->creation_user_id = 0;
+        $ob->created_user_id = 0;
         $this->fill($ob);
     }
     public function getEdit($id) {
@@ -54,8 +54,8 @@ class LicenceController extends BaseController {
 
         return View::make("licence/edit")
             ->with("licence", $licence)
-            ->with("title", "Modifier une licence")
-            ->with("action", "Modifier")
+            ->with("title", Lang::get('messages.modifyLicenceModalTitle'))
+            ->with("action", Lang::get('messages.editButton'))
             ->with("idParent", "")
             ->with("cmd", "cmdEditLicence")
            ;
@@ -68,7 +68,7 @@ class LicenceController extends BaseController {
         $ob->name = Input::get('name');
         $ob->value = Input::get('value');
         // TODO user id
-        $ob->last_update_user_id = 0;
+        $ob->updated_user_id = 0;
         $ob->save();
     }
 }

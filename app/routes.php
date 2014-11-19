@@ -22,6 +22,7 @@
     Route::controller("editor", "EditorController");
     Route::controller("licence", "LicenceController");
     Route::controller("company", "CompanyController");
+    Route::controller("lang", "LangController");
 
     Route::controller('auth', 'AuthController');
 
