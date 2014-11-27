@@ -14,31 +14,55 @@
             .saveLoading {
                 background:url('/js/jstree/themes/default/throbber.gif') no-repeat right center;
             }
+            .editable div.columns {
+                padding:0px;
+            }
+            .editable input {
+                margin:0px;
+            }
         </style>
         <script>
-            $(document).on("click", ".editable", function() {
-                console.log("this", this);
-                var input = $(this);
+            function reset(source, value) {
+                console.log
+                $(source).closest(".editable").html('<div class="value columns small-11">' + value + '</div><div class="columns small-1"><a href="#" class="button postfix right edit"><i class="fi-page-edit size-64"></i></a></div>');
+            }
+            $(document).on("click", ".editable a.save", function() { 
+                console.log("save");
+                var edit = $(this).closest(".editable");
+                var input = edit.find("input");
                 input.addClass("saveLoading");
-                input.parent().find("small.error").remove();
+                edit.find("small.error").remove();
+                console.log("this", this);
+                console.log("input", input);
+                console.log("edit", edit);
+                var value = input.val();
                 $.ajax({
-                    url : input.attr("data-url"),
+                    url : '/licence/list/program-1/'+edit.attr("data-url"),
                     data: { 
-                        key: input.attr("name"),
-                        value: input.val()
+                        key: edit.attr("data-name"),
+                        value: value
                     },
-                    dataType : 'json',
                     type: 'POST',
                     success : function(data, statut){
-                        input.removeClass("saveLoading");
+                        reset(input, value);
                     },
                     error: function(data) {
-                        console.log("start append")
                         input.removeClass("saveLoading");
-                        input.parent().append('<small class="error">Erreur lors de la modification</small>'); 
-                        console.log("end append")
+                        input.addClass("error");
+                        input.parent().append('<small class="error">Erreur lors de la modification</small>');
                     }
                 });
+            });
+            $(document).on("click", ".editable a.cancel", function() { 
+                console.log("cancel");
+                var value = $(this).closest(".editable").find("input").attr("data-original");
+		        reset(this, value);
+            });
+            $(document).on("click", ".editable a.edit", function() {
+                var val = $(this).closest(".editable").find(".value").text().trim();
+                console.log("val", val);
+                $(this).closest(".editable").html('<div class="columns small-10"><input data-original="' + val + '" type="text" value="' + val + '"></div><div class="columns small-1"><a href="#" class="button postfix save"><i class="fi-save medium"></i></a></div><div class="columns small-1"><a href="#" class="button postfix cancel"><i class="fi-x medium"></i></a></div>');
+                
             });
         </script>
     </head>

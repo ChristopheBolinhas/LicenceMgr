@@ -53,7 +53,9 @@ class HomeController extends BaseController {
 	public function showWelcome() {
 
 	}
-    
+    public function test() {
+        return View::make("test");
+    }
     public function uiSuperAdmin() {
         $this->setLang();
         return View::make("tabs/superAdmin")->with("companies", Company::all());
