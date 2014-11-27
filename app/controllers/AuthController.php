@@ -43,6 +43,12 @@ class AuthController extends BaseController {
             $user->makeRole(Role::ROLE_READ);
         
     }
+    public function getPasswordhash($pw)
+        {
+        $password = Hash::make($pw);
+        return Response::json($password);
+        
+    }
     public function getLogout()
     {
         Auth::logout();
