@@ -19,15 +19,15 @@
         {{ HTML::script('js/jstree/jstree.min.js') }}
         {{ HTML::script('js/global.js') }}
         {{ HTML::script('js/tree.js') }}
-        @if (Auth::user()->isReadOrWrite())
+        {{--@if (Auth::user()->isReadOrWrite())--}}
             {{ HTML::script('js/licence.js') }}
             {{ HTML::script('js/sheet.js') }}
             {{ HTML::script('js/editor.js') }}
             {{ HTML::script('js/program.js') }}
-        @endif
-        @if (Auth::user()->isSuperAdmin())
+        {{--@endif
+        @if (Auth::user()->isSuperAdmin())--}}
             {{ HTML::script('js/superadmin.js') }}
-        @endif
+        {{--@endif--}}
     @endif
             
     {{ HTML::script('js/user.js') }}
