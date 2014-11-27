@@ -1,0 +1,9 @@
+.saveLoading {
+    background:url('/js/jstree/themes/default/throbber.gif') no-repeat right center;
+}
+.editable div.columns {
+    padding:0px;
+}
+.editable input {
+    margin:0px;
+}

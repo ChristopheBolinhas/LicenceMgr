@@ -6,6 +6,7 @@
 		<title>User interface</title>
     
     {{ HTML::style('css/foundation.css') }}
+    {{ HTML::style('css/app.css') }}
     {{ HTML::style('js/jstree/themes/default/style.min.css') }}
     {{ HTML::style('foundation-icons/foundation-icons.css') }}    
     
