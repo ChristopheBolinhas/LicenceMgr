@@ -9,12 +9,12 @@
     <tbody>
         @foreach($sheets as $sheet)
         <tr data-id="{{{ $sheet->id }}}">
-            <td>{{{ $sheet->name }}}</td>
+            <td>{{startEditable("name", "/sheet/edit/".$sheet->id)}}{{{ $sheet->name }}}{{endEditable()}}</td>
             <td>
-                <a href="#" class="button split tiny text-center"><div style="display:inline" class="getSheet">@lang('messages.showKeyButton')</div> <span data-dropdown="drop-sheet-{{{ $sheet->id }}}"></span></a>
+                <a href="#" class="button split tiny text-center"><div style="display:inline" class="getSheet">@lang('messages.showSheetButton')</div> <span data-dropdown="drop-sheet-{{{ $sheet->id }}}"></span></a>
                 <ul id="drop-sheet-{{{ $sheet->id }}}" class="f-dropdown" data-dropdown-content>
-                    <li><a class="editSheet" href="#">@lang('messages.editSubButton')</a></li>
-                    <li><a class="deleteSheet" href="#">@lang('messages.removeSubButton')</a></li>
+                       <!-- JL : Je sais c'est mal, mais le fonctionnement classique (modal.on('click', '.class', fct)) ne marche pas, j'y ai passé une bonne heure, regardé avec christophe, et je n'ai pas trouvé la source du problème. donc je retourne au sources -->
+                    <li><a onclick="deleteSheet(this)" href="#">@lang('messages.removeSubButton')</a></li>
                 </ul>
             </td>
         </tr>

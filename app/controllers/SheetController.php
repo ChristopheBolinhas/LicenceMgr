@@ -8,4 +8,10 @@ class SheetController extends BaseController {
     public function getGet($id) {
         return Response::download("/home/action/workspace/LicenceMgr/public/img/editor.png");
     }
+    public function postEdit($id) {
+        return Response::json(true);
+    }
+    public function deleteDelete($id) {
+        Sheet::destroy($id);
+    }
 }

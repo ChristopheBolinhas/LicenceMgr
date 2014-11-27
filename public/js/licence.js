@@ -52,15 +52,7 @@ $(function() {
      });
     $("#licences").on("click", ".deleteLicence", function() {
         var tr = getTr(this);
-        var id = getId(tr);        
-        $.ajax({
-            url : '/licence/delete/' + id,
-            type : 'DELETE',
-            success : function(data, statut){
-                tr.hide("bind");
-                tr.remove();
-            }
-        });
+        deleteItem(tr, '/licence/delete/');
      });
     $("#licences").on("click", ".downloadLicence", function() {
         // TODO dowmload file
@@ -83,15 +75,5 @@ $(function() {
     });
     modal.on("click", ".cmdAddLicence", function() {
         saveForm($(this).closest('.reveal-modal'), '/licence/add', reloadLicence);
-    });
-    modal.on("click", ".cmdDeleteFile", function() {
-         $.ajax({
-            url : '/licence/delete/' + id,
-            type : 'DELETE',
-            success : function(data, statut){
-                tr.hide("bind");
-                tr.remove();
-            }
-        });
     });
 });
