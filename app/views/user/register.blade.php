@@ -1,7 +1,7 @@
 <h2>@lang('messages.userModalTitle')</h2>   
 
 <div class="panel" id="addUserDiv">
-    <div id="error" />
+    <div id="errorRegister"/>
     <div class="row">	
         <label>@lang('messages.enterpriseLabel')</label>
         <select name="companies">
@@ -37,14 +37,14 @@
             @if(isset($user))
             <input id="{{$role->id}}" type="checkbox" {{$user->IsInRole($role->code) ? 'checked':''}}><label for="{{$role->id}}"><?php echo Lang::get("role.$role->id") ?></label><br/>
             @else
-            <input id="{{$role->id}}" type="checkbox"><label for="{{$role->id}}"><?php echo Lang::get("role.$role->id") ?></label><br/>
+            <input id="{{$role->id}}" name="role{{$role->id}}" type="checkbox"><label for="{{$role->id}}"><?php echo Lang::get("role.$role->id") ?></label><br/>
             @endif
         @endforeach
         @endif
     </div>
     <div class="row">
         <label>@lang('messages.activeLabel')</label>
-        <input id="checkbox1" type="checkbox"><label for="checkbox1">@lang('messages.activeBoxLabel')</label><br/>
+        <input id="active" name="isActive" type="checkbox"><label for="checkbox1">@lang('messages.activeBoxLabel')</label><br/>
     </div>
 </div>
 

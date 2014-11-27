@@ -25,6 +25,7 @@ class AuthController extends BaseController {
             return Redirect::to('/')->with('error', 'Les informations d\'identification ne sont pas corrects !')->withInput();    
         }
     }
+    
     public function getOnetimeuser()
         {
         $password = Hash::make('1234');
@@ -60,8 +61,10 @@ class AuthController extends BaseController {
         $username = Input::get('login');
         $email = Input::get('email');
         
+        
         if(!empty($fullname) && !empty($username) && !empty($email))
         {
+            
             $companyId = Input::get('companies');
             $user = new User;
             $user->fullname = $fullname;
@@ -71,7 +74,17 @@ class AuthController extends BaseController {
             $user->company_id = $companyId;
             $user->remember_token = false;
             $user->save();                             
-            $checkbox = array(Input::get('readOnly'),Input::get('keyMaster'),Input::get('other'));
+         
+            foreach (Role::all as &$role) {
+                if(Input::get('role'.$role->id)) {
+                    $user->makeRole($role->code);
+                }
+            }
+            
+            /*
+            if(Input::get("isActive"))
+                $user->active(true);
+            */
         }
         else
         {
