@@ -13,6 +13,7 @@
     {{ HTML::script('js/vendor/jquery.js') }}
     {{ HTML::script('js/vendor/fastclick.js') }}
     {{ HTML::script('js/foundation.min.js') }}
+    {{ HTML::script('js/lang.js') }}
       
     @if(Auth::check())
         {{ HTML::script('js/jstree/jstree.min.js') }}
@@ -20,6 +21,7 @@
         {{ HTML::script('js/tree.js') }}
         @if (Auth::user()->isReadOrWrite())
             {{ HTML::script('js/licence.js') }}
+            {{ HTML::script('js/sheet.js') }}
             {{ HTML::script('js/editor.js') }}
             {{ HTML::script('js/program.js') }}
         @endif

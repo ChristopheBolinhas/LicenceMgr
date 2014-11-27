@@ -17,7 +17,7 @@
                 <ul id="drop-lic-{{{ $licence->id }}}" class="f-dropdown" data-dropdown-content>
                     <li><a class="editLicence" href="#">@lang('messages.editSubButton')</a></li>
                     <li><a class="deleteLicence" href="#">@lang('messages.removeSubButton')</a></li>
-
+                    <li><a data-reveal-id="mainModal" data-reveal-ajax="/sheet/list/{{{ $licence->id }}}" href="#">@lang('messages.manageFiles')</a></li>
                     @foreach ($licence->sheets as $file)
                     <li><a class="downloadLicence" data-id="{{{ $file->id }}}" href="#">@lang('messages.downloadSubButton',array("name" => $file->name))</a></li>
                     @endforeach

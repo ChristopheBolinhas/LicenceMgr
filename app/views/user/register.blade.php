@@ -4,35 +4,47 @@
     <div id="error" />
     <div class="row">	
         <label>@lang('messages.enterpriseLabel')</label>
-        <select>
-            <option value="fr">HE-ARC</option>
-            <option value="fr">Jules corp.</option>
-            <option value="en">Le squatt à caillou</option>
+        <select name="companies">
+        @if(isset($companies))
+            @foreach ($companies as $company)
+            <option value="{{$company->id}}">{{$company->name}}</option>
+            @endforeach
+        @endif
         </select>
     </div>
     <div class="row">	
         <label>@lang('messages.nameLabel')</label>
-        <input type="text" name="fullname" placeholder="@lang('messages.namePlaceholder')" />
+        <input type="text" name="fullname" value="{{{isset($user) ? $user->fullname:''}}}" placeholder="@lang('messages.namePlaceholder')" />
     </div>
     <div class="row">	
         <label>@lang('messages.loginLabel')</label>
-        <input type="text" name="login" placeholder="@lang('messages.loginPlaceholder')" />
+        <input type="text" name="login" value="{{{isset($user) ? $user->username:''}}}" placeholder="@lang('messages.loginPlaceholder')" />
     </div>
     <div class="row">	
         <label>@lang('messages.emailLabel')</label>
-        <input type="email" name="email" placeholder="@lang('messages.emailPlaceholder')" />
+        <input type="email" name="email" value="{{{isset($user) ? $user->email:''}}}" placeholder="@lang('messages.emailPlaceholder')" />
     </div>
     <div class="row">
         <label>@lang('messages.passwordLabel')</label>
-        <input type="password" name="password" id="pass1" placeholder="@lang('messages.passwordPlaceholder')"/>
+        <input type="password" name="password" id="passwordBase" placeholder="@lang('messages.passwordPlaceholder')"/>
         <label>@lang('messages.passwordConfirmLabel')</label>
-        <input type="password" name="passwordConfirm" id="pass2" placeholder="@lang('messages.passwordPlaceholder')"/>
+        <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="@lang('messages.passwordPlaceholder')"/>
     </div>
     <div class="row">
-        <label>@lang('messages.droitsLabel')</label>
-        <input id="checkbox1" type="checkbox"><label for="checkbox1">@lang('messages.droitsLabel1')</label><br/>
-        <input id="checkbox2" type="checkbox"><label for="checkbox2">@lang('messages.droitsLabel2')</label><br/>
-        <input id="checkbox3" type="checkbox"><label for="checkbox3">@lang('messages.droitsLabel3')</label>
+        <label>@lang('messages.rightsLabel')</label>
+        @if(isset($roles))
+        @foreach ($roles as $role)
+            @if(isset($user))
+            <input id="{{$role->id}}" type="checkbox" {{$user->IsInRole($role->code) ? 'checked':''}}><label for="{{$role->id}}"><?php echo Lang::get("role.$role->id") ?></label><br/>
+            @else
+            <input id="{{$role->id}}" type="checkbox"><label for="{{$role->id}}"><?php echo Lang::get("role.$role->id") ?></label><br/>
+            @endif
+        @endforeach
+        @endif
+    </div>
+    <div class="row">
+        <label>@lang('messages.activeLabel')</label>
+        <input id="checkbox1" type="checkbox"><label for="checkbox1">@lang('messages.activeBoxLabel')</label><br/>
     </div>
 </div>
 

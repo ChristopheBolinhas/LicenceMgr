@@ -30,6 +30,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->belongsToMany('Role');
     }
 
+    public function company() {
+        return $this->belongsTo('Company');
+    }
+    
+    public function companyName(){
+        return Company::find($this->company_id)->name;
+    }
+    
     /**
      * Check if user is in role
      * @param $roleCode Constant in Role model

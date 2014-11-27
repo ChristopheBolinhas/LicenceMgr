@@ -45,7 +45,7 @@ class HomeController extends BaseController {
     }
     
     public function showUI() {   
-        //$this->setLang();
+        $this->setLang();
         return View::make('mainTemplate');
     }
 
@@ -55,13 +55,13 @@ class HomeController extends BaseController {
 	}
     
     public function uiSuperAdmin() {
-        // $this->setLang();
+        $this->setLang();
         return View::make("tabs/superAdmin")->with("companies", Company::all());
     }
     
     public function uiAdmin() {
-        // $this->setLang();
-        return View::make("tabs/admin");
+        $this->setLang();
+        return View::make("tabs/admin")->with("users",User::all());
     }
 
 }

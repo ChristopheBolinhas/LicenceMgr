@@ -5,7 +5,6 @@ function dataFromForm(form) {
         if(!(this.type == 'radio' && !this.checked) && !(this.type=='checkbox' && !this.checked)) {
             console.log("added this = ", this);
             data[this.name] = $(this).val();
-            
         }
         //data[this.name] = $(this).val();
     });
