@@ -39,11 +39,16 @@ $(function() {
         {
             saveForm($("#addUserDiv"), '/auth/add',null, error("errorEmptyForm"));
         }
-        else
-        {
-            error("errorNotSamePassword");
-        }
     });
+    
+    $('#myTestFOrm')
+  .on('invalid.fndtn.abide', function () {
+    var invalid_fields = $(this).find('[data-invalid]');
+    console.log(invalid_fields);
+  })
+  .on('valid.fndtn.abide', function () {
+    console.log('valid!');
+  });
     
     function error(message)
     {

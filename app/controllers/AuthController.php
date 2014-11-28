@@ -44,6 +44,7 @@ class AuthController extends BaseController {
             $user->makeRole(Role::ROLE_READ);
         
     }
+    
     public function getPasswordhash($pw)
         {
         $password = Hash::make($pw);
@@ -58,7 +59,7 @@ class AuthController extends BaseController {
     
     public function getAdd()
     {       
-        return View::make('user/register')->with("companies", Company::all())->with("roles", Role::all());
+        return View::make('user/register')->with("companies", Company::all())->with("roles", Role::all())->with("submitText", Lang::get('messages.newUserButton'));
     }
     
     public function postAdd()
@@ -100,6 +101,6 @@ class AuthController extends BaseController {
     
     public function getEdit($id)
     {
-         return View::make('user/register')->with('user',User::findOrFail($id))->with("companies", Company::all())->with("roles", Role::all());
+         return View::make('user/register')->with('user',User::findOrFail($id))->with("companies", Company::all())->with("roles", Role::all())->with("submitText", Lang::get('messages.editUserButton'));;
     }
 }

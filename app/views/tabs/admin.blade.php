@@ -27,8 +27,8 @@
                     <td>{{{$user->username}}}</td>
                     <td>{{{$user->fullname}}}</td>
                     <td>
-                    @foreach($user->roles() as $role)
-                        {{{$role->name}}}<br/>
+                    @foreach($user->roles as $role)
+                        <?php echo Lang::get("role.$role->id") ?><br/>
                     @endforeach
                     </td>
                     <td><input id="activated" type="checkbox" disabled checked></td>
