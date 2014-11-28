@@ -28,6 +28,7 @@
     Route::controller('auth', 'AuthController');
 
     Route::get('/ui','HomeController@showUI');
+    Route::get('/test','HomeController@test');
 
 /*
 Route::get('/', function()

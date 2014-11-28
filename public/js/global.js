@@ -43,6 +43,17 @@ function setErrorMsg(msg) {
         $('#error-alert').hide();
     }    
 }
+function deleteItem(tr, url) {
+    var id = getId(tr);        
+    $.ajax({
+        url : url + id,
+        type : 'DELETE',
+        success : function(data, statut){
+            tr.hide("bind");
+            tr.remove();
+        }
+    });
+}
 function tabCallback(tab) {
     var a = $(tab).find("a").first();
     if (!a.attr("data-loaded")) {
@@ -54,7 +65,45 @@ function tabCallback(tab) {
         console.log("load uri", a.attr("data-url"));
     }
 }
+function resetEditable(source, value) {
+    $(source).closest(".editable").html('<div class="value columns small-11">' + value + '</div><div class="columns small-1"><a href="#" class="button postfix right edit"><i class="fi-page-edit size-64"></i></a></div>');
+}
 $(function() {
+    $(document).on("click", ".editable a.save", function() { 
+        var edit = $(this).closest(".editable");
+        var input = edit.find("input");
+        input.addClass("saveLoading");
+        edit.find("small.error").remove();
+        console.log("this", this);
+        console.log("input", input);
+        console.log("edit", edit);
+        var value = input.val();
+        $.ajax({
+            url : edit.attr("data-url"),
+            data: { 
+                key: edit.attr("data-name"),
+                value: value
+            },
+            type: 'POST',
+            success : function(data, statut){
+                resetEditable(input, value);
+            },
+            error: function(data) {
+                input.removeClass("saveLoading");
+                input.addClass("error");
+                input.parent().append('<small class="error">Erreur lors de la modification</small>');
+            }
+        });
+    });
+    $(document).on("click", ".editable a.cancel", function() { 
+        var value = $(this).closest(".editable").find("input").attr("data-original");
+        resetEditable(this, value);
+    });
+    $(document).on("click", ".editable a.edit", function() {
+        var val = $(this).closest(".editable").find(".value").text().trim();
+        $(this).closest(".editable").html('<div class="columns small-10"><input data-original="' + val + '" type="text" value="' + val + '"></div><div class="columns small-1"><a href="#" class="button postfix save"><i class="fi-save medium"></i></a></div><div class="columns small-1"><a href="#" class="button postfix cancel"><i class="fi-x medium"></i></a></div>');
+
+    });
     $(document).on("click", ".cmdCloseModal", function() {
         $(this).closest(".reveal-modal").foundation('reveal', 'close');
     });

@@ -79,3 +79,11 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+
+function startEditable($name, $url) {
+    return '<div data-url="'.$url.'" data-name="'.$name.'" class="editable"><div class="value columns small-11">';
+}
+function endEditable() {
+    return '</div><div class="columns small-1"><a href="#" class="button postfix right edit"><i class="fi-page-edit size-64"></i></a></div></div>';    
+}
