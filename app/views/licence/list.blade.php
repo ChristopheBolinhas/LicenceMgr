@@ -12,7 +12,6 @@
             <td>{{{ $licence->name }}}</td>
             <td class="licence">*****</td>
             <td>
-
                 <a href="#" class="button split tiny text-center"><div style="display:inline" class="showLicence">@lang('messages.showKeyButton')</div> <span data-dropdown="drop-lic-{{{ $licence->id }}}"></span></a>
                 <ul id="drop-lic-{{{ $licence->id }}}" class="f-dropdown" data-dropdown-content>
                     <li><a class="editLicence" href="#">@lang('messages.editSubButton')</a></li>

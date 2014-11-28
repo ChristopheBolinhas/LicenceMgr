@@ -7,3 +7,6 @@
 .editable input {
     margin:0px;
 }
+table a.button {
+    margin-bottom:0px;
+}
