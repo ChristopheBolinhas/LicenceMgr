@@ -7,7 +7,6 @@ class SheetController extends BaseController {
     }
     public function getGet($id) {
         $sheet = Sheet::findOrFail($id);
-        //return Response::download("/home/action/workspace/LicenceMgr/public/img/editor.png");
         return Response::make($sheet->value, 200, array('Content-type' => 'application/octet-stream', 'Content-Disposition' => 'attachment; filename="'.$sheet->name.'"'));
     }
     public function postEdit($id) {
@@ -29,7 +28,6 @@ class SheetController extends BaseController {
         $files = Input::file('file');
         $results = array();
         foreach ($files as $file) {
-            //var_dump($file);
             $sheet = new Sheet;
             $sheet->name = $file->getClientOriginalName();
             $filename = $file->getRealPath();
