@@ -3,6 +3,7 @@
     <thead>
         <tr>
             <th>@lang('messages.nameTabTitle')</th>
+            <th>@lang('messages.fileNameTabTitle')</th>
             <th width="170">@lang('messages.actionTabTitle')</th>
         </tr>
     </thead>

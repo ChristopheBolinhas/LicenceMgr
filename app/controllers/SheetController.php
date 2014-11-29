@@ -29,7 +29,7 @@ class SheetController extends BaseController {
         $results = array();
         foreach ($files as $file) {
             $sheet = new Sheet;
-            $sheet->name = $file->getClientOriginalName();
+            $sheet->filename = $sheet->name = $file->getClientOriginalName();
             $filename = $file->getRealPath();
             $handle = fopen($filename, "rb");
             $contents = fread($handle, filesize($filename));
