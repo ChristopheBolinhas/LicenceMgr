@@ -18,7 +18,7 @@
     <input type="file" multiple="multiple" name="file[]"  />
 </div>
 <div class="row">
-    <div id="progress" class="progress">
+    <div id="progress" class="progress radius">
         <span class="meter" style="width:0%"></span>
     </div>
 </div>
@@ -33,5 +33,6 @@
 </style>
 <script>
     $("#mainModal").foundation();
+    sheetUpload.dropZone = $(sheetUpload.dropZoneSel);
     $('#fileupload').fileupload(sheetUpload).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
 </script>
