@@ -33,23 +33,5 @@
 </style>
 <script>
     $("#mainModal").foundation();
-    var url = '/sheet/add/1';
-    $('#fileupload').fileupload({
-        url: $('#fileupload').attr("data-url"),
-        dataType: 'json',
-        done: function (e, data) {
-            $.each(data.result, function (index, file) {
-                $("#sheetTable tbody").append(file.html);
-            });
-        },
-        progressall: function (e, data) {
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-            $('#progress .meter').css('width', progress+'%');
-        },
-        error:function(e, data) {
-            console.log("error");
-            console.log("error.e", e);
-            console.log("error.data", data);
-        }
-    }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
+    $('#fileupload').fileupload(sheetUpload).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
 </script>

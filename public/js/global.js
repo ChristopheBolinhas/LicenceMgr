@@ -43,7 +43,7 @@ function setErrorMsg(msg) {
         $('#error-alert').hide();
     }    
 }
-function deleteItem(tr, url) {
+function deleteItem(tr, url, callbackSuccess) {
     var id = getId(tr);        
     $.ajax({
         url : url + id,
@@ -51,6 +51,7 @@ function deleteItem(tr, url) {
         success : function(data, statut){
             tr.hide("bind");
             tr.remove();
+            if (callbackSuccess) { callbackSuccess(); }
         }
     });
 }

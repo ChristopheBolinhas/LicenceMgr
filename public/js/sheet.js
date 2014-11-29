@@ -4,15 +4,25 @@ function getFile(id) {
 $(function() {
     var modal = $("#mainModal");
     modal.on("click", ".deleteSheet", function() {
-        console.log("deleteSheet");
         var tr = getTr(this);
-        deleteItem(tr, '/sheet/delete/');
+        deleteItem(tr, '/sheet/delete/', reloadLicence);
     });
     modal.on("click", ".getSheet", function() {
-        console.log("getSheet");
         var id = getId(getTr(this));
         getFile(id);
     });
-    //modal.on("click", ".deleteSheet", deleteSheet);
-    
 });
+var sheetUpload = {
+    url: $('#fileupload').attr("data-url"),
+    dataType: 'json',
+    done: function (e, data) {
+        $.each(data.result, function (index, file) {
+            $("#sheetTable tbody").append(file.html);
+        });
+        reloadLicence();
+    },
+    progressall: function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('#progress .meter').css('width', progress+'%');
+    }
+}
