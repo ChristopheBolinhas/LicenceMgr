@@ -7,12 +7,15 @@
     
     {{ HTML::style('css/foundation.css') }}
     {{ HTML::style('css/app.css') }}
+    {{ HTML::style('css/jquery.fileupload.css') }}
     {{ HTML::style('js/jstree/themes/default/style.min.css') }}
     {{ HTML::style('foundation-icons/foundation-icons.css') }}    
     
     {{ HTML::script('js/vendor/modernizr.js') }}
     {{ HTML::script('js/vendor/jquery.js') }}
     {{ HTML::script('js/vendor/fastclick.js') }}
+    {{ HTML::script('js/vendor/jquery.ui.widget.js') }}
+    {{ HTML::script('js/jquery.fileupload.js') }}
     {{ HTML::script('js/foundation.min.js') }}
     {{ HTML::script('js/foundation/foundation.abide.js') }}
     {{ HTML::script('js/lang.js') }}
