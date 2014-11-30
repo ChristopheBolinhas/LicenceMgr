@@ -1,14 +1,10 @@
 function dataFromForm(form) {
     var data = {};    
     form.find("input").each(function() {
-        console.log("this = ", this);
         if(!(this.type == 'radio' && !this.checked) && !(this.type=='checkbox' && !this.checked)) {
-            console.log("added this = ", this);
             data[this.name] = $(this).val();
         }
-        //data[this.name] = $(this).val();
     });
-    console.log("data = ", data);
     return data;
 }
 function getTr(elem) {
@@ -59,11 +55,9 @@ function tabCallback(tab) {
     var a = $(tab).find("a").first();
     if (!a.attr("data-loaded")) {
         a.attr("data-loaded", true);
-        console.log("attr", a.attr("href"));
         var div = $(a.attr("href"));
         div.html("Loading ...");
         div.load(a.attr("data-url"));
-        console.log("load uri", a.attr("data-url"));
     }
 }
 function resetEditable(source, value) {
@@ -75,9 +69,6 @@ $(function() {
         var input = edit.find("input");
         input.addClass("saveLoading");
         edit.find("small.error").remove();
-        console.log("this", this);
-        console.log("input", input);
-        console.log("edit", edit);
         var value = input.val();
         $.ajax({
             url : edit.attr("data-url"),
@@ -104,6 +95,11 @@ $(function() {
         var val = $(this).closest(".editable").find(".value").text().trim();
         $(this).closest(".editable").html('<div class="columns small-10"><input data-original="' + val + '" type="text" value="' + val + '"></div><div class="columns small-1"><a href="#" class="button postfix save"><i class="fi-save medium"></i></a></div><div class="columns small-1"><a href="#" class="button postfix cancel"><i class="fi-x medium"></i></a></div>');
 
+    });
+    $(document).on("keypress", ".editable input", function(e) {
+        if (e.keyCode === 13) {
+            $(this).closest(".editable").find("a.save").click();
+        }
     });
     $(document).on("click", ".cmdCloseModal", function() {
         $(this).closest(".reveal-modal").foundation('reveal', 'close');
