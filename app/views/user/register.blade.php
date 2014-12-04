@@ -1,5 +1,5 @@
 <h2>@lang('messages.userModalTitle')</h2>   
-<form data-abide="ajax" id="myTestFOrm">
+<form data-abide="ajax" id="addUserForm">
     <div class="panel" id="addUserDiv">
         <div id="errorRegister"/>
         <div class="row">	
@@ -66,5 +66,7 @@
         -->
         <a href="#" class="button tiny cmdCloseModal">@lang('messages.cancelButton')</a>
     </div>
-    <a class="close-reveal-modal">&#215;</a>
 </form>
+    <a class="close-reveal-modal">&#215;</a>
+
+<script>initUserFunction();</script>

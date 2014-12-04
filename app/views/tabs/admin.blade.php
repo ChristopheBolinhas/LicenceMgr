@@ -49,3 +49,4 @@
         @endif
     </div>
 </div>
+<script>initUserFunction();</script>
