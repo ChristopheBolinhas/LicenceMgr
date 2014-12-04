@@ -7,12 +7,15 @@
     
     {{ HTML::style('css/foundation.css') }}
     {{ HTML::style('css/app.css') }}
+    {{ HTML::style('css/jquery.fileupload.css') }}
     {{ HTML::style('js/jstree/themes/default/style.min.css') }}
     {{ HTML::style('foundation-icons/foundation-icons.css') }}    
     
     {{ HTML::script('js/vendor/modernizr.js') }}
     {{ HTML::script('js/vendor/jquery.js') }}
     {{ HTML::script('js/vendor/fastclick.js') }}
+    {{ HTML::script('js/vendor/jquery.ui.widget.js') }}
+    {{ HTML::script('js/jquery.fileupload.js') }}
     {{ HTML::script('js/foundation.min.js') }}
     {{ HTML::script('js/foundation/foundation.abide.js') }}
     {{ HTML::script('js/lang.js') }}
@@ -85,11 +88,26 @@
             <section class="top-bar-section">
                 <ul class="right">
                     <li class="has-dropdown">
-                        <a href="#" id="frenchSelector" selected><img src="img/flags/fr.png"/> Français</a>
-                        <ul class="dropdown">
-                            <li><a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a></li>
-                            <li><a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a></li>
-                        </ul>
+                        @if (Session::get('lang') == 'fr')
+                            <a href="#" selected><img src="img/flags/fr.png"/> Français</a>
+                            <ul class="dropdown">
+                                <li><a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a></li>
+                                <li><a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a></li>
+                            </ul>
+                        @elseif (Session::get('lang') == 'en')
+                            <a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a>
+                            <ul class="dropdown">
+                                <li><a href="#" id="frenchSelector" selected><img src="img/flags/fr.png"/> Français</a></li>
+                                <li><a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a></li>
+                            </ul>
+                        @elseif (Session::get('lang') == 'de')
+                             <a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a>
+                            <ul class="dropdown">
+                                <li><a href="#" id="frenchSelector" selected><img src="img/flags/fr.png"/> Français</a></li>
+                                <li><a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a></li>
+                            </ul>
+                        @endif
+                       
                     </li>
                     <li class="nameUser"><a>@lang('messages.guestNavLabel')</a></li>
 

@@ -46,7 +46,7 @@ class HomeController extends BaseController {
     
     public function showUI() {   
         $this->setLang();
-        return View::make('mainTemplate');
+        return View::make('mainTemplate')->with("currentLang", App::getLocale()); 
     }
 
 

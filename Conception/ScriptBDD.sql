@@ -123,6 +123,7 @@ CREATE TABLE IF NOT EXISTS `LicMgr`.`files` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `licence_id` BIGINT(20) UNSIGNED NOT NULL,
   `name` VARCHAR(255) NOT NULL,
+  `filename` VARCHAR(255) NOT NULL,
   `value` LONGBLOB NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_File_Licence1_idx` (`licence_id` ASC),
