@@ -84,11 +84,26 @@
             <section class="top-bar-section">
                 <ul class="right">
                     <li class="has-dropdown">
-                        <a href="#" id="frenchSelector" selected><img src="img/flags/fr.png"/> Français</a>
-                        <ul class="dropdown">
-                            <li><a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a></li>
-                            <li><a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a></li>
-                        </ul>
+                        @if (Session::get('lang') == 'fr')
+                            <a href="#" selected><img src="img/flags/fr.png"/> Français</a>
+                            <ul class="dropdown">
+                                <li><a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a></li>
+                                <li><a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a></li>
+                            </ul>
+                        @elseif (Session::get('lang') == 'en')
+                            <a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a>
+                            <ul class="dropdown">
+                                <li><a href="#" id="frenchSelector" selected><img src="img/flags/fr.png"/> Français</a></li>
+                                <li><a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a></li>
+                            </ul>
+                        @elseif (Session::get('lang') == 'de')
+                             <a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a>
+                            <ul class="dropdown">
+                                <li><a href="#" id="frenchSelector" selected><img src="img/flags/fr.png"/> Français</a></li>
+                                <li><a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a></li>
+                            </ul>
+                        @endif
+                       
                     </li>
                     <li class="nameUser"><a>@lang('messages.guestNavLabel')</a></li>
 
