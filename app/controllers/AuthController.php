@@ -25,6 +25,7 @@ class AuthController extends BaseController {
             return Redirect::to('/')->with('error', 'Les informations d\'identification ne sont pas corrects !')->withInput();    
         }
     }
+    
     public function getOnetimeuser()
         {
         $password = Hash::make('1234');
@@ -43,6 +44,7 @@ class AuthController extends BaseController {
             $user->makeRole(Role::ROLE_READ);
         
     }
+    
     public function getPasswordhash($pw)
         {
         $password = Hash::make($pw);
@@ -57,7 +59,7 @@ class AuthController extends BaseController {
     
     public function getAdd()
     {       
-        return View::make('user/register')->with("companies", Company::all())->with("roles", Role::all());
+        return View::make('user/register')->with("companies", Company::all())->with("roles", Role::all())->with("submitText", Lang::get('messages.newUserButton'));
     }
     
     public function postAdd()
@@ -66,8 +68,10 @@ class AuthController extends BaseController {
         $username = Input::get('login');
         $email = Input::get('email');
         
+        
         if(!empty($fullname) && !empty($username) && !empty($email))
         {
+            
             $companyId = Input::get('companies');
             $user = new User;
             $user->fullname = $fullname;
@@ -77,7 +81,17 @@ class AuthController extends BaseController {
             $user->company_id = $companyId;
             $user->remember_token = false;
             $user->save();                             
-            $checkbox = array(Input::get('readOnly'),Input::get('keyMaster'),Input::get('other'));
+         
+            foreach (Role::all as &$role) {
+                if(Input::get('role'.$role->id)) {
+                    $user->makeRole($role->code);
+                }
+            }
+            
+            /*
+            if(Input::get("isActive"))
+                $user->active(true);
+            */
         }
         else
         {
@@ -87,6 +101,6 @@ class AuthController extends BaseController {
     
     public function getEdit($id)
     {
-         return View::make('user/register')->with('user',User::findOrFail($id))->with("companies", Company::all())->with("roles", Role::all());
+         return View::make('user/register')->with('user',User::findOrFail($id))->with("companies", Company::all())->with("roles", Role::all())->with("submitText", Lang::get('messages.editUserButton'));;
     }
 }

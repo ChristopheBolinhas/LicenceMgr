@@ -34,26 +34,32 @@ $(function() {
     $("#mainModal").on("click", ".cmdAddUser", function() {
       
         var data = dataFromForm($(this).closest('.reveal-modal'));
-        console.log(data);
-        if(data['password'] == data['passwordConfirm'])
+        console.log("lalalalalalalalalal");
+        if(data['password'] !== "" && data['passwordConfirm']  !== "" && data['password'] == data['passwordConfirm'])
         {
-            saveForm($("#addUserDiv"), '/auth/add',null,function(){
-                var dest = $("#error");
-                if(dest.html().indexOf("Oublie d'informations de création") <= -1)
-                {
-                    dest.append("<small class='error'>@lang('messages.errorEmptyForm')</small>");    
-                }
-            });
-        }
-        else
-        {
-            var dest = $("#error");
-            if(dest.html().indexOf("Oublie d'informations de création") <= -1)
-            {
-                dest.append('<small class="error">Mot de passe non similaire</small>');    
-            }
+            saveForm($("#addUserDiv"), '/auth/add',null, error("errorEmptyForm"));
         }
     });
+    
+    $('#myTestFOrm')
+  .on('invalid.fndtn.abide', function () {
+    var invalid_fields = $(this).find('[data-invalid]');
+    console.log(invalid_fields);
+  })
+  .on('valid.fndtn.abide', function () {
+    console.log('valid!');
+  });
+    
+    function error(message)
+    {
+        var dest = $("#errorRegister");
+        var isErrorExist = $('#errorMessage');
+
+        if(!isErrorExist.length)
+        {
+            dest.append("<small class='error' id='errorMessage' >@lang('messages."+message+"')</small>");    
+        }
+    }
 /*
      $("#mainModal").on("click", ".cmdAddUser", function() {
      });

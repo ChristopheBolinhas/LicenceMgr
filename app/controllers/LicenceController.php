@@ -43,10 +43,9 @@ class LicenceController extends BaseController {
             App::abort(404);
         }
         $ob->program_id = Program::findOrFail($values[1])->id;
-        // TODO chang ecompany id
-        $ob->company_id = 1;
-        // TODO user id
-        $ob->created_user_id = 0;
+        $user = Auth::user();
+        $ob->company_id = $user->company_id;
+        $ob->created_user_id = $user->id;
         $this->fill($ob);
     }
     public function getEdit($id) {
@@ -67,8 +66,7 @@ class LicenceController extends BaseController {
     private function fill($ob) {
         $ob->name = Input::get('name');
         $ob->value = Input::get('value');
-        // TODO user id
-        $ob->updated_user_id = 0;
+        $ob->updated_user_id = Auth::user()->id;
         $ob->save();
     }
 }

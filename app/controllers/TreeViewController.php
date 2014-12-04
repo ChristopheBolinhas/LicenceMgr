@@ -3,10 +3,8 @@
 class TreeViewController extends BaseController {
 
     public function getTree($all) {
-        // TODO créer fonction isbool
         $all = $all === "true";
-        // TODO filter sur entreprise
-        $companyId = 1;
+        $companyId = Auth::user()->company_id;
         $result = [];
         if ($all) {
             $editors = Editor::
