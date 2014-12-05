@@ -8,7 +8,7 @@
     </div> 
 </div>
 <div class="row">
-    <div class="large-12 columns">
+    <div class="large-12 columns" id="listUser">
         @if(isset($users))
         <table>
             <thead>
@@ -36,11 +36,12 @@
                         {{{$user->companyName()}}}
                     </td>
                     <td>
-                        <a href="#" class="button split tiny" data-reveal-id="mainModal" data-reveal-ajax="/auth/edit/{{{ $user->id }}}">@lang('messages.editButton') <span data-dropdown="drop-user-{{{ $user->id }}}"></span></a>
+                        <a href="#" class="button split tiny"><div style="display:inline" class="editUser">@lang('messages.editButton')</div> <span data-dropdown="drop-user-{{{ $user->id }}}"></span></a>
                 <ul id="drop-user-{{{ $user->id }}}" class="f-dropdown" data-dropdown-content>							
-                            <li><a href="#">@lang('messages.removeSubButton')</a></li>
-                            <li><a href="#">@lang('messages.resetPasswordSubButton')</a></li> 
+                            <li><a class="removeUser">@lang('messages.removeSubButton')</a></li>
+                            <li><a class="resetPasswordUser">@lang('messages.resetPasswordSubButton')</a></li> 
                         </ul>
+                  
                     </td>	
                 </tr>
                 @endforeach
@@ -49,4 +50,7 @@
         @endif
     </div>
 </div>
-<script>initUserFunction();</script>
+<script>
+    initListUser();
+    $("#listUser").foundation();
+</script>
