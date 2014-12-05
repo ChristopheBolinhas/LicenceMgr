@@ -11,14 +11,17 @@ function initUserFunction() {
             saveForm($("#addUserDiv"), '/auth/add',null, error("errorEmptyForm"));
         }
     });
-    
+}
+function initUserRegister() {
       console.log("lalalalalala  ",$('#addUserForm'));
     //$('#addUserForm').on('invalid.fndtn.abide', function () {
-    $('#addUserForm').on('invalid.fndtn.abide', function () {
-    var invalid_fields = $(this).find('[data-invalid]');
-    console.log(invalid_fields);
-  }).on('valid.fndtn.abide', function () {
-      console.log("lalalalalala");
+    $('#addUserForm').foundation("abide");
+    $('#addUserForm').on('invalid', function () {
+        console.log("invalid");
+        var invalid_fields = $(this).find('[data-invalid]');
+        console.log(invalid_fields);
+    }).on('valid', function () {
+        console.log("lalalalalala");
    /*saveForm($("#addUserDiv"), '/auth/add',null, function(){
             var dest = $(".");
             if(dest.html().indexOf("Mauvaises informations de login") <= -1)
@@ -26,7 +29,7 @@ function initUserFunction() {
                 dest.append('<small class="error">Mauvaises informations de login</small>');    
             }
         });*/
-  });
+    });
     /*
     function error(message)
     {

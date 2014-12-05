@@ -69,4 +69,4 @@
 </form>
     <a class="close-reveal-modal">&#215;</a>
 
-<script>initUserFunction();</script>
+<script>initUserRegister();</script>
