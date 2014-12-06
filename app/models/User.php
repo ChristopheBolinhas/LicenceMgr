@@ -46,8 +46,25 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     {
         return in_array($check, array_fetch($this->roles->toArray(), 'name'));
     }
-    
-    
+    //Fonction à tester par toi Pierre
+    public function setRoles($roleList)
+    {
+        foreach(Role::all()->toArray() as $role)
+        {
+            //Si l'utilisateur à le role ET qu'il n'est pas dans la liste d'édition
+            if($this->IsInRole($role) && !in_array($role, $roleList))
+                {
+                //On supprime le rôle (vraiment à tester ici !)
+                $this->roles()->detach($role);
+            }
+            //Si l'utilisateur n'a pas le rôle et qu'il est dans l'edition
+            else if(in_array($role,$roleList) && !$this->IsInRole($role))
+            {
+                //On appele l'ajout de rôle
+                $this->makeRole($role);
+            }
+        }
+    }
     
     
     public function makeRole($role){

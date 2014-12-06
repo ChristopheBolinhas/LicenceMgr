@@ -28,7 +28,10 @@ class AuthController extends BaseController {
 
     public function getOnetimeuser()
     {
-        $password = Hash::make('1234');
+        //Fonction de debug limité à SuperAdmin
+        if(Auth::user()->IsSuperAdmin())
+        {
+            $password = Hash::make('1234');
 
             $user = new User;
             $user->company_id = 1;
@@ -37,15 +40,15 @@ class AuthController extends BaseController {
             $user->password = $password;
             $user->email = "lala@dsa.com";
             $user->remember_token = false;
-            
+
             $user->save();
             //$user->makeRole(Role::ROLE_SUPERADMIN);
             //$user->makeRole(Role::ROLE_ADMIN);
             $user->makeRole(Role::ROLE_WRITE);
             //$user->makeRole(Role::ROLE_READ);
-        
-        return "new user made";
 
+            return "new user made";
+        }
     }
 
     public function getPasswordhash($pw)
@@ -62,72 +65,93 @@ class AuthController extends BaseController {
 
     public function getAdd()
     {       
-        return View::make('user/register')->with("companies", Company::all())->with("roles", Role::all())->with("submitText", Lang::get('messages.newUserButton'))->with("nameForm","addUserForm");
+        if(Auth::user()->IsAdmin())
+        {
+            return View::make('user/register')
+                ->with("companies", Company::all())
+                ->with("roles", Role::all())
+                ->with("submitText", Lang::get('messages.newUserButton'))
+                ->with("nameForm","addUserForm");
+        }
     }
 
     public function postAdd()
     {
         //if(Input::get('password') != "" && Input::get('passwordConfirm') != "")
         //{
-        $username = Input::get('login');
+        if(Auth::user()->IsSuperAdmin())
+        {
+            $username = Input::get('login');
 
-        $validatorLogin = Validator::make(
-            array(
-                'username' => $username,
-            ),
-            array(
-                'username' => 'required|username|unique:users',
-            )
-        );
-        
-        if($validatorLogin->fails())
-        {
-            App::abort(400);
+            $validatorLogin = Validator::make(
+                array(
+                    'username' => $username,
+                ),
+                array(
+                    'username' => 'required|username|unique:users',
+                )
+            );
+
+            if($validatorLogin->fails())
+            {
+                App::abort(400);
+            }
+            else
+            {
+                $user = new User;
+                $user->fullname = Input::get('fullname');
+                $user->username = $username;
+                $user->email = Input::get('email');
+                $user->password = Hash::make(Input::get('password'));
+                $user->company_id = Input::get('companies');
+                $user->remember_token = false; //Input::get('isActive')
+                foreach (Role::all() as $role) {
+                    if(Input::get('role'.$role->id)) {
+                        $user->makeRole($role->code);
+                    }
+                }
+                $user->save();                             
+            }
         }
-        else
+    }
+
+    public function getEdit($id)
+    {
+        if(Auth::user()->IsSuperAdmin())
         {
-            $user = new User;
+            return View::make('user/register')
+                ->with('user',User::findOrFail($id))
+                ->with("companies", Company::all())
+                ->with("roles", Role::all())
+                ->with("submitText", Lang::get('messages.editUserButton'))
+                ->with("nameForm","editUserForm");
+        }
+    }
+
+    public function postEdit()
+    {
+        if(Auth::user()->IsSuperAdmin())
+        {
+
+            $user = User::findOrFail(Input::get('id'));
             $user->fullname = Input::get('fullname');
-            $user->username = $username;
+            $user->username = Input::get('login');
             $user->email = Input::get('email');
-            $user->password = Hash::make(Input::get('password'));
+
+            if(Input::get('password') != "")
+                $user->password = Hash::make(Input::get('password'));
+
             $user->company_id = Input::get('companies');
             $user->remember_token = false; //Input::get('isActive')
             foreach (Role::all() as $role) {
                 if(Input::get('role'.$role->id)) {
                     $user->makeRole($role->code);
                 }
-            }
-            $user->save();                             
-        }
-    }
+                else{
 
-    public function getEdit($id)
-    {
-        return View::make('user/register')->with('user',User::findOrFail($id))->with("companies", Company::all())->with("roles", Role::all())->with("submitText", Lang::get('messages.editUserButton'))->with("nameForm","editUserForm");
-    }
-    
-    public function postEdit()
-    {
-        echo Input::get('id');
-        $user = User::findOrFail(Input::get('id'));
-        $user->fullname = Input::get('fullname');
-        $user->username = Input::get('login');
-        $user->email = Input::get('email');
-        
-        if(Input::get('password') != "")
-            $user->password = Hash::make(Input::get('password'));
-        
-        $user->company_id = Input::get('companies');
-        $user->remember_token = false; //Input::get('isActive')
-        foreach (Role::all() as $role) {
-            if(Input::get('role'.$role->id)) {
-                $user->makeRole($role->code);
+                }
             }
-            else{
-                
-            }
+            $user->save(); 
         }
-        $user->save(); 
     }
 }

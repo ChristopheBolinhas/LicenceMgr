@@ -5,7 +5,9 @@
     @endif
     <div class="panel">
         <div class="row">	
+            @if(Auth::user()->IsSuperAdmin())
             <label>@lang('messages.enterpriseLabel')</label>
+            
             <select name="companies">
             @if(isset($companies))
                 @foreach ($companies as $company)
@@ -13,6 +15,10 @@
                 @endforeach
             @endif
             </select>
+            @elseif(Auth::user()->IsAdmin())
+                <input type="hidden" name="companies" value="{{{Auth::user()->company_id}}}" />
+            @endif
+            
         </div>
         <div class="row">	
             <label>@lang('messages.nameLabel')

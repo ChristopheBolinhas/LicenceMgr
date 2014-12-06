@@ -138,7 +138,7 @@
             <div data-alert class="alert-box alert" id="error-alert"></div>
             <div class="row">
                 <ul class="tabs" data-tab role="tablist">
-                    @if(Auth::user()->IsReadOrWrite())
+                    @if(Auth::user()->IsReadOrWrite() || Auth::user()->IsAdmin())
                     <li class="tab-title" role="presentational" >
                         <a href="#panel-user" role="tab" tabindex="0" aria-selected="false" controls="panel-user" data-url="/tabs/user">
                             @lang('messages.licenceSnipetTitle')

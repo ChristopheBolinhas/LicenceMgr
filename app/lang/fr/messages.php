@@ -7,9 +7,17 @@ return array(
     *  A appeler avec <?php echo Lang::get('messages.nomMsg'); ?>
     *
     */
-
+    //Messages d'accueils
 	"welcome" => "Bienvenue sur Licence Manager.<br/> Authentifiez-vous ou contactez un administrateur pour accéder au site.",
-
+    //
+    "homeTitle" => "Bienvenue sur votre page d'accueil, ",
+    "homeIntro" => "Depuis cette page vous pouvez cliquer sur un des onglets disponibles pour votre navigation et commencer à travailler.<br/>Voici les fonctionalités auxquels vous avez accès :",
+    "readerDescription" => "Accèder aux licences de votre entreprise et du répertoire publique.",
+    "writerDescription" => "Ajouter, modifier et supprimer les licences de votre entreprise.",
+    "adminDescription" => "Gérer les utilisateurs qui ont accès au catalogue de votre entreprise et leurs droits.",
+    "superAdminDescription" => "Gérer les entreprises de la plateforme et leurs utilisateurs",
+    "homeOutro" => "Bonne navigation !",
+    
     //Titres
 	"licenceTitle" => "Licences",
 	"programTitle" => "Programme",

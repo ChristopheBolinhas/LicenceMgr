@@ -2,7 +2,7 @@
 
 class HomeController extends BaseController {
 
-	/*
+    /*
 	|--------------------------------------------------------------------------
 	| Default Home Controller
 	|--------------------------------------------------------------------------
@@ -14,61 +14,70 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-    
+
     private function setLang(){
         if (Session::has('lang'))
         {
             App::setLocale(Session::get('lang'));
         }
         else
-            {
+        {
             $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
             switch($lang){
-                     case 'fr':
-                         App::setLocale('fr');
-                         //App::setLocale('fr');
-                         break;
-                     case 'de':
-                         App::setLocale('de');
-                         //App::setLocale('de');
-                         break;
-                     case 'en':
-                         App::setLocale('en');
-                         //App::setLocale('en');
-                         break;
-                     default:
-                         App::setLocale('fr');
-                         //App::setLocale('fr');
-                 }    
+                case 'fr':
+                App::setLocale('fr');
+                //App::setLocale('fr');
+                break;
+                case 'de':
+                App::setLocale('de');
+                //App::setLocale('de');
+                break;
+                case 'en':
+                App::setLocale('en');
+                //App::setLocale('en');
+                break;
+                default:
+                App::setLocale('fr');
+                //App::setLocale('fr');
+            }    
         }
-        
+
     }
-    
+
     public function showUI() {   
         $this->setLang();
         return View::make('mainTemplate')->with("currentLang", App::getLocale()); 
     }
 
 
-	public function showWelcome() {
+    public function showWelcome() {
 
-	}
+    }
     public function test() {
         return View::make("test");
     }
     public function uiSuperAdmin() {
-        $this->setLang();
-        return View::make("tabs/superAdmin")->with("companies", Company::all());
+        if(Auth::user()->IsSuperAdmin())
+        {
+            $this->setLang();
+            return View::make("tabs/superAdmin")->with("companies", Company::all());
+        }
     }
-    
+
     public function uiAdmin() {
-        $this->setLang();
-        return View::make("tabs/admin")->with("users",User::all());
+        if(Auth::user()->IsAdmin())
+        {
+            $this->setLang();
+            return View::make("tabs/admin")->with("users",User::all());
+        }
     }
     public function uiUser() {
-        $this->setLang();
-        return View::make("tabs/user");
+        if(Auth::user()->IsReadOrWrite() || Auth::user()->IsAdmin())
+        {
+            $this->setLang();
+            return View::make("tabs/user");
+        }
     }
-    
+
 
 }

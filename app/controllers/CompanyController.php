@@ -1,39 +1,61 @@
 <?php 
 class CompanyController extends BaseController {
-    
+
+    //Everything here must be limited to superadmin
     public function anyList() {        
-        return View::make("company/list")->with("companies", Company::all());
+        if(Auth::user()->IsSuperAdmin())
+        {
+            return View::make("company/list")->with("companies", Company::all());
+        }
     }
     public function deleteDelete($id) {
-        Company::destroy($id);
+        if(Auth::user()->IsSuperAdmin())
+        {
+            Company::destroy($id);
+        }
     }
     public function getAdd() {
-        return View::make("company/edit")
-            ->with("company", new Company)
-            ->with("title", Lang::get('messages.addCompanyModalTitle'))
-            ->with("action", Lang::get('messages.addButton'))
-            ->with("cmd", "cmdAddCompany")
-           ;
+        if(Auth::user()->IsSuperAdmin())
+        {
+            return View::make("company/edit")
+                ->with("company", new Company)
+                ->with("title", Lang::get('messages.addCompanyModalTitle'))
+                ->with("action", Lang::get('messages.addButton'))
+                ->with("cmd", "cmdAddCompany")
+                ;
+        }
     }
     public function postAdd() {
-        $ob = new Company();
-        $this->fill($ob);
+        if(Auth::user()->IsSuperAdmin())
+        {
+            $ob = new Company();
+            $this->fill($ob);
+        }
     }
     public function getEdit($id) {
-        return View::make("company/edit")
-            ->with("company", Company::findOrFail($id))
-            ->with("title", Lang::get('messages.modifyCompanyModalTitle'))
-            ->with("action", Lang::get('messages.editButton'))
-            ->with("cmd", "cmdEditCompany")
-           ;
+        if(Auth::user()->IsSuperAdmin())
+        {
+            return View::make("company/edit")
+                ->with("company", Company::findOrFail($id))
+                ->with("title", Lang::get('messages.modifyCompanyModalTitle'))
+                ->with("action", Lang::get('messages.editButton'))
+                ->with("cmd", "cmdEditCompany")
+                ;
+        }
     }
     public function postEdit() {
-        $ob = Company::findOrFail(Input::get('id'));
-        $this->fill($ob);
+        if(Auth::user()->IsSuperAdmin())
+        {
+            $ob = Company::findOrFail(Input::get('id'));
+            $this->fill($ob);
+        }
     }
     private function fill($ob) {
-        $ob->name = Input::get('name');
-        $ob->save();
+        if(Auth::user()->IsSuperAdmin())
+        {
+            $ob->name = Input::get('name');
+            $ob->save();
+        }
     }
 
 }

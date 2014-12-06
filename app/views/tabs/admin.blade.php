@@ -10,7 +10,7 @@
 <div class="row">
     <div class="large-12 columns" id="listUser">
         @if(isset($users))
-        <table>
+        <table width="100%">
             <thead>
                 <tr>
                     <th>@lang('messages.loginTabTitle')</th>
