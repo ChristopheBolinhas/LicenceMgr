@@ -3,7 +3,7 @@
 
     <div class="button-bar">
         <ul class="button-group">
-            <li><a href="#" class="button small" data-reveal-id="mainModal" data-reveal-ajax="/auth/add">@lang('messages.newAccountButton')</a></li>
+            <li><a href="#" class="button small" data-reveal-id="mainModal" data-reveal-ajax="/auth/add">@lang('controls.newAccountButton')</a></li>
         </ul>
     </div> 
 </div>
@@ -37,10 +37,10 @@
                     </td>
                     <td>
 
-                        <a href="#" class="button split tiny"><div style="display:inline" class="editUser">@lang('messages.editButton')</div> <span data-dropdown="drop-user-{{{ $user->id }}}"></span></a>
+                        <a href="#" class="button split tiny"><div style="display:inline" class="editUser">@lang('controls.editButton')</div> <span data-dropdown="drop-user-{{{ $user->id }}}"></span></a>
                 <ul id="drop-user-{{{ $user->id }}}" class="f-dropdown" data-dropdown-content>							
-                            <li><a class="removeUser">@lang('messages.removeSubButton')</a></li>
-                            <li><a class="resetPasswordUser">@lang('messages.resetPasswordSubButton')</a></li> 
+                            <li><a class="removeUser">@lang('controls.removeSubButton')</a></li>
+                            <li><a class="resetPasswordUser">@lang('controls.resetPasswordSubButton')</a></li> 
                         </ul>
                   
                     </td>	

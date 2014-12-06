@@ -8,6 +8,6 @@ return array(
     *
     */
 
-	
+	"nameTabTitle" => "Name",
     
     );

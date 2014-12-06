@@ -141,21 +141,21 @@
                     @if(Auth::user()->IsReadOrWrite() || Auth::user()->IsAdmin())
                     <li class="tab-title" role="presentational" >
                         <a href="#panel-user" role="tab" tabindex="0" aria-selected="false" controls="panel-user" data-url="/tabs/user">
-                            @lang('messages.licenceSnipetTitle')
+                            @lang('controls.licenceSnipetTitle')
                         </a>
                     </li>
                     @endif
                     @if(Auth::user()->IsAdmin() || Auth::user()->IsSuperAdmin())
                     <li class="tab-title" role="presentational" >
                         <a href="#panel-admin" role="tab" tabindex="1" aria-selected="false" controls="panel-admin" data-url="/tabs/admin">
-                            @lang('messages.userSnipetTitle')
+                            @lang('controls.userSnipetTitle')
                         </a>
                     </li>
                     @endif
                     @if(Auth::user()->IsSuperAdmin())
                     <li class="tab-title" role="presentational" >
                         <a href="#panel-superadmin" role="tab" tabindex="2" aria-selected="false" controls="panel-superadmin" data-url="/tabs/superadmin">
-                            @lang('messages.companySnipetTitle')
+                            @lang('controls.companySnipetTitle')
                         </a>
                     </li>
                     @endif
