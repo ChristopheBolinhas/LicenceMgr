@@ -14,8 +14,10 @@ function treeChange(e, data) {
 function getTreeUrl() {
     return '/TreeView/tree/' + $('#cComplete').is(':checked');
 }
-$(function() {
-    $('#jstree')
+
+function initTreeFunction(){
+    $(function() {
+        $('#jstree')
         .on('changed.jstree', treeChange)
         .jstree({
             'core' : {
@@ -25,6 +27,8 @@ $(function() {
                 }
             }
         });
-    $('input[name="catalogueType"]').change(loadTree);
-    treeChange();
-})
+        $('input[name="catalogueType"]').change(loadTree);
+        treeChange();
+    })
+}
+

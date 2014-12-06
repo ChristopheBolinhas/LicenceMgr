@@ -28,6 +28,7 @@ class LicenceController extends BaseController {
         Licence::destroy($id);
     }
     public function getAdd($idParent) {
+        
         return View::make("licence/edit")
             ->with("licence", new Licence)
             ->with("title", Lang::get('messages.addLicenceModalTitle'))

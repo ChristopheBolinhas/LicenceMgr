@@ -65,5 +65,10 @@ class HomeController extends BaseController {
         $this->setLang();
         return View::make("tabs/admin")->with("users",User::all());
     }
+    public function uiUser() {
+        $this->setLang();
+        return View::make("tabs/user");
+    }
+    
 
 }

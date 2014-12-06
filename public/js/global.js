@@ -7,6 +7,11 @@ function dataFromForm(form) {
     });
     return data;
 }
+function closeModal(){
+    $("#mainModal").foundation('reveal', 'close');
+    
+}
+
 function getTr(elem) {
     return $(elem).closest("tr");
 }
@@ -53,10 +58,13 @@ function deleteItem(tr, url, callbackSuccess) {
 }
 function tabCallback(tab) {
     var a = $(tab).find("a").first();
+    
+    $("#homePage").hide();
     if (!a.attr("data-loaded")) {
         a.attr("data-loaded", true);
         var div = $(a.attr("href"));
         div.html("Loading ...");
+        console.log(a.attr("data-url"));
         div.load(a.attr("data-url"));
     }
 }

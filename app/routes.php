@@ -13,6 +13,7 @@
     //seleEvent::listen('illuminate.query', function($query) { var_dump($query); });
 
 	Route::get('/', 'HomeController@showUI');
+    Route::get('/tabs/user', 'HomeController@uiUser');
 	Route::get('/tabs/admin', 'HomeController@uiAdmin');
 	Route::get('/tabs/superadmin', 'HomeController@uiSuperAdmin');
 

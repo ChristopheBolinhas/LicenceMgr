@@ -1,32 +1,31 @@
 <?php 
 class EditorController extends BaseController {
-    
+
     public function getAdd()
     {
+        if(Auth::user()->IsAdmin() || Auth::user()->IsWrite() || Auth::user()->IsSuperAdmin())
+        {
+            return View::make('editor/add');
+        }
+        return App::abort(404);
         //$editor = Editor::all(); 
-           
-        return View::make('editor/add');//->with('editorList_public',$editor); 
+
+        //->with('editorList_public',$editor); 
     }
-    
+
     public function postAdd()
     {
-        
-        $editor = new Editor;
-        $editor->name = Input::get('name') . " - " . Input::get('catalogue');
-        /*if(Input::get('catalogue') == 0) //Catalogue public
+        if(Auth::user()->IsAdmin() || Auth::user()->IsWrite())
         {
-            $editor->name = Input::get('name') . " - public" ; 
+            $editor = new Editor;
+            $editor->name = Input::get('name');
+            if(Input::get('catalogue') == 1) 
+            {
+                $editor->company_id = Auth::user()->company_id;
+            }
+
+            $editor->save();
         }
-        else //Catalogue de l'entreprise
-        {
-            //TODO récupération du company_id de l'utilisateur actuel OU si pas de company_id -> public de toute façon
-            //$editor->company_id = 1;
-            $editor->name = Input::get('name') . " - prive" ; 
-            
-        }*/
-        
-        $editor->save();
-        
     }
-    
+
 }

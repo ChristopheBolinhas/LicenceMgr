@@ -7,7 +7,7 @@
     </div>
     <div class="row">
         <input type="radio" name="catalogue" value="0" id="addPublicEdit" checked><label for="addPublicEdit">@lang('messages.publicLabel')</label>
-        <input type="radio" name="catalogue" value="5" id="addPrivateEdit"><label for="addPrivateEdit">@lang('messages.privateLabel')</label>
+        <input type="radio" name="catalogue" value="1" id="addPrivateEdit"><label for="addPrivateEdit">@lang('messages.privateLabel')</label>
     </div>
 </div>
 <div class="row">

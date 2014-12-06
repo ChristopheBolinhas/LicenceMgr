@@ -32,17 +32,18 @@ class AuthController extends BaseController {
             $user = new User;
             $user->company_id = 1;
             $user->fullname = "lala";
-            $user->username = "roleuser";
+            $user->username = "writer";
             $user->password = $password;
             $user->email = "lala@dsa.com";
             $user->remember_token = false;
             
             $user->save();
-            $user->makeRole(Role::ROLE_SUPERADMIN);
-            $user->makeRole(Role::ROLE_ADMIN);
+            //$user->makeRole(Role::ROLE_SUPERADMIN);
+            //$user->makeRole(Role::ROLE_ADMIN);
             $user->makeRole(Role::ROLE_WRITE);
-            $user->makeRole(Role::ROLE_READ);
+            //$user->makeRole(Role::ROLE_READ);
         
+        return "new user made";
     }
     
     public function getPasswordhash($pw)

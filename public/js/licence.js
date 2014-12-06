@@ -21,59 +21,62 @@ function addFile() {
     $(this).attr("data-count", count)
 }
 function getParentId() {
-     return $("#addLicence").attr("data-id");
+    return $("#addLicence").attr("data-id");
 }
 function reloadLicence() {
     loadLicence(getParentId());
 }
-$(function() {
-    var modal = $("#mainModal");
-     $("#licences").on("click", ".showLicence", function() {
-         var tr = getTr(this);
-         var id = getId(tr);
-         var tdLic = tr.find("td.licence");
-         if (!tdLic.is("[data-lic]")) {
-             tdLic.html("Loading...");
-             $.ajax({
-                 url : '/licence/key/' + id,
-                 dataType : 'json',
-                 success : function(data, statut){
-                     tdLic.html(data[0]);
-                     tdLic.attr("data-lic", true);
-                 }
-             });
-         }         
-     });
-    $("#licences").on("click", ".editLicence", function() {
-        var id = getId(getTr(this));
-        modal.foundation('reveal', 'open', {
-            url: '/licence/edit/' + id
+function initLicenceFunctions(){
+    $(function() {
+        var modal = $("#mainModal");
+        $("#licences").on("click", ".showLicence", function() {
+            var tr = getTr(this);
+            var id = getId(tr);
+            var tdLic = tr.find("td.licence");
+            if (!tdLic.is("[data-lic]")) {
+                tdLic.html("Loading...");
+                $.ajax({
+                    url : '/licence/key/' + id,
+                    dataType : 'json',
+                    success : function(data, statut){
+                        tdLic.html(data[0]);
+                        tdLic.attr("data-lic", true);
+                    }
+                });
+            }         
         });
-     });
-    $("#licences").on("click", ".deleteLicence", function() {
-        var tr = getTr(this);
-        deleteItem(tr, '/licence/delete/');
-     });
-    $("#licences").on("click", ".downloadLicence", function() {
-        // TODO dowmload file
-        var fileId = $(this).attr("data-id");
-        getFile(fileId);
-     });
-    $("#addLicence").click(function() {
-        var parentId = getParentId();
-        if (parentId && parentId.indexOf("program") >= 0) {
+        $("#licences").on("click", ".editLicence", function() {
+            var id = getId(getTr(this));
             modal.foundation('reveal', 'open', {
-                url: '/licence/add/' + parentId
+                url: '/licence/edit/' + id
             });
-        } else {
-            setErrorMsg("Veuillez séléctionner un programme !");
-        }
+        });
+        $("#licences").on("click", ".deleteLicence", function() {
+            var tr = getTr(this);
+            deleteItem(tr, '/licence/delete/');
+        });
+        $("#licences").on("click", ".downloadLicence", function() {
+            // TODO dowmload file
+            var fileId = $(this).attr("data-id");
+            getFile(fileId);
+        });
+        $("#addLicence").click(function() {
+            var parentId = getParentId();
+            if (parentId && parentId.indexOf("program") >= 0) {
+                modal.foundation('reveal', 'open', {
+                    url: '/licence/add/' + parentId
+                });
+            } else {
+                setErrorMsg("Veuillez séléctionner un programme !");
+            }
+        });
+        modal.on("click", ".cmdAddFile", addFile);
+        modal.on("click", ".cmdEditLicence", function() {
+            saveForm($(this).closest('.reveal-modal'), '/licence/edit', reloadLicence);
+        });
+        modal.on("click", ".cmdAddLicence", function() {
+            saveForm($(this).closest('.reveal-modal'), '/licence/add', reloadLicence);
+        });
     });
-    modal.on("click", ".cmdAddFile", addFile);
-    modal.on("click", ".cmdEditLicence", function() {
-        saveForm($(this).closest('.reveal-modal'), '/licence/edit', reloadLicence);
-    });
-    modal.on("click", ".cmdAddLicence", function() {
-        saveForm($(this).closest('.reveal-modal'), '/licence/add', reloadLicence);
-    });
-});
+}
+

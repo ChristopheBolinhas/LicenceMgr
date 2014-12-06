@@ -1,4 +1,5 @@
-$(function() {
+function initProgramFunctions(){
+    $(function() {
     var modal = $("#mainModal");
     function getSelectedProgramArgs() {
         var src = getParentId();
@@ -32,3 +33,4 @@ $(function() {
         }
     }
 });
+}

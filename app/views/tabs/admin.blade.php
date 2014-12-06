@@ -36,8 +36,12 @@
                         {{{$user->companyName()}}}
                     </td>
                     <td>
-                        <a href="#" class="button split tiny" data-reveal-id="mainModal" data-reveal-ajax="/auth/edit/{{{ $user->id }}}">@lang('messages.editButton') <span data-dropdown="drop-user-{{{ $user->id }}}"></span></a>
-                <ul id="drop-user-{{{ $user->id }}}" class="f-dropdown" data-dropdown-content>							
+                        <a href="#" class="button split tiny" data-reveal-id="mainModal" data-reveal-ajax="/auth/edit/{{{ $user->id }}}">
+                            @lang('messages.editButton') 
+                           <span data-dropdown="drop-user-{{{ $user->id }}}">
+                            </span>
+                        </a>
+                        <ul id="drop-user-{{{ $user->id }}}" class="f-dropdown" data-dropdown-content>							
                             <li><a href="#">@lang('messages.removeSubButton')</a></li>
                             <li><a href="#">@lang('messages.resetPasswordSubButton')</a></li> 
                         </ul>
