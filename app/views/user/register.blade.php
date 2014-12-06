@@ -1,7 +1,9 @@
 <h2>@lang('messages.userModalTitle')</h2>   
-<form data-abide="ajax" id="myTestFOrm">
-    <div class="panel" id="addUserDiv">
-        <div id="errorRegister"/>
+<form data-abide="ajax" id="{{$nameForm}}">
+    @if(isset($user))
+    <input type="hidden" name="id" value="{{{$user->id}}}" />
+    @endif
+    <div class="panel">
         <div class="row">	
             <label>@lang('messages.enterpriseLabel')</label>
             <select name="companies">
@@ -66,5 +68,7 @@
         -->
         <a href="#" class="button tiny cmdCloseModal">@lang('messages.cancelButton')</a>
     </div>
-    <a class="close-reveal-modal">&#215;</a>
 </form>
+<a class="close-reveal-modal">&#215;</a>
+
+<script>initUserRegister();</script>

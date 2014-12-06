@@ -1,67 +1,52 @@
-$(function() {
-    /*	
-    $("#cmdAddUser").on("click",function()
-        {   
-            $.ajax({
-                url: "/company/companies/",
-                success: function(data)
-                {
-                    var dest = $("#program_parent_id");
-
-                    dest.html("");
-                    dest.append('<option value="'+this.id+'">Valeur VIDE</option>');
-                    $(data).each(function()
-                                 {
-                                     dest.append('<option value="'+this.id+'">'+this.name+'</option>');
-                                 });
-                },
-                dataType: "json"
-            });
-        });*/
-
-    /*
-    $("#loginForm").on("click", ".cmdLog", function() {
-        saveForm($(this).closest('#loginForm'), '/auth/login',null,function(){
-            var dest = $(".loginDiv");
-            if(dest.html().indexOf("Mauvaises informations de login") <= -1)
-            {
-                dest.append('<small class="error">Mauvaises informations de login</small>');    
-            }
+function initListUser(){
+    var modal = $("#mainModal");
+    var div = $("#listUser");
+    div.on("click", ".editUser", function() {
+        var id = getId(getTr(this));
+        modal.foundation('reveal', 'open', {
+            url: '/auth/edit/' + id
         });
-    });
-*/
+    })
+}
 
-    $("#mainModal").on("click", ".cmdAddUser", function() {
-      
-        var data = dataFromForm($(this).closest('.reveal-modal'));
-        console.log("lalalalalalalalalal");
-        if(data['password'] !== "" && data['passwordConfirm']  !== "" && data['password'] == data['passwordConfirm'])
-        {
-            saveForm($("#addUserDiv"), '/auth/add',null, error("errorEmptyForm"));
-        }
-    });
-    
-    $('#myTestFOrm')
-  .on('invalid.fndtn.abide', function () {
-    var invalid_fields = $(this).find('[data-invalid]');
-    console.log(invalid_fields);
-  })
-  .on('valid.fndtn.abide', function () {
-    console.log('valid!');
-  });
-    
-    function error(message)
-    {
-        var dest = $("#errorRegister");
-        var isErrorExist = $('#errorMessage');
-
-        if(!isErrorExist.length)
-        {
-            dest.append("<small class='error' id='errorMessage' >@lang('messages."+message+"')</small>");    
-        }
-    }
-/*
-     $("#mainModal").on("click", ".cmdAddUser", function() {
+function initUserRegister() {
+    $('#addUserForm').foundation("abide");
+    $('#addUserForm').on('invalid', function () {
+        console.log("invalid");
+        var invalid_fields = $(this).find('[data-invalid]');
+        console.log(invalid_fields);
+    }).on('valid', function () {
+        console.log("ajout");
+        //TODO : ARGUMENT DANS LA FONCTION DE CALLBACK ERROR
+        //L'ERROR NE S'AFFICHE PAS
+            saveForm($(this).closest('.reveal-modal'), '/auth/add',null, function() {
+            
+            var dest = $("#addUserForm");
+            var isErrorExist = $('#errorMessage');
+            if(isErrorExist.length <= 0)
+            {
+                dest.append("<small class='error' id='errorMessage' >@lang('messages.errorEmptyPassword')</small>");    
+            }
+         });
      });
-  */  
-});
+    
+    $('#editUserForm').foundation("abide");
+    $('#editUserForm').on('invalid', function () {
+        console.log("invalid");
+        var invalid_fields = $(this).find('[data-invalid]');
+        console.log(invalid_fields);
+    }).on('valid', function () {
+        console.log("edit");
+        //TODO : ARGUMENT DANS LA FONCTION DE CALLBACK ERROR
+        //L'ERROR NE S'AFFICHE PAS
+            saveForm($(this).closest('.reveal-modal'), '/auth/edit',null, function() {
+            
+            var dest = $("#addUserForm");
+            var isErrorExist = $('#errorMessage');
+            if(isErrorExist.length <= 0)
+            {
+                dest.append("<small class='error' id='errorMessage' >@lang('messages.errorEmptyPassword')</small>");    
+            }
+         });
+     });
+}

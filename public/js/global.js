@@ -5,6 +5,9 @@ function dataFromForm(form) {
             data[this.name] = $(this).val();
         }
     });
+    form.find("select").each(function(){
+        data[this.name] = $(this).val(); 
+                            });
     return data;
 }
 function closeModal(){
