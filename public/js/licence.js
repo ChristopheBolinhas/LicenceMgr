@@ -6,11 +6,12 @@ function loadLicence(id) {
             success: function(data) {
                 $("#licences").html(data);
                 $("#licences").foundation();
+                $("#selectProgramMsg").hide();
             },
             type: "POST"
         });
     } else {
-        $("#licences").html('<h4>Veuillez séléctionner un programme.</h4>');
+        $("#selectProgramMsg").show();
     }
 }
 

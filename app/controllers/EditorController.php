@@ -8,9 +8,6 @@ class EditorController extends BaseController {
             return View::make('editor/add');
         }
         return App::abort(404);
-        //$editor = Editor::all(); 
-
-        //->with('editorList_public',$editor); 
     }
 
     public function postAdd()
