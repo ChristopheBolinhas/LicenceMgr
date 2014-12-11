@@ -4,6 +4,26 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>User interface</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="icon" type="image/png" href="favicon-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="favicon-160x160.png" sizes="160x160">
+        <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-TileImage" content="mstile-144x144.png">
+        <meta name="msapplication-config" content="browserconfig.xml">
+
+
 
         {{ HTML::style('css/foundation.css') }}
         {{ HTML::style('css/app.css') }}
@@ -37,7 +57,7 @@
         {{--@endif
         @if (Auth::user()->isSuperAdmin())--}}
         {{--@endif--}}
-        
+
 
         {{ HTML::script('js/user.js') }}
     </head>
@@ -84,7 +104,7 @@
 
             <ul class="title-area">
                 <li class="name">
-                    <h1><a href="#"><i class="fi-key"></i> LicenceMgr</a></h1>
+                    <h1><a href="#"><img src="/favicon-32x32.png"> LicenceMgr</a></h1>
                 </li>
 
 
@@ -92,30 +112,23 @@
             <section class="top-bar-section">
                 <ul class="right">
                     <li class="has-dropdown">
-                       
-                        
-                        @if (Session::get('lang') == 'en')
+
+
+                        @if (Config::get('app.locale') == 'en')
                         <a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a>
                         <ul class="dropdown">
                             <li><a href="#" id="frenchSelector" selected><img src="img/flags/fr.png"/> Français</a></li>
-                            <li><a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a></li>
                         </ul>
-                        @elseif (Session::get('lang') == 'de')
-                        <a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a>
-                        <ul class="dropdown">
-                            <li><a href="#" id="frenchSelector" selected><img src="img/flags/fr.png"/> Français</a></li>
-                            <li><a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a></li>
-                        </ul>
+
                         @else
                         <a href="#" selected><img src="img/flags/fr.png"/> Français</a>
                         <ul class="dropdown">
                             <li><a href="#" id="englishSelector"><img src="img/flags/en.png"/> English</a></li>
-                            <li><a href="#" id="germanSelector"><img src="img/flags/de.png"/> Deutsch</a></li>
                         </ul>
                         @endif
 
                     </li>
-                    <li class="nameUser"><a>@lang('messages.guestNavLabel')</a></li>
+                    <li class="nameUser"><a>{{{ Auth::user()->fullname }}}</a></li>
 
                     <li>
                         <a href="/auth/logout" id="logout">
@@ -185,6 +198,7 @@
             function tabCallback() {}
         </script>
         @include("user.login")
+
         @endif
 
         <!-- End main panel -->

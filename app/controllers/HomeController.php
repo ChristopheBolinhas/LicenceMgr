@@ -15,37 +15,8 @@ class HomeController extends BaseController {
 	|
 	*/
 
-    private function setLang(){
-        if (Session::has('lang'))
-        {
-            App::setLocale(Session::get('lang'));
-        }
-        else
-        {
-            $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-            switch($lang){
-                case 'fr':
-                App::setLocale('fr');
-                //App::setLocale('fr');
-                break;
-                case 'de':
-                App::setLocale('de');
-                //App::setLocale('de');
-                break;
-                case 'en':
-                App::setLocale('en');
-                //App::setLocale('en');
-                break;
-                default:
-                App::setLocale('fr');
-                //App::setLocale('fr');
-            }    
-        }
-
-    }
-
     public function showUI() {   
-        $this->setLang();
+       
         return View::make('mainTemplate')->with("currentLang", App::getLocale()); 
     }
 
@@ -59,7 +30,7 @@ class HomeController extends BaseController {
     public function uiSuperAdmin() {
         if(Auth::user()->IsSuperAdmin())
         {
-            $this->setLang();
+            
             return View::make("tabs/superAdmin")->with("companies", Company::all());
         }
     }
@@ -67,14 +38,14 @@ class HomeController extends BaseController {
     public function uiAdmin() {
         if(Auth::user()->IsAdmin())
         {
-            $this->setLang();
+            
             return View::make("tabs/admin")->with("users",User::all());
         }
     }
     public function uiUser() {
         if(Auth::user()->IsReadOrWrite() || Auth::user()->IsAdmin())
         {
-            $this->setLang();
+            
             return View::make("tabs/user");
         }
     }

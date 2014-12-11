@@ -80,6 +80,7 @@ App::down(function()
 
 require app_path().'/filters.php';
 
+App::setLocale(Session::get('lang', Config::get('app.locale')));
 
 function startEditable($name, $url) {
     return '<div data-url="'.$url.'" data-name="'.$name.'" class="editable"><div class="value columns small-11">';

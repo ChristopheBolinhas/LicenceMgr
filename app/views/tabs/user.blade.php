@@ -34,6 +34,7 @@
         @if(Auth::user()->IsWrite() || Auth::user()->IsAdmin())
         <a href="#" class="button tiny" id="addLicence">@lang('controls.addLicenceButton')</a>
         @endif
+        <div id="selectProgramMsg"><h3>@lang('messages.selectProgram')</h3></div>
         <div id="licences"></div>
 
     </div>

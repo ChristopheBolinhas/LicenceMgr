@@ -16,10 +16,12 @@
         <label>@lang('messages.nameLabel')</label>
         <input type="text" name="name"placeholder="@lang('messages.programNamePlaceholder')" />
     </div>
+    @if(!$isPrivate)
     <div class="row">
         <input type="radio" name="catalogue" value="0" id="addPublicProg" checked><label for="addPublicProg">@lang('messages.publicLabel')</label>
         <input type="radio" name="catalogue" value="1" id="addPrivateProg"><label for="addPrivateProg">@lang('messages.privateLabel')</label>
     </div>
+    @endif
 </div>
 <div class="row">
     <a href="#" class="button tiny cmdNewProgram">@lang('messages.addButton')</a>
