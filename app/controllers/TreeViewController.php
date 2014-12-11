@@ -27,12 +27,19 @@ class TreeViewController extends BaseController {
             */
                 $programsId = Licence::where("company_id", "=", $companyId)->select(array("program_id"))->distinct()->lists("program_id");
                 // liste des programes manquants
-                $programsIdCompany = Program::where("company_id", "=", $companyId)->select(array("id"))->whereNotIn("id", $programsId)->lists("id");
+                $programsIdCompany = array();
+                if (count($programsId) > 0) {
+                    $programsIdCompany = Program::where("company_id", "=", $companyId)->select(array("id"))->whereNotIn("id", $programsId)->lists("id");
+                }
                 // concaténation de tableaux
                 $programsId = array_merge($programsId, $programsIdCompany);
                 // recherde de ces programmes
-                $programs = Program::whereIn("id", $programsId)->orderBy("parent_id")->get();
-
+                $programs = null;
+                if (count($programsId) > 0) {
+                    $programs = Program::whereIn("id", $programsId)->orderBy("parent_id")->get();
+                } else {
+                    return Response::Json(array());
+                }
                 /*
               2 :
                 2.1 : Récupération de tous les parents des programme
