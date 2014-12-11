@@ -6,7 +6,32 @@ function initListUser(){
         modal.foundation('reveal', 'open', {
             url: '/auth/edit/' + id
         });
-    })
+    });
+    
+    div.on("click", ".deleteUser", function() {
+        var tr = getTr(this);
+        var id = getId(tr);        
+        $.ajax({
+            url : '/auth/delete/' + id,
+            type : 'DELETE',
+            success : function(data, statut){
+                tr.remove();
+            }
+        });
+     });
+     
+    loadUsers();
+}
+
+function loadUsers() {
+    $.ajax({
+        url : "/auth/list",
+        success: function(data) {
+            $("#listUser").html(data);
+            $("#listUser").foundation();
+        },
+        type: "GET"
+    });
 }
 
 function initUserRegister() {
@@ -19,7 +44,7 @@ function initUserRegister() {
         console.log("ajout");
         //TODO : ARGUMENT DANS LA FONCTION DE CALLBACK ERROR
         //L'ERROR NE S'AFFICHE PAS
-            saveForm($(this).closest('.reveal-modal'), '/auth/add',null, function() {
+            saveForm($(this).closest('.reveal-modal'), '/auth/add',loadUsers, function() {
             
             var dest = $("#addUserForm");
             var isErrorExist = $('#errorMessage');
@@ -39,7 +64,7 @@ function initUserRegister() {
         console.log("edit");
         //TODO : ARGUMENT DANS LA FONCTION DE CALLBACK ERROR
         //L'ERROR NE S'AFFICHE PAS
-            saveForm($(this).closest('.reveal-modal'), '/auth/edit',null, function() {
+            saveForm($(this).closest('.reveal-modal'), '/auth/edit',loadUsers, function() {
             
             var dest = $("#addUserForm");
             var isErrorExist = $('#errorMessage');

@@ -11,7 +11,11 @@
             <select name="companies">
             @if(isset($companies))
                 @foreach ($companies as $company)
-                <option value="{{$company->id}}">{{$company->name}}</option>
+                @if(isset($user) && $user->company_id == $company->id)
+                <option value="{{$company->id}}" selected="selected">{{$company->name}}</option>
+                @else
+                <option value="{{$company->id}}" >{{$company->name}}</option>
+                @endif
                 @endforeach
             @endif
             </select>
@@ -54,25 +58,21 @@
             <label>@lang('messages.rightsLabel')</label>
             @if(isset($roles))
             @foreach ($roles as $role)
+                @if((Auth::user()->IsAdmin() && $role->code != "S") || Auth::user()->IsSuperAdmin())
                 @if(isset($user))
-                <input id="{{$role->id}}" type="checkbox" {{$user->IsInRole($role->code) ? 'checked':''}}><label for="{{$role->id}}"><?php echo Lang::get("role.$role->id") ?></label><br/>
+                <input id="{{$role->id}}" name="role{{$role->id}}" type="checkbox" {{$user->IsInRole($role->code) ? 'checked':''}}><label for="{{$role->id}}"><?php echo Lang::get("role.$role->id") ?></label><br/>
                 @else
                 <input id="{{$role->id}}" name="role{{$role->id}}" type="checkbox"><label for="{{$role->id}}"><?php echo Lang::get("role.$role->id") ?></label><br/>
                 @endif
+                @endif
             @endforeach
             @endif
-        </div>
-        <div class="row">
-            <label>@lang('messages.activeLabel')</label>
-            <input id="active" name="isActive" type="checkbox"><label for="checkbox1">@lang('messages.activeBoxLabel')</label><br/>
         </div>
     </div>
 
     <div class="row">
         <button type="submit" class="button tiny">{{$submitText}}</button>
-        <!-- A SUPPRIMER <a href="#" class="button tiny cmdAddUser">@lang('messages.newUserButton')</a>
-        -->
-        <a href="#" class="button tiny cmdCloseModal">@lang('messages.cancelButton')</a>
+            <a href="#" class="button tiny cmdCloseModal">@lang('messages.cancelButton')</a>
     </div>
 </form>
 <a class="close-reveal-modal">&#215;</a>

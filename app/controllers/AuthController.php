@@ -8,6 +8,16 @@ class AuthController extends BaseController {
         return View::make('login');    
     }
     */
+    public function anyList() {        
+        if(Auth::user()->IsSuperAdmin())
+        {
+            return View::make("user/list")->with("users", User::all());
+        }
+        else if(Auth::user()->IsAdmin())
+        {
+            return View::make("user/list")->with("users", User::where('company_id','=', Auth::user()->company_id)->get());
+        }
+    }
 
     public function postLogin()
     {    
@@ -79,7 +89,7 @@ class AuthController extends BaseController {
     {
         //if(Input::get('password') != "" && Input::get('passwordConfirm') != "")
         //{
-        if(Auth::user()->IsSuperAdmin())
+        if(Auth::user()->IsSuperAdmin() || Auth::user()->IsAdmin())
         {
             $username = Input::get('login');
 
@@ -88,7 +98,7 @@ class AuthController extends BaseController {
                     'username' => $username,
                 ),
                 array(
-                    'username' => 'required|username|unique:users',
+                    'username' => 'required|unique:users,username',
                 )
             );
 
@@ -105,12 +115,13 @@ class AuthController extends BaseController {
                 $user->password = Hash::make(Input::get('password'));
                 $user->company_id = Input::get('companies');
                 $user->remember_token = false; //Input::get('isActive')
+                $user->save();                             
                 foreach (Role::all() as $role) {
                     if(Input::get('role'.$role->id)) {
                         $user->makeRole($role->code);
                     }
                 }
-                $user->save();                             
+                $user->save();
             }
         }
     }
@@ -123,16 +134,23 @@ class AuthController extends BaseController {
                 ->with('user',User::findOrFail($id))
                 ->with("companies", Company::all())
                 ->with("roles", Role::all())
-                ->with("submitText", Lang::get('messages.editUserButton'))
+                ->with("submitText", Lang::get('controls.editUserButton'))
+                ->with("nameForm","editUserForm");
+        }
+        else if(Auth::user()->IsAdmin())
+        {
+            return View::make('user/register')
+                ->with('user',User::findOrFail($id))
+                ->with("roles", Role::all())
+                ->with("submitText", Lang::get('controls.editUserButton'))
                 ->with("nameForm","editUserForm");
         }
     }
 
     public function postEdit()
     {
-        if(Auth::user()->IsSuperAdmin())
+        if(Auth::user()->IsSuperAdmin() || Auth::user()->IsAdmin())
         {
-
             $user = User::findOrFail(Input::get('id'));
             $user->fullname = Input::get('fullname');
             $user->username = Input::get('login');
@@ -142,16 +160,22 @@ class AuthController extends BaseController {
                 $user->password = Hash::make(Input::get('password'));
 
             $user->company_id = Input::get('companies');
-            $user->remember_token = false; //Input::get('isActive')
+            
+            $listeRoles = array();
             foreach (Role::all() as $role) {
                 if(Input::get('role'.$role->id)) {
-                    $user->makeRole($role->code);
-                }
-                else{
-
+                    $listeRoles[] = $role->code;
                 }
             }
-            $user->save(); 
+            
+            $user->setRoles($listeRoles);
+        }
+    }
+    
+    public function deleteDelete($id) {
+        if(Auth::user()->IsSuperAdmin() || Auth::user()->isAdmin())
+        {
+            User::destroy($id);
         }
     }
 }
