@@ -178,4 +178,15 @@ class AuthController extends BaseController {
             User::destroy($id);
         }
     }
+    
+    public function getParam()
+    {
+        return View::make('user/parameter')
+                ->with('user', Auth::user());
+    }
+    
+    public function postParam()
+    {
+        
+    }
 }

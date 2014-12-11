@@ -1,3 +1,14 @@
+$(function() {
+    var modal = $("#mainModal");
+    var div = $("#parameter");
+    $("#cmdOpenParameter").click(function() {
+        modal.foundation('reveal', 'open', {
+            url: '/auth/param/'
+        });
+    });   
+});
+
+
 function initListUser(){
     var modal = $("#mainModal");
     var div = $("#listUser");
@@ -62,8 +73,7 @@ function initUserRegister() {
         console.log(invalid_fields);
     }).on('valid', function () {
         console.log("edit");
-        //TODO : ARGUMENT DANS LA FONCTION DE CALLBACK ERROR
-        //L'ERROR NE S'AFFICHE PAS
+        
             saveForm($(this).closest('.reveal-modal'), '/auth/edit',loadUsers, function() {
             
             var dest = $("#addUserForm");
