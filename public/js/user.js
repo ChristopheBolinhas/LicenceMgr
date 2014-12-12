@@ -8,6 +8,15 @@ $(function() {
     });   
 });
 
+function initParameterUser(){
+     $('#parameterForm').foundation("abide");
+    $('#parameterForm').on('invalid', function () {
+    }).on('valid', function () {
+        console.log("ajout");
+            saveForm($(this).closest('.reveal-modal'), '/auth/param',loadUsers, null);
+     });
+}
+
 
 function initListUser(){
     var modal = $("#mainModal");
@@ -48,13 +57,7 @@ function loadUsers() {
 function initUserRegister() {
     $('#addUserForm').foundation("abide");
     $('#addUserForm').on('invalid', function () {
-        console.log("invalid");
-        var invalid_fields = $(this).find('[data-invalid]');
-        console.log(invalid_fields);
     }).on('valid', function () {
-        console.log("ajout");
-        //TODO : ARGUMENT DANS LA FONCTION DE CALLBACK ERROR
-        //L'ERROR NE S'AFFICHE PAS
             saveForm($(this).closest('.reveal-modal'), '/auth/add',loadUsers, function() {
             
             var dest = $("#addUserForm");
@@ -68,9 +71,6 @@ function initUserRegister() {
     
     $('#editUserForm').foundation("abide");
     $('#editUserForm').on('invalid', function () {
-        console.log("invalid");
-        var invalid_fields = $(this).find('[data-invalid]');
-        console.log(invalid_fields);
     }).on('valid', function () {
         console.log("edit");
         

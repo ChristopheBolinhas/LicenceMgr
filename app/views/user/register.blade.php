@@ -72,7 +72,7 @@
 
     <div class="row">
         <button type="submit" class="button tiny">{{$submitText}}</button>
-            <a href="#" class="button tiny cmdCloseModal">@lang('messages.cancelButton')</a>
+            <a href="#" class="button tiny cmdCloseModal">@lang('controls.cancelButton')</a>
     </div>
 </form>
 <a class="close-reveal-modal">&#215;</a>
