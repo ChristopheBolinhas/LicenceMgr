@@ -186,6 +186,10 @@ class AuthController extends BaseController {
             {
                 User::destroy($id);
             }
+            else
+            {    
+                App::abort(400);   
+            }
         }
     }
     
