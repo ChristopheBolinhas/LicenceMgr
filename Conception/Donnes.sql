@@ -41,6 +41,9 @@ INSERT INTO licences VALUES
 	(3, 3, 1, 'Access he-arc 2', 'AAAAA-XXXXX-XXXXX-XXXXX-XXXXX', 0, now(), 0, now()),
 	(4, 4, 1, 'Excel he-arc 2', 'BBBBB-XXXXX-XXXXX-XXXXX', 0, now(), 0, now());
 
+CREATE USER 'licmgr'@'localhost' IDENTIFIED BY 'licmgr';
+GRANT ALL PRIVILEGES ON LicMgr.* TO 'licmgr'@'localhost' WITH GRANT OPTION;
+
 INSERT INTO `users` VALUES
     (1,1,'Super Admin','superadmin','$2y$10$HDX6ZIcR/MLmO92L0xfevutqcyBtdfOrvinVflOYuAWtidiWn1HpG','superadmin@he-arc.ch','0','2014-11-18 11:49:07','2014-12-06 15:21:27'),
     (2,1,'Admin HE-ARC','hearc','$2y$10$qAZy1PNTGvWDsUDO8XhxVuM63YBXe.yJl7Iw\/KuBx5FO0N7QJTeTi','admin@he-arc.ch','0','2014-11-18 11:49:07','2014-12-06 15:21:27'),
