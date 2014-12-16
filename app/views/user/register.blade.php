@@ -34,31 +34,31 @@
             <label>@lang('messages.nameLabel')
                 <input type="text" required pattern="[a-zA-Z]+" name="fullname" value="{{{isset($user) ? $user->fullname:''}}}" placeholder="@lang('messages.namePlaceholder')" />
             </label>
-            <small class="error" id="nameError">@lang('messages.nameError')</small>
+            <small class="error" id="nameError">@lang('errors.nameError')</small>
         </div>
         <div class="row">	
             <label>@lang('messages.loginLabel')
                 <input type="text" required pattern="alpha_numeric" name="login" value="{{{isset($user) ? $user->username:''}}}" placeholder="@lang('messages.loginPlaceholder')" />
             </label>
-            <small class="error" id="loginError">@lang('messages.loginError')</small>
+            <small class="error" id="loginError">@lang('errors.loginError')</small>
         </div>
         <div class="row">	
             <label>@lang('messages.emailLabel')
                 <input type="email" required name="email" value="{{{isset($user) ? $user->email:''}}}" placeholder="@lang('messages.emailPlaceholder')" />
             </label>
-            <small class="error" id="emailError">@lang('messages.emailError')</small>
+            <small class="error" id="emailError">@lang('errors.emailError')</small>
         </div>
         <div class="row">
             <label>@lang('messages.passwordLabel')
                 <input type="password" name="password" id="passwordBase" placeholder="@lang('messages.passwordPlaceholder')"/>
             </label>
-            <small class="error" id="passwordError">@lang('messages.passwordError')</small>
+            <small class="error" id="passwordError">@lang('errors.passwordError')</small>
         </div>
         <div class="row">
             <label>@lang('messages.passwordConfirmLabel')
                 <input type="password" data-equalto="passwordBase" name="passwordConfirm" id="passwordConfirm" placeholder="@lang('messages.passwordPlaceholder')"/>
             </label>
-            <small class="error" id="passwordConfirmError">@lang('messages.passwordConfirmError')</small>
+            <small class="error" id="passwordConfirmError">@lang('errors.passwordConfirmError')</small>
         </div>
         <div class="row">
             <label>@lang('messages.rightsLabel')</label>

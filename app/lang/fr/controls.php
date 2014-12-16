@@ -26,4 +26,6 @@
 "editUserButton"      =>     "Modifier",
 
 
+"saveButton"      =>     "Enregistrer",
+
 );
