@@ -23,7 +23,7 @@
         <meta name="msapplication-TileImage" content="mstile-144x144.png">
         <meta name="msapplication-config" content="browserconfig.xml">
 
-
+        {{ HTML::script('/lang/msg')}}
 
         {{ HTML::style('css/foundation.css') }}
         {{ HTML::style('css/app.css') }}
@@ -40,7 +40,7 @@
         {{ HTML::script('js/foundation/foundation.abide.js') }}
         {{ HTML::script('js/lang.js') }}
 
-        @if(Auth::check())
+        {{--@if(Auth::check())--}}
         {{ HTML::script('js/jstree/jstree.min.js') }}
         {{ HTML::script('js/global.js') }}
         {{ HTML::script('js/tree.js') }}
@@ -52,17 +52,12 @@
 
         {{ HTML::script('js/superadmin.js') }}
 
-        @endif
-        {{--@if (Auth::user()->isReadOrWrite())--}}
-        {{--@endif
-        @if (Auth::user()->isSuperAdmin())--}}
         {{--@endif--}}
-
 
         {{ HTML::script('js/user.js') }}
     </head>
     <body>
-        <div id="mainModal" class="reveal-modal small" data-reveal></div>
+        <div id="mainModal" class="reveal-modal large" data-reveal></div>
         @if(Auth::check())    
 
         <!-- Paramètre modal -->

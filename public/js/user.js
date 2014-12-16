@@ -35,11 +35,13 @@ function initListUser(){
 }
 
 function loadUsers() {
+    
     $.ajax({
         url : "/auth/list",
         success: function(data) {
             $("#listUser").html(data);
             $("#listUser").foundation();
+            
         },
         type: "GET"
     });
@@ -80,7 +82,7 @@ function initUserRegister() {
             var isErrorExist = $('#errorMessage');
             if(isErrorExist.length <= 0)
             {
-                dest.append("<small class='error' id='errorMessage' >@lang('messages.errorEmptyPassword')</small>");    
+                dest.append("<small class='error' id='errorMessage' >@lang('error.errorEmptyPassword')</small>");    
             }
          });
      });

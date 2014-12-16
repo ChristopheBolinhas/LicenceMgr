@@ -68,7 +68,7 @@ function initLicenceFunctions(){
                     url: '/licence/add/' + parentId
                 });
             } else {
-                setErrorMsg("Veuillez séléctionner un programme !");
+                setErrorMsg(msgs.selectProgramError);
             }
         });
         modal.on("click", ".cmdAddFile", addFile);

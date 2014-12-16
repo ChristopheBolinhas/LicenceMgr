@@ -20,7 +20,7 @@ class CompanyController extends BaseController {
             return View::make("company/edit")
                 ->with("company", new Company)
                 ->with("title", Lang::get('messages.addCompanyModalTitle'))
-                ->with("action", Lang::get('messages.addButton'))
+                ->with("action", Lang::get('controls.addButton'))
                 ->with("cmd", "cmdAddCompany")
                 ;
         }
@@ -38,7 +38,7 @@ class CompanyController extends BaseController {
             return View::make("company/edit")
                 ->with("company", Company::findOrFail($id))
                 ->with("title", Lang::get('messages.modifyCompanyModalTitle'))
-                ->with("action", Lang::get('messages.editButton'))
+                ->with("action", Lang::get('controls.editButton'))
                 ->with("cmd", "cmdEditCompany")
                 ;
         }

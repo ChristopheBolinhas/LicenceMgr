@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="row">
-    <a href="#" class="button tiny cmdNewEditor">@lang('messages.addButton')</a>
-    <a href="#" class="button tiny cmdCloseModal">@lang('messages.cancelButton')</a>
+    <a href="#" class="button tiny cmdNewEditor">@lang('controls.addButton')</a>
+    <a href="#" class="button tiny cmdCloseModal">@lang('controls.cancelButton')</a>
 </div>
 <a class="close-reveal-modal">&#215;</a>

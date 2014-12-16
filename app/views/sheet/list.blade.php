@@ -14,7 +14,7 @@
     </tbody>
 </table>
 <div class="row panel text-center" id="fileupload" data-url="/sheet/add/{{{$licence_id}}}">
-    <h4>Dropez un fichier ici</h4>
+    <h4>@lang('messages.dropFileMessage')</h4>
     <input type="file" multiple="multiple" name="file[]"  />
 </div>
 <div class="row">
@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="row">
-    <a href="#" class="button tiny cmdCloseModal">@lang('messages.close')</a>
+    <a href="#" class="button tiny cmdCloseModal">@lang('controls.closeMessage')</a>
 </div>
 <a class="close-reveal-modal">&#215;</a>
 <style>

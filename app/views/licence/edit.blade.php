@@ -13,6 +13,6 @@
 </div>
 <div class="row">
     <a href="#" class="button tiny {{{ $cmd }}}">{{{ $action }}}</a>
-    <a href="#" class="button tiny cmdCloseModal">@lang('messages.cancelButton')</a>
+    <a href="#" class="button tiny cmdCloseModal">@lang('controls.cancelButton')</a>
 </div>
 <a class="close-reveal-modal">&#215;</a>

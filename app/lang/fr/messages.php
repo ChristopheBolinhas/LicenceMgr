@@ -1,12 +1,61 @@
 <?php
 
 return array(
+    "authTitle"      =>     "Connexion",
+"loginLabel"      =>     "Nom d'utilisateur",
+"loginPlaceholder"      =>     "nom d'utilisateur",
+"passwordLabel"      =>     "Mot de passe",
+"passwordPlaceholder"      =>     "********",
+"rememberLabel"      =>     "Se souvenir ?",
 
-	/* Messages - Français
-    *  Contient la liste des traductions françaises pour les textes du site 
-    *  A appeler avec <?php echo Lang::get('messages.nomMsg'); ?>
-    *
-    */
+"homeTitle"      =>     "Bienvenue sur votre page d'accueil, ",
+"homeIntro"      =>     "Depuis cette page vous pouvez cliquer sur un des onglets disponibles pour votre navigation et commencer à travailler.<br/>Voici les fonctionalités auxquels vous avez accès :",
+"readerDescription"      =>     "Accèder aux licences de votre entreprise et du répertoire publique.",
+"writerDescription"      =>     "Ajouter, modifier et supprimer les licences de votre entreprise.",
+"adminDescription"      =>     "Gérer les utilisateurs qui ont accès au catalogue de votre entreprise et leurs droits.",
+"superAdminDescription"      =>     "Gérer les entreprises de la plateforme et leurs utilisateurs",
+"homeOutro"      =>     "Bonne navigation !",
+
+"programTitle"      =>     "Programmes",    
+"fullListLabel"      =>     "Catalogue complet",
+"privateListLabel"      =>     "Catalogue d'entreprise",
+"licenceTitle"      =>     "Licences",
+"selectProgram"      =>     "Veuillez choisir un programme dans la liste",
+"editorModalTitle"      =>     "Ajout d'éditeur",
+"nameLabel"      =>     "Nom",
+"publicLabel"      =>     "Catalogue publique",
+"privateLabel"      =>     "Catalogue privé",
+"editorNamePlaceholder"      =>     "nom de l'éditeur",
+"programModalTitle"      =>     "Ajout de programme à :name",
+"programNamePlaceholder"      =>     "nom du programme",
+"nameTabTitle"      =>     "Nom",
+"licenceTabTitle"      =>     "Licence",
+"actionTabTitle"      =>     "Action",
+"fileNameTabTitle"      =>     "Nom du fichier",
+"dropFileMessage"      =>     "Glissez un fichier ici",
+
+"loginTabTitle"      =>     "Nom d'utilisateur",
+"roleTabTitle"      =>     "Rôles",
+"companyTabTitle"      =>     "Entreprise",
+"actionTabTitle"      =>     "Action",
+"companyLabel"      =>     "Entreprise",
+"emailLabel"      =>     "Email",
+"passwordConfirmLabel"      =>     "Confirmez le mot de passe",
+"rightsLabel"      =>     "Rôles",
+"namePlaceholder"      =>     "nom",
+"emailPlaceholder"      =>     "email (user@he-arc.ch)",
+"addUserModalTitle"      =>     "Ajout d'utilisateur",
+"modifyUserModalTitle"      =>     "Modifier utilisateur :",
+
+"modifyCompanyModalTitle"      =>     "Renommer l'entreprise ",
+"addCompanyModalTitle"      =>     "Ajouter une entreprise",
+"companyNamePlaceholder"      =>     "nom de l'entreprise"
+
+);
+
+/*return array(
+
+	
     //Messages d'accueils
 	"welcome" => "Bienvenue sur Licence Manager.<br/> Authentifiez-vous ou contactez un administrateur pour accéder au site.",
     //
@@ -100,4 +149,4 @@ return array(
     "selectProgramMsg" => "Veuillez sélectionner un programme.",
     "guestNavLabel" => "Invité",
     
-);
+);*/

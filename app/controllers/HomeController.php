@@ -36,7 +36,7 @@ class HomeController extends BaseController {
     }
 
     public function uiAdmin() {
-        if(Auth::user()->IsAdmin())
+        if(Auth::user()->IsAdmin() || Auth::user()->IsSuperAdmin())
         {
             
             return View::make("tabs/admin")->with("users",User::all());

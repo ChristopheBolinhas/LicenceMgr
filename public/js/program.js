@@ -17,7 +17,7 @@ function initProgramFunctions(){
                 url: '/program/add/' + selectedProgram
             });
         } else {
-            setErrorMsg("Sélectionnez un programme dans la liste");
+            setErrorMsg(msgs.selectProgramOrEditorError);
         }
     });
 
@@ -27,9 +27,9 @@ function initProgramFunctions(){
 
     function programAddError() {
         var dest = $(".programAddDiv");
-        if(dest.html().indexOf("Erreur lors de l\'ajout du programme") <= -1)
+        if(dest.html().indexOf(msgs.programAddError) <= -1)
         {
-            dest.append('<small class="error">Erreur lors de l\'ajout du programme</small>');    
+            dest.append('<small class="error">'+msgs.programAddError+'</small>');    
         }
     }
 });

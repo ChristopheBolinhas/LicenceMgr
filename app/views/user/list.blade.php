@@ -1,4 +1,4 @@
-        @if(isset($users))
+@if(isset($users))
         <table width="100%">
             <thead>
                 <tr>

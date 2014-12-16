@@ -8,13 +8,14 @@ class AuthController extends BaseController {
         return View::make('login');    
     }
     */
-    public function anyList() {        
+    public function anyList() {   
         if(Auth::user()->IsSuperAdmin())
         {
             return View::make("user/list")->with("users", User::all());
         }
         else if(Auth::user()->IsAdmin())
         {
+            
             return View::make("user/list")->with("users", User::where('company_id','=', Auth::user()->company_id)->get());
         }
     }
@@ -36,30 +37,7 @@ class AuthController extends BaseController {
         }
     }
 
-    public function getOnetimeuser()
-    {
-        //Fonction de debug limité à SuperAdmin
-        if(Auth::user()->IsSuperAdmin())
-        {
-            $password = Hash::make('1234');
-
-            $user = new User;
-            $user->company_id = 1;
-            $user->fullname = "lala";
-            $user->username = "writer";
-            $user->password = $password;
-            $user->email = "lala@dsa.com";
-            $user->remember_token = false;
-
-            $user->save();
-            //$user->makeRole(Role::ROLE_SUPERADMIN);
-            //$user->makeRole(Role::ROLE_ADMIN);
-            $user->makeRole(Role::ROLE_WRITE);
-            //$user->makeRole(Role::ROLE_READ);
-
-            return "new user made";
-        }
-    }
+    
 
     public function getPasswordhash($pw)
     {
@@ -75,20 +53,18 @@ class AuthController extends BaseController {
 
     public function getAdd()
     {       
-        if(Auth::user()->IsAdmin())
+        if(Auth::user()->IsAdmin() || Auth::user()->IsSuperAdmin())
         {
             return View::make('user/register')
                 ->with("companies", Company::all())
                 ->with("roles", Role::all())
-                ->with("submitText", Lang::get('messages.newUserButton'))
+                ->with("submitText", Lang::get('controls.newUserButton'))
                 ->with("nameForm","addUserForm");
         }
     }
 
     public function postAdd()
     {
-        //if(Input::get('password') != "" && Input::get('passwordConfirm') != "")
-        //{
         if(Auth::user()->IsSuperAdmin() || Auth::user()->IsAdmin())
         {
             $username = Input::get('login');

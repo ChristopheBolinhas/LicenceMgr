@@ -1,6 +1,24 @@
 <?php
 
 class LangController extends BaseController {
+    public function getMsg()
+    {
+        $content = "var msgs = {};";
+        foreach(Lang::get('javascript') as $key => $value)
+        {
+          $content .= $this->addVar($key, $value);  
+        }
+        $statusCode = 200;
+        $response = Response::make($content,$statusCode);
+        $response->header("Content-Type", "application/javascript");
+        return $response;
+    }
+    private function addVar($key, $value){
+        return "msgs.$key = '$value';";
+        
+        
+    }
+    
     public function getLang($lang)
     {
         if (Session::has('lang'))
