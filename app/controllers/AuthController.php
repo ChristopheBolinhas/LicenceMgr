@@ -26,8 +26,10 @@ class AuthController extends BaseController {
             'username' => Input::get('name'),
             'password' => Input::get('password')
         );
-
-        if(Auth::attempt($user,Input::get('souvenir')))
+        
+        $remember = Input::get('souvenir');
+        
+        if(Auth::attempt($user,$remember))
         {
             return Redirect::to('/');
         }
@@ -149,9 +151,21 @@ class AuthController extends BaseController {
     }
     
     public function deleteDelete($id) {
-        if(Auth::user()->IsSuperAdmin() || Auth::user()->isAdmin())
+        if(Auth::user()->IsSuperAdmin())
         {
             User::destroy($id);
+        }
+        else if(Auth::user()->isAdmin())
+        {
+            $user = User::findOrFail($id);
+            if(!$user->isSuperAdmin())
+            {
+                User::destroy($id);
+            }
+            else
+            {    
+                App::abort(400);   
+            }
         }
     }
     
@@ -163,6 +177,16 @@ class AuthController extends BaseController {
     
     public function postParam()
     {
-        
+        if(Auth::check())
+        {
+            $user = Auth::user();
+            $user->fullname = Input::get('fullname');
+            $user->email = Input::get('email');
+            
+            if(Input::get('password') != "")
+                $user->password = Hash::make(Input::get('password'));
+            
+            $user->save();
+        }
     }
 }
