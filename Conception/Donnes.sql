@@ -4,7 +4,7 @@ INSERT INTO companies values (1, 'HE-ARC');
 
 
 INSERT INTO editors VALUES 
-	(1, NULL, 'MICROSOFT'),
+	(1, NULL, 'Microsoft'),
 	(2, NULL, 'ESET'),
 	(3, 1, 'ISIC');
 
@@ -13,33 +13,14 @@ INSERT INTO programs VALUES
 	(2, 1, NULL, NULL, 'Visual Studio'),
 	(3, NULL, 1, NULL, 'Access'),
 	(4, NULL, 1, NULL, 'Excel'),
-	(5, 1, NULL, 1, 'ISIC program1'); 
-	
+	(5, 3, NULL, 1, 'ISIC program1'),
+	(6, 1, NULL, 1, 'Exchange'),
+	(7, 2, NULL, NULL, 'Node32');
 INSERT INTO roles VALUES
 	(1, 'S', 'Super Admin'),
 	(2, 'A', 'Admin'),
 	(3, 'W', 'Ecriture'),
 	(4, 'R', 'Lecture seule');
-	
-INSERT INTO licences VALUES
-	(1, 3, 1, 'Access he-arc', 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX', now(), 0, now(), 0),
-	(2, 4, 1, 'Excel he-arc', 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX', now(), 0, now(), 0);
-
-INSERT INTO files VALUES
-	(1, 1, 'Access file 1', 0x0),
-	(2, 1, 'Access file 2', 0x0),
-	(3, 2, 'Excel file 1', 0x0);
-
-
-UPDATE editors SET name = "Microsoft" WHERE id = 1;
-UPDATE programs SET editor_id = 3, name = "ISIC program 1" WHERE id = 5;
-INSERT INTO programs VALUES
-	(6, 1, NULL, 1, 'Exchange'),
-	(7, 2, NULL, 1, 'Node32');
-
-INSERT INTO licences VALUES
-	(3, 3, 1, 'Access he-arc 2', 'AAAAA-XXXXX-XXXXX-XXXXX-XXXXX', 0, now(), 0, now()),
-	(4, 4, 1, 'Excel he-arc 2', 'BBBBB-XXXXX-XXXXX-XXXXX', 0, now(), 0, now());
 
 CREATE USER 'licmgr'@'localhost' IDENTIFIED BY 'licmgr';
 GRANT ALL PRIVILEGES ON LicMgr.* TO 'licmgr'@'localhost' WITH GRANT OPTION;
@@ -61,3 +42,14 @@ INSERT INTO role_user VALUES
     (3, 3),
     (3, 4),
     (4, 4);
+
+INSERT INTO licences VALUES
+	(1, 3, 1, 'Access he-arc', 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX', now(), 1, now(), 1),
+	(2, 4, 1, 'Excel he-arc', 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX', now(), 1, now(), 1),
+	(3, 3, 1, 'Access he-arc 2', 'AAAAA-XXXXX-XXXXX-XXXXX-XXXXX', now(), 2, now(), 2),
+	(4, 4, 1, 'Excel he-arc 2', 'BBBBB-XXXXX-XXXXX-XXXXX', now(), 2, now(), 2);
+INSERT INTO files VALUES
+	(1, 1, 'Access file 1', 'licenceAccess1.txt', 'Fichier Access 1\r\n'),
+	(2, 1, 'Access file 2', 'licenceAccess2.txt', 'Fichier Access 2\r\n'),
+	(3, 2, 'Excel file 1' , 'licenceExcel2.txt' , 'Fichier Excel 1\r\n' );
+
