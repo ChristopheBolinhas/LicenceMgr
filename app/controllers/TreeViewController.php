@@ -35,11 +35,9 @@ class TreeViewController extends BaseController {
                 // concaténation de tableaux
                 $programsId = array_merge($programsId, $programsIdCompany);
                 // recherde de ces programmes
-                $programs = null;
+                $programs = array();
                 if (count($programsId) > 0) {
                     $programs = Program::whereIn("id", $programsId)->orderBy("parent_id")->get();
-                } else {
-                    return Response::Json(array());
                 }
                 /*
               2 :
@@ -85,7 +83,11 @@ class TreeViewController extends BaseController {
                 }
                 // 4 : ajout des éditeurs manquants
                 $editorsId = array_keys($treeEditors);
-                $editorsMissing = Editor::where("company_id", "=", $companyId)->whereNotIn("id", $editorsId)->get();
+                $editorsMissing = Editor::where("company_id", "=", $companyId);
+                if (count($editorsId) > 0) {
+                    $editorsMissing = $editorsMissing->whereNotIn("id", $editorsId);
+                }
+                $editorsMissing = $editorsMissing->get();
                 foreach ($editorsMissing as $editor) {
                     $treeEditors[$editor->id] = array("model" => $editor, "children" => array());
                 }
