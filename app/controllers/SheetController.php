@@ -12,7 +12,7 @@ class SheetController extends BaseController {
         if(Auth::user()->IsReadOrWrite() || Auth::user()->IsAdmin())
         {
             $sheet = Sheet::findOrFail($id);
-            return Response::make($sheet->value, 200, array('Content-type' => 'application/octet-stream', 'Content-Disposition' => 'attachment; filename="'.$sheet->name.'"'));
+            return Response::make($sheet->value, 200, array('Content-type' => 'application/octet-stream', 'Content-Disposition' => 'attachment; filename="'.$sheet->filename.'"'));
         }
     }
     public function postEdit($id) {
