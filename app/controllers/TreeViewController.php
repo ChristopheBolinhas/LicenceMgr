@@ -30,6 +30,8 @@ class TreeViewController extends BaseController {
                 $programsIdCompany = array();
                 if (count($programsId) > 0) {
                     $programsIdCompany = Program::where("company_id", "=", $companyId)->select(array("id"))->whereNotIn("id", $programsId)->lists("id");
+                } else {
+                    $programsIdCompany = Program::where("company_id", "=", $companyId)->select(array("id"))->lists("id");
                 }
                 // concaténation de tableaux
                 $programsId = array_merge($programsId, $programsIdCompany);
