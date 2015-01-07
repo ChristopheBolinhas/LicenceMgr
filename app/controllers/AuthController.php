@@ -2,12 +2,6 @@
 
 class AuthController extends BaseController {
 
-    /*
-    public function getLogin()
-    {
-        return View::make('login');    
-    }
-    */
     public function anyList() {   
         if(Auth::user()->IsSuperAdmin())
         {
@@ -117,8 +111,13 @@ class AuthController extends BaseController {
         }
         else if(Auth::user()->IsAdmin())
         {
+            $user = User::findOrFail($id);
+            if($user->IsSuperAdmin()){
+                App::abort(403);
+                return;
+            }
             return View::make('user/register')
-                ->with('user',User::findOrFail($id))
+                ->with('user',$user)
                 ->with("roles", Role::all())
                 ->with("submitText", Lang::get('controls.editUserButton'))
                 ->with("nameForm","editUserForm");
@@ -130,6 +129,10 @@ class AuthController extends BaseController {
         if(Auth::user()->IsSuperAdmin() || Auth::user()->IsAdmin())
         {
             $user = User::findOrFail(Input::get('id'));
+            if($user->IsSuperAdmin() && Auth::user()->IsAdmin()){
+                App::abort(403);
+                return;
+            }
             $user->fullname = Input::get('fullname');
             $user->username = Input::get('login');
             $user->email = Input::get('email');
