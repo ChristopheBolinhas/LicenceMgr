@@ -23,7 +23,7 @@
                         {{{$user->companyName()}}}
                     </td>
                     <td>
-                    @if(!Auth::user()->IsAdmin() || !$user->IsSuperAdmin())
+                    @if(!(Auth::user()->IsAdmin() && !Auth::user()->IsSuperAdmin() && $user->IsSuperAdmin()))
                         <a href="#" class="button split tiny"><div style="display:inline" class="editUser">@lang('controls.editButton')</div> <span data-dropdown="drop-user-{{{ $user->id }}}"></span></a>
                 <ul id="drop-user-{{{ $user->id }}}" class="f-dropdown" data-dropdown-content>							
                             <li><a class="deleteUser">@lang('controls.removeSubButton')</a></li>

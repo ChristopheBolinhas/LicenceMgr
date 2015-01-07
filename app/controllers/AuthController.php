@@ -129,7 +129,7 @@ class AuthController extends BaseController {
         if(Auth::user()->IsSuperAdmin() || Auth::user()->IsAdmin())
         {
             $user = User::findOrFail(Input::get('id'));
-            if($user->IsSuperAdmin() && Auth::user()->IsAdmin()){
+            if($user->IsSuperAdmin() && Auth::user()->IsAdmin() && !Auth::user()->IsSuperAdmin()){
                 App::abort(403);
                 return;
             }
